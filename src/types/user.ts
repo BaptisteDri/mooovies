@@ -1,6 +1,5 @@
 export type User = {
 	id: string
-	// @TODO: you can add supabase others User fields
 }
 
 export type Session = {
