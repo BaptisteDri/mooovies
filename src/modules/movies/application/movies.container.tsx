@@ -3,6 +3,7 @@ import { MoviesView } from "./movies.view"
 import { Movie } from "@/types/movie"
 import { appOutputs } from "@/config/app-outputs"
 import { getUserMovies } from "../domain/movies.actions"
+import { mapMoviesToApplicationModel } from "./movies.mapper"
 
 export const MoviesContainer = () => {
 	const [movies, setMovies] = useState<Movie[]>([])
@@ -18,7 +19,7 @@ export const MoviesContainer = () => {
 		try {
 			const moviesData = await getUserMovies({ moviesOutput, userId })
 			// setMovies(_movies)
-			console.log(moviesData)
+			console.log(mapMoviesToApplicationModel(moviesData))
 		} catch (error: any) {
 			console.error(error)
 		}
