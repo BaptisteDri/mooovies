@@ -18,8 +18,7 @@ export const MoviesContainer = () => {
 	const _getMovies = async () => {
 		try {
 			const moviesData = await getUserMovies({ moviesOutput, userId })
-			// setMovies(_movies)
-			console.log(mapMoviesToApplicationModel(moviesData))
+			setMovies(mapMoviesToApplicationModel(moviesData))
 		} catch (error: any) {
 			console.error(error)
 		}
