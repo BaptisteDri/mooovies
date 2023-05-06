@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import NextLink from "next/link"
 
 interface Props {
 	content: string
@@ -12,8 +13,8 @@ export const Link = ({ content, icon, path }: Props) => {
 
 	return (
 		<li>
-			<a
-				href="#"
+			<NextLink
+				href={path}
 				className={`flex items-center px-2 py-3 rounded-lg text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${
 					isActive && "bg-gray-100 dark:bg-gray-700 font-bold"
 				}`}
@@ -27,7 +28,7 @@ export const Link = ({ content, icon, path }: Props) => {
 					{icon}
 				</span>
 				<span className="ml-3">{content}</span>
-			</a>
+			</NextLink>
 		</li>
 	)
 }
