@@ -1,8 +1,15 @@
-import { Movie } from "../domain/movie"
+import { Movie } from "../domain/movies"
 import { MoviesOutput } from "../domain/movies.output"
 
 export class MoviesInMemory implements MoviesOutput {
 	private movies: Movie[] | undefined = []
+	private searchResultsMovie: SearchResultsMovie | undefined = undefined
+
+	setSearchResultsMovie(
+		searchResultsMovie: SearchResultsMovie | undefined
+	): void {
+		this.searchResultsMovie = searchResultsMovie ?? undefined
+	}
 
 	setMovies(movies: Movie[] | undefined): void {
 		this.movies = movies ?? undefined
@@ -14,6 +21,14 @@ export class MoviesInMemory implements MoviesOutput {
 		}
 
 		return Promise.resolve(this.movies)
+	}
+
+	searchMovies({ query }: { query: string }): Promise<SearchResultsMovie> {
+		if (!this.searchResultsMovie) {
+			throw new Error("An error occured while searching movies")
+		}
+
+		return Promise.resolve(this.searchResultsMovie)
 	}
 
 	// Vérifier que le film n'a pas déjà été ajouté avant de l'ajouter à la liste

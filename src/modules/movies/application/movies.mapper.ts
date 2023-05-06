@@ -1,4 +1,4 @@
-import { Movie } from "../domain/movie"
+import { Movie } from "../domain/movies"
 import { Movie as ApplicationModelMovie } from "@/types/movie"
 
 export const mapMoviesToApplicationModel = (
@@ -9,3 +9,14 @@ export const mapMoviesToApplicationModel = (
 		genre: movie.genre.split(","),
 	}))
 }
+
+export const mapSearchResultsMovieToAppModel = (
+	searchResultsMovie: SearchResultsMovie
+): ApplicationModelMovie => ({
+	director: searchResultsMovie.Director,
+	genre: searchResultsMovie.Genre.split(","),
+	poster: searchResultsMovie.Poster,
+	runtime: searchResultsMovie.Runtime,
+	title: searchResultsMovie.Title,
+	year: searchResultsMovie.Released,
+})

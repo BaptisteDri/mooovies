@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { MoviesView } from "./movies.view"
+import { MoviesListView } from "./movies-list.view"
 import { Movie } from "@/types/movie"
 import { appOutputs } from "@/config/app-outputs"
-import { getUserMovies } from "../domain/movies.actions"
-import { mapMoviesToApplicationModel } from "./movies.mapper"
+import { getUserMovies } from "../../domain/movies.actions"
+import { mapMoviesToApplicationModel } from "../movies.mapper"
 
-export const MoviesContainer = () => {
+export const MoviesListContainer = () => {
 	const [movies, setMovies] = useState<Movie[]>([])
 
 	useEffect(() => {
@@ -24,5 +24,5 @@ export const MoviesContainer = () => {
 		}
 	}
 
-	return <MoviesView movies={movies} />
+	return <MoviesListView movies={movies} />
 }
