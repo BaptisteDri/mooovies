@@ -1,8 +1,5 @@
 import { MoviesInMemory } from "../infrastructure/movies.in-memory"
-import {
-	moviesFakes,
-	searchResultsMovieFakes,
-} from "../infrastructure/movies.fakes"
+import { moviesFakes, movieFakes } from "../infrastructure/movies.fakes"
 import { Movie } from "./movies"
 import { getUserMovies, searchMovies } from "./movies.actions"
 
@@ -11,7 +8,7 @@ describe("[movies] unit tests", () => {
 
 	beforeEach(() => {
 		moviesOutput.setMovies([])
-		moviesOutput.setSearchResultsMovie(undefined)
+		moviesOutput.setMovie(undefined)
 	})
 
 	describe("when the user wants to get his movies list", () => {
@@ -43,21 +40,20 @@ describe("[movies] unit tests", () => {
 		const query: string = ""
 
 		it("should get the result without error", async () => {
-			moviesOutput.setSearchResultsMovie(searchResultsMovieFakes)
+			moviesOutput.setMovie(movieFakes)
 
-			const searchResultsMovie: SearchResultsMovie = await searchMovies({
+			const searchResultsMovie: Movie = await searchMovies({
 				moviesOutput,
 				query,
 			})
 
-			const expectedSearchResultsMovie: SearchResultsMovie =
-				searchResultsMovieFakes
+			const expectedSearchResultsMovie: Movie = movieFakes
 
 			expect(searchResultsMovie).toEqual(expectedSearchResultsMovie)
 		})
 
 		it("souldn't get it and throw an error", async () => {
-			moviesOutput.setSearchResultsMovie(undefined)
+			moviesOutput.setMovie(undefined)
 
 			await expect(
 				searchMovies({ moviesOutput, query })

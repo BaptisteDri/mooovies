@@ -10,13 +10,9 @@ export const mapMoviesToApplicationModel = (
 	}))
 }
 
-export const mapSearchResultsMovieToAppModel = (
-	searchResultsMovie: SearchResultsMovie
+export const mapMovieToApplicationModel = (
+	movie: Movie
 ): ApplicationModelMovie => ({
-	director: searchResultsMovie.Director,
-	genre: searchResultsMovie.Genre.split(","),
-	poster: searchResultsMovie.Poster,
-	runtime: searchResultsMovie.Runtime,
-	title: searchResultsMovie.Title,
-	year: searchResultsMovie.Released,
+	...movie,
+	genre: movie.genre.split(","),
 })

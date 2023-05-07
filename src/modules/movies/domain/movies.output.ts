@@ -6,5 +6,5 @@ export type getMoviesDto = {
 
 export interface MoviesOutput {
 	getUserMovies({ userId }: { userId: string }): Promise<MovieDomain[]>
-	searchMovies({ query }: { query: string }): Promise<SearchResultsMovie>
+	searchMovies({ query }: { query: string }): Promise<MovieDomain>
 }

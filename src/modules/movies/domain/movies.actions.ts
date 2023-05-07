@@ -21,7 +21,7 @@ export const searchMovies = async ({
 }: {
 	moviesOutput: MoviesOutput
 	query: string
-}): Promise<SearchResultsMovie> => {
+}): Promise<Movie> => {
 	try {
 		return await moviesOutput.searchMovies({ query })
 	} catch (error: any) {

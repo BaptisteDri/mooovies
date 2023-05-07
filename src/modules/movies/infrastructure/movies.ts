@@ -1,4 +1,4 @@
-type SearchResultsMovie = {
+export type SearchResultsMovie = {
 	Director: string
 	Genre: string
 	Poster: string

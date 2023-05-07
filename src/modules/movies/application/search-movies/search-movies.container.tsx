@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
 import { searchMovies } from "../../domain/movies.actions"
-import { mapSearchResultsMovieToAppModel } from "../movies.mapper"
+import { mapMovieToApplicationModel } from "../movies.mapper"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
@@ -26,7 +26,8 @@ export const SearchMoviesContainer = () => {
 	const _searchMovies = async () => {
 		try {
 			const moviesData = await searchMovies({ moviesOutput, query })
-			setsearchResultsMovie(mapSearchResultsMovieToAppModel(moviesData))
+			console.log(moviesData)
+			setsearchResultsMovie(mapMovieToApplicationModel(moviesData))
 		} catch (error: any) {
 			console.error(error)
 		}
@@ -40,6 +41,7 @@ export const SearchMoviesContainer = () => {
 		<SearchMoviesView
 			query={query}
 			handleOnQueryChange={handleOnQueryChange}
+			// searchResultsMovie={searchResultsMovie}
 			searchResultsMovie={{
 				director: "Spike Lee",
 				genre: ["Drame", "Comedy"],
