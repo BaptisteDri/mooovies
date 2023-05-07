@@ -6,7 +6,7 @@ export const Index = () => (
 	<>
 		<Sidebar />
 
-		<div className="p-6 sm:ml-64 sm:mr-64">
+		<div className="p-6 sm:ml-64">
 			<Title content="Mes films" />
 			<MoviesListContainer />
 		</div>

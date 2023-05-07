@@ -37,7 +37,7 @@ export const Alphabetical = ({ movies }: Props) => {
 						{letter}
 					</h2>
 					{movies.length > 0 && (
-						<ul className="grid-cols-4 grid gap-6 mt-4">
+						<ul className="grid-cols-5 grid gap-6 mt-4">
 							{movies.map((movie: Movie, i: number) => (
 								<MovieItem key={i} movie={movie} />
 							))}
