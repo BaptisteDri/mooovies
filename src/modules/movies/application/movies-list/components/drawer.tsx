@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { Movie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
+import { GenreIcon } from "./genre-icon"
 
 interface Props {
 	isOpen: boolean
@@ -30,7 +31,7 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 	return (
 		<div
 			ref={ref}
-			className={`fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-96 dark:bg-gray-800 border-l border-gray-700 ${
+			className={`fixed top-0 right-0 z-40 h-screen p-6 overflow-y-auto transition-transform bg-white w-96 dark:bg-gray-800 border-l border-gray-700 ${
 				!isOpen && "translate-x-full"
 			}`}
 			tabIndex={-1}
@@ -41,34 +42,21 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 					type="button"
 					className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
 				>
-					<svg
-						aria-hidden="true"
-						className="w-5 h-5"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-							clip-rule="evenodd"
-						></path>
-					</svg>
-					<span className="sr-only">Close menu</span>
+					<span className="material-symbols-rounded">close</span>
 				</button>
 			</div>
 
 			<h3 className="mb-2 text-xl font-semibold text-gray-500 dark:text-white">
 				{movie.title}
 			</h3>
-			<p className="mb-6 text-gray-500">{movie.director}</p>
+			<p className="mb-6 text-gray-400 text-lg">{movie.director}</p>
 
 			<form className="flex justify-between items-center mb-6">
-				<div className="text-white">Film vu</div>
+				<div className="text-white font-bold">Marquer comme vu</div>
 				<label className="relative flex items-center cursor-pointer">
 					<input
 						type="checkbox"
-						checked={movie.is_seen}
+						defaultChecked={movie.is_seen}
 						className="sr-only peer"
 					/>
 					<div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
@@ -90,13 +78,13 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 					</div>
 				</li>
 				<li className="py-3 sm:py-4">
-					<div className="flex justify-between">
+					<div className="flex justify-between items-center">
 						<p className="text-sm text-gray-500 truncate dark:text-gray-400">
 							Genre(s)
 						</p>
-						<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+						<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
 							{movie.genre.map((genre, i) => (
-								<span key={i}>{genre}</span>
+								<GenreIcon genre={genre} key={i} />
 							))}
 						</div>
 					</div>

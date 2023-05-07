@@ -3,30 +3,34 @@ interface GenresIconsNames {
 }
 
 const genreIcons: GenresIconsNames = {
-	Action: "icon-action",
-	Adventure: "icon-adventure",
-	Animation: "icon-animation",
-	Biography: "icon-biography",
-	Comedy: "icon-comedy",
-	Crime: "icon-crime",
-	Documentary: "icon-documentary",
-	Drama: "icon-drama",
-	Family: "icon-family",
-	Fantasy: "icon-fantasy",
-	"Film Noir": "icon-film-noir",
-	History: "icon-history",
-	Horror: "icon-horror",
-	Music: "icon-music",
-	Musical: "icon-musical",
-	Mystery: "icon-mystery",
-	Romance: "icon-romance",
-	"Sci-Fi": "icon-sci-fi",
-	Short: "icon-short",
-	Sport: "icon-sport",
-	Superhero: "icon-superhero",
-	Thriller: "icon-thriller",
-	War: "icon-war",
-	Western: "icon-western",
+	Action: "💥",
+	Adventure: "🤠",
+	Animation: "🧸",
+	Biography: "📖",
+	Comedy: "😂",
+	Crime: "🔪",
+	Documentary: "🌍",
+	Drama: "🎭",
+	Family: "👨‍👨‍👧‍👦",
+	Fantasy: "🧝🏼‍♂️",
+	"Film Noir": "📽️",
+	History: "👑",
+	Horror: "👻",
+	Music: "🎶",
+	Musical: "🎙️",
+	Mystery: "🕵🏼",
+	Romance: "💌",
+	"Sci-Fi": "🛸",
+	Short: "🎬",
+	Sport: "🏅",
+	"Super-Hero": "🦸🏼‍♂️",
+	Thriller: "😱",
+	War: "🪖",
+	Western: "🏜️",
 }
 
-export const useGenreIcon = (genre: string): string => genreIcons[genre]
+export const useGenreIcon = (genre: string): string => {
+	console.log(genre, genreIcons[genre])
+
+	return genreIcons[genre]
+}

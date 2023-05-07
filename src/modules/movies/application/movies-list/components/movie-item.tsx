@@ -23,11 +23,11 @@ export const MovieItem = ({ movie }: Props) => {
 						alt={movie.title}
 					/>
 				</div>
-				<div className="mt-2">
-					<h2 className="text-gray-900 dark:text-white text-lg font-bold">
+				<div className="mt-2 text-ellipsis overflow-hidden">
+					<h2 className="text-gray-900 dark:text-white text-lg font-bold text-ellipsis overflow-hidden whitespace-nowrap	">
 						{movie.title}
 					</h2>
-					<p className="text-gray-500 dark:text-gray-500">
+					<p className="text-gray-500 dark:text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap	">
 						{movie.director}
 					</p>
 				</div>

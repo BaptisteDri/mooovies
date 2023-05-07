@@ -2,7 +2,7 @@ import { Movie } from "../domain/movies"
 
 const movie1: Movie = {
 	director: "Spike Lee",
-	genre: "Drame, Comedy",
+	genre: "Drama, Comedy",
 	poster: "https://m.media-amazon.com/images/M/MV5BODA2MjU1NTI1MV5BMl5BanBnXkFtZTgwOTU4ODIwMjE@._V1_SX300.jpg",
 	runtime: "120 min",
 	title: "Do the Right Thing",
