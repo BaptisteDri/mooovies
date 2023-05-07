@@ -5,4 +5,5 @@ export type Movie = {
 	runtime: string
 	genre: string
 	poster: string
+	is_seen: boolean
 }

@@ -1,9 +1,10 @@
 import { Movie } from "../domain/movies"
 import { MoviesOutput } from "../domain/movies.output"
+import { movieFakes, moviesFakes } from "./movies.fakes"
 
 export class MoviesInMemory implements MoviesOutput {
-	private movies: Movie[] | undefined = []
-	private movie: Movie | undefined = undefined
+	private movies: Movie[] | undefined = moviesFakes
+	private movie: Movie | undefined = movieFakes
 
 	setMovies(movies: Movie[] | undefined): void {
 		this.movies = movies ?? undefined
