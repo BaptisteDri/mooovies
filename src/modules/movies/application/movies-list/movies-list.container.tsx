@@ -5,6 +5,7 @@ import { appOutputs } from "@/config/app-outputs"
 import { getUserMovies } from "../../domain/movies.actions"
 import { mapMoviesToApplicationModel } from "../movies.mapper"
 import { useRealTimeMovies } from "@/hooks/useRealTimeMovies"
+import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 
 export const MoviesListContainer = () => {
 	const [movies, setMovies] = useState<Movie[]>([])
@@ -16,7 +17,7 @@ export const MoviesListContainer = () => {
 	useRealTimeMovies(movies, setMovies)
 
 	const { moviesOutput } = appOutputs
-	const userId = ""
+	const userId = selectLocalSessionData()?.user.id ?? ""
 
 	const _getMovies = async () => {
 		try {

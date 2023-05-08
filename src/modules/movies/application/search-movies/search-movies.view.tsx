@@ -1,6 +1,7 @@
 import { Movie } from "@/types/movie"
 import { Placeholder } from "./components/placeholder"
 import { SearchInput } from "./components/search-input"
+import { AddMovie } from "./components/add-movie"
 
 interface Props {
 	query: string
@@ -19,7 +20,11 @@ export const SearchMoviesView = ({
 				query={query}
 				handleOnQueryChange={handleOnQueryChange}
 			/>
-			{searchResultsMovie ? searchResultsMovie.title : <Placeholder />}
+			{searchResultsMovie ? (
+				<AddMovie movie={searchResultsMovie} />
+			) : (
+				<Placeholder />
+			)}
 		</>
 	)
 }

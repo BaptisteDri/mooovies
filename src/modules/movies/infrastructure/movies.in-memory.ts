@@ -30,5 +30,7 @@ export class MoviesInMemory implements MoviesOutput {
 		return Promise.resolve(this.movie)
 	}
 
-	// Vérifier que le film n'a pas déjà été ajouté avant de l'ajouter à la liste
+	addMovie({ movie }: { movie: Movie }): Promise<void> {
+		return Promise.resolve()
+	}
 }

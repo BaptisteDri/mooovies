@@ -1,5 +1,5 @@
 export type Movie = {
-	id: number
+	id: string
 	title: string
 	director: string
 	year: string
@@ -7,4 +7,5 @@ export type Movie = {
 	genre: string
 	poster: string
 	is_seen: boolean
+	user_id: string
 }

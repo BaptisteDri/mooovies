@@ -28,3 +28,17 @@ export const searchMovies = async ({
 		throw new Error(error)
 	}
 }
+
+export const addMovie = async ({
+	moviesOutput,
+	movie,
+}: {
+	moviesOutput: MoviesOutput
+	movie: Movie
+}): Promise<void> => {
+	try {
+		return await moviesOutput.addMovie({ movie })
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}
