@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Head } from "@/components/seo/head"
+import { Head } from "@/components/head"
 import { RequestStatus } from "@/types/request-status"
 import Link from "next/link"
 import { useRouter } from "next/router"

@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/seo/head"
+import { Head } from "@/components/head"
 import { RequestStatus } from "@/types/request-status"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/config/store"

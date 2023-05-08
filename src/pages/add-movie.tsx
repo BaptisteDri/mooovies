@@ -1,7 +1,8 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/seo/head"
-import { SessionProvider } from "@/components/auth/session-provider"
-import { AddMovie } from "@/components/pages/add-movie"
+import { Head } from "@/components/head"
+import { SessionProvider } from "@/components/session-provider"
+import { Layout } from "@/components/layout"
+import { SearchMoviesContainer } from "@/modules/movies/application/search-movies/search-movies.container"
 
 const AddMoviePage: NextPage = () => {
 	return (
@@ -9,7 +10,7 @@ const AddMoviePage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<AddMovie />
+				<Layout content={<SearchMoviesContainer />} />
 			</SessionProvider>
 		</>
 	)

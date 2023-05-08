@@ -1,7 +1,8 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/seo/head"
-import { SessionProvider } from "@/components/auth/session-provider"
-import { Index } from "@/components/pages"
+import { Head } from "@/components/head"
+import { SessionProvider } from "@/components/session-provider"
+import { Layout } from "@/components/layout"
+import { MoviesListContainer } from "@/modules/movies/application/movies-list/movies-list.container"
 
 const IndexPage: NextPage = () => {
 	return (
@@ -9,7 +10,7 @@ const IndexPage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<Index />
+				<Layout content={<MoviesListContainer />} title={"Mes films"} />
 			</SessionProvider>
 		</>
 	)

@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/seo/head"
+import { Head } from "@/components/head"
 import { SignIn } from "@/components/pages/sign-in"
 
 const SignInPage: NextPage = () => {
