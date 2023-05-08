@@ -48,10 +48,24 @@ export const deleteMovie = async ({
 	movieId,
 }: {
 	moviesOutput: MoviesOutput
-	movieId: string
+	movieId: number
 }): Promise<void> => {
 	try {
 		return await moviesOutput.deleteMovie({ movieId })
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}
+
+export const updateMovie = async ({
+	moviesOutput,
+	movie,
+}: {
+	moviesOutput: MoviesOutput
+	movie: Movie
+}): Promise<void> => {
+	try {
+		return await moviesOutput.updateMovie({ movie })
 	} catch (error: any) {
 		throw new Error(error)
 	}

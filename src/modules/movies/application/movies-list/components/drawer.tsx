@@ -3,6 +3,7 @@ import { Movie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { GenreIcon } from "./genre-icon"
 import { DeleteMovie } from "./delete-movie"
+import { ToggleMovieSeen } from "./toggle-movie-seen"
 
 interface Props {
 	isOpen: boolean
@@ -52,52 +53,36 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 			</h3>
 			<p className="mb-6 text-gray-400 text-lg">{movie.director}</p>
 
-			<form className="flex justify-between items-center mb-6">
-				<div className="text-white font-bold">Marquer comme vu</div>
-				<label className="relative flex items-center cursor-pointer">
-					<input
-						type="checkbox"
-						defaultChecked={movie.is_seen}
-						className="sr-only peer"
-					/>
-					<div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
-				</label>
-			</form>
+			<ToggleMovieSeen movie={movie} />
 
 			<ul
 				role="list"
 				className="divide-y divide-gray-200 dark:divide-gray-700 mb-6"
 			>
-				<li className="py-3 sm:py-4">
-					<div className="flex justify-between">
-						<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-							Année de sortie
-						</p>
-						<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-							{movie.year}
-						</div>
+				<li className="h-12 flex justify-between items-center">
+					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+						Année de sortie
+					</p>
+					<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+						{movie.year}
 					</div>
 				</li>
-				<li className="py-3 sm:py-4">
-					<div className="flex justify-between items-center">
-						<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-							Genre(s)
-						</p>
-						<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
-							{movie.genre.map((genre, i) => (
-								<GenreIcon genre={genre} key={i} />
-							))}
-						</div>
+				<li className="h-12 flex justify-between items-center">
+					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+						Genre(s)
+					</p>
+					<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
+						{movie.genre.map((genre, i) => (
+							<GenreIcon genre={genre} key={i} />
+						))}
 					</div>
 				</li>
-				<li className="py-3 sm:py-4">
-					<div className="flex justify-between">
-						<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-							Durée
-						</p>
-						<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-							{movie.runtime}
-						</div>
+				<li className="h-12 flex justify-between items-center">
+					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
+						Durée
+					</p>
+					<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+						{movie.runtime}
 					</div>
 				</li>
 			</ul>

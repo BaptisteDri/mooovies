@@ -7,7 +7,7 @@ import { mapInfraMovieToAppModel } from "../domain/movies.mapper"
 export class MoviesSupabase implements MoviesOutput {
 	async getUserMovies({ userId }: { userId: string }): Promise<Movie[]> {
 		const { data } = await supabase
-			.from("movies")
+			.from("films")
 			.select()
 			.eq("user_id", userId)
 		return Promise.resolve(data ?? [])
@@ -25,10 +25,14 @@ export class MoviesSupabase implements MoviesOutput {
 	}
 
 	async addMovie({ movie }: { movie: Movie }): Promise<void> {
-		await supabase.from("movies").insert(movie)
+		await supabase.from("films").insert(movie)
 	}
 
-	async deleteMovie({ movieId }: { movieId: string }): Promise<void> {
-		await supabase.from("movies").delete().eq("id", movieId)
+	async deleteMovie({ movieId }: { movieId: number }): Promise<void> {
+		await supabase.from("films").delete().eq("id", movieId)
+	}
+
+	async updateMovie({ movie }: { movie: Movie }): Promise<void> {
+		await supabase.from("films").update(movie).eq("id", movie.id)
 	}
 }

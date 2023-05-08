@@ -2,7 +2,7 @@ import { deleteMovie } from "@/modules/movies/domain/movies.actions"
 import { appOutputs } from "@/config/app-outputs"
 
 interface Props {
-	movieId: string
+	movieId: number
 }
 
 export const DeleteMovie = ({ movieId }: Props) => {

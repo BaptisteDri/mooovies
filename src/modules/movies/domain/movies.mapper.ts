@@ -6,7 +6,6 @@ export const mapInfraMovieToAppModel = (
 ): Movie => ({
 	user_id: "",
 	is_seen: false,
-	id: searchResultsMovie.imdbID,
 	director: searchResultsMovie.Director,
 	genre: searchResultsMovie.Genre,
 	poster: searchResultsMovie.Poster,

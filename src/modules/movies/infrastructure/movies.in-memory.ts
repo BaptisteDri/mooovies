@@ -37,4 +37,8 @@ export class MoviesInMemory implements MoviesOutput {
 	deleteMovie({ movieId }: { movieId: string }): Promise<void> {
 		return Promise.resolve()
 	}
+
+	updateMovie({ movie }: { movie: Movie }): Promise<void> {
+		return Promise.resolve()
+	}
 }
