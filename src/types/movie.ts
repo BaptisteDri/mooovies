@@ -9,3 +9,14 @@ export type Movie = {
 	is_seen: boolean
 	user_id: string
 }
+
+export type SearchedMovie = {
+	genreIds: number[]
+	id: number
+	originalLanguage: string
+	originalTitle: string
+	overview: string
+	posterPath: string
+	releaseDate: string
+	title: string
+}
