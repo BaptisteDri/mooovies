@@ -1,3 +1,4 @@
+import { Icon } from "../icon"
 import { Link } from "./link"
 
 export const Sidebar = () => {
@@ -14,20 +15,12 @@ export const Sidebar = () => {
 				<ul className="space-y-3 font-medium">
 					<Link
 						content="Mes films"
-						icon={
-							<span className="material-symbols-rounded">
-								home
-							</span>
-						}
+						icon={<Icon name="home" />}
 						path={"/"}
 					/>
 					<Link
 						content="Ajouter un film"
-						icon={
-							<span className="material-symbols-rounded">
-								video_call
-							</span>
-						}
+						icon={<Icon name="video_call" />}
 						path={"/add-movie"}
 					/>
 				</ul>
@@ -35,11 +28,7 @@ export const Sidebar = () => {
 				<ul className="space-y-3 font-medium">
 					<Link
 						content="Paramètres"
-						icon={
-							<span className="material-symbols-rounded">
-								manage_accounts
-							</span>
-						}
+						icon={<Icon name="manage_accounts" />}
 						path={"/settings"}
 					/>
 				</ul>

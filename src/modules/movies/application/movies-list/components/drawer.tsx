@@ -4,6 +4,7 @@ import { useClickOutside } from "@/hooks/useClickOutside"
 import { GenreIcon } from "./genre-icon"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
+import { Icon } from "@/components/icon"
 
 interface Props {
 	isOpen: boolean
@@ -44,7 +45,7 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 					type="button"
 					className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
 				>
-					<span className="material-symbols-rounded">close</span>
+					<Icon name="close" />
 				</button>
 			</div>
 

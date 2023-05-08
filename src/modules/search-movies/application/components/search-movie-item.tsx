@@ -1,3 +1,4 @@
+import { Icon } from "@/components/icon"
 import { useTrimmedString } from "@/hooks/useTrimmedString"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchedMovie } from "@/types/movie"
@@ -21,7 +22,7 @@ export const SearchMovieItem = ({ movie }: Props) => {
 					<div className="text-gray-500">
 						{useYearFromDate(movie.releaseDate)}
 					</div>
-					<p className="mt-2 text-sm text-white">
+					<p className="mt-2 text-sm text-gray-500">
 						{useTrimmedString(movie.overview, 300)}
 					</p>
 				</div>
