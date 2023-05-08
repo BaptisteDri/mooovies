@@ -42,3 +42,17 @@ export const addMovie = async ({
 		throw new Error(error)
 	}
 }
+
+export const deleteMovie = async ({
+	moviesOutput,
+	movieId,
+}: {
+	moviesOutput: MoviesOutput
+	movieId: string
+}): Promise<void> => {
+	try {
+		return await moviesOutput.deleteMovie({ movieId })
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}

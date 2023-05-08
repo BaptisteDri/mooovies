@@ -27,4 +27,8 @@ export class MoviesSupabase implements MoviesOutput {
 	async addMovie({ movie }: { movie: Movie }): Promise<void> {
 		await supabase.from("movies").insert(movie)
 	}
+
+	async deleteMovie({ movieId }: { movieId: string }): Promise<void> {
+		await supabase.from("movies").delete().eq("id", movieId)
+	}
 }

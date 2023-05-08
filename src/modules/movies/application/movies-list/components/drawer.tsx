@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Movie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { GenreIcon } from "./genre-icon"
+import { DeleteMovie } from "./delete-movie"
 
 interface Props {
 	isOpen: boolean
@@ -101,9 +102,7 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 				</li>
 			</ul>
 
-			<button className="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-				Supprimer de la liste
-			</button>
+			<DeleteMovie movieId={movie.id} />
 		</div>
 	)
 }
