@@ -11,5 +11,5 @@ export type AppOutputs = {
 
 export const appOutputs: AppOutputs = {
 	authOutput: new AuthSupabase(),
-	moviesOutput: new MoviesInMemory(),
+	moviesOutput: new MoviesSupabase(),
 }

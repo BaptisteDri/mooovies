@@ -4,6 +4,8 @@ import { Movie } from "./movies"
 export const mapInfraMovieToAppModel = (
 	searchResultsMovie: InfraMovie
 ): Movie => ({
+	id: 1,
+	is_seen: false,
 	director: searchResultsMovie.Director,
 	genre: searchResultsMovie.Genre,
 	poster: searchResultsMovie.Poster,

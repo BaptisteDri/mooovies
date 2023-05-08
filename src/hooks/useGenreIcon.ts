@@ -29,8 +29,4 @@ const genreIcons: GenresIconsNames = {
 	Western: "🏜️",
 }
 
-export const useGenreIcon = (genre: string): string => {
-	console.log(genre, genreIcons[genre])
-
-	return genreIcons[genre]
-}
+export const useGenreIcon = (genre: string): string => genreIcons[genre]
