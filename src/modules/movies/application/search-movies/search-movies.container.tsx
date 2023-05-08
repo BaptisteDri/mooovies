@@ -4,7 +4,6 @@ import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
 import { searchMovies } from "../../domain/movies.actions"
 import { mapMovieToApplicationModel } from "../movies.mapper"
-import { movieFakes } from "../../infrastructure/movies.fakes"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
@@ -16,7 +15,7 @@ export const SearchMoviesContainer = () => {
 		if (!query) return
 
 		const timer = setTimeout(() => {
-			// _searchMovies()
+			_searchMovies()
 		}, 500)
 
 		return () => clearTimeout(timer)
@@ -41,8 +40,7 @@ export const SearchMoviesContainer = () => {
 		<SearchMoviesView
 			query={query}
 			handleOnQueryChange={handleOnQueryChange}
-			// searchResultsMovie={searchResultsMovie}
-			searchResultsMovie={mapMovieToApplicationModel(movieFakes)}
+			searchResultsMovie={searchResultsMovie}
 		/>
 	)
 }
