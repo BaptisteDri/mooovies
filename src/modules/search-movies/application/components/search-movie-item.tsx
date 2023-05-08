@@ -1,4 +1,4 @@
-import { Icon } from "@/components/icon"
+import { useState } from "react"
 import { useTrimmedString } from "@/hooks/useTrimmedString"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchedMovie } from "@/types/movie"
@@ -8,6 +8,8 @@ interface Props {
 }
 
 export const SearchMovieItem = ({ movie }: Props) => {
+	const [isDrawerOpen, setDrawerVisibility] = useState<boolean>(false)
+
 	return (
 		<li className="flex justify-between py-4">
 			<div className="flex">
