@@ -22,11 +22,15 @@ export const SearchMoviesView = ({
 				handleOnQueryChange={handleOnQueryChange}
 			/>
 			{searchResultsMovies.length > 0 ? (
-				<div className="space-y-4">
-					{searchResultsMovies.map((movie: SearchedMovie) => (
-						<SearchMovieItem key={movie.id} movie={movie} />
-					))}
-				</div>
+				<ul className=" divide-y divide-gray-200 dark:divide-gray-800">
+					{searchResultsMovies.map((movie: SearchedMovie) =>
+						movie.posterPath ? (
+							<SearchMovieItem key={movie.id} movie={movie} />
+						) : (
+							<></>
+						)
+					)}
+				</ul>
 			) : (
 				<Placeholder />
 			)}

@@ -5,7 +5,7 @@ import { mapSearchMoviesToDomainModel } from "../domain/search-movies.mapper"
 
 export class SearchMoviesApi implements SearchMoviesOutput {
 	searchMovies({ query }: { query: string }): Promise<SearchedMovie[]> {
-		const params = { language: "fr-FR", include_adult: true, query }
+		const params = { language: "fr-FR", include_adult: false, query }
 		const headers = {
 			Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
 		}
