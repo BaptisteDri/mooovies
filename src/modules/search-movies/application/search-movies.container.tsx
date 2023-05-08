@@ -11,11 +11,11 @@ export const SearchMoviesContainer = () => {
 	>([])
 
 	useEffect(() => {
-		if (!query) return
+		if (!query) return setsearchResultsMovies([])
 
 		const timer = setTimeout(() => {
 			_searchMovies()
-		}, 500)
+		}, 200)
 
 		return () => clearTimeout(timer)
 	}, [query])
