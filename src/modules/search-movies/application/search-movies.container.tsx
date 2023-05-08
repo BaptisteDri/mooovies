@@ -1,15 +1,14 @@
-import { Movie } from "@/types/movie"
+import { SearchedMovie } from "@/types/movie"
 import { useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
-import { searchMovies } from "../../domain/movies.actions"
-import { mapMovieToApplicationModel } from "../movies.mapper"
+import { searchMovies } from "@/modules/search-movies/domain/search-movies.actions"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
-	const [searchResultsMovie, setsearchResultsMovie] = useState<
-		Movie | undefined
-	>(undefined)
+	const [searchResultsMovies, setsearchResultsMovies] = useState<
+		SearchedMovie[]
+	>([])
 
 	useEffect(() => {
 		if (!query) return
@@ -21,12 +20,12 @@ export const SearchMoviesContainer = () => {
 		return () => clearTimeout(timer)
 	}, [query])
 
-	const { moviesOutput } = appOutputs
+	const { searchMoviesOutput } = appOutputs
 
 	const _searchMovies = async () => {
 		try {
-			const moviesData = await searchMovies({ moviesOutput, query })
-			setsearchResultsMovie(mapMovieToApplicationModel(moviesData))
+			const moviesData = await searchMovies({ searchMoviesOutput, query })
+			setsearchResultsMovies(moviesData)
 		} catch (error: any) {
 			console.error(error)
 		}
@@ -40,7 +39,7 @@ export const SearchMoviesContainer = () => {
 		<SearchMoviesView
 			query={query}
 			handleOnQueryChange={handleOnQueryChange}
-			searchResultsMovie={searchResultsMovie}
+			searchResultsMovies={searchResultsMovies}
 		/>
 	)
 }
