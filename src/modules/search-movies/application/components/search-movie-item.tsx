@@ -5,6 +5,7 @@ import { SearchedMovie } from "@/types/movie"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
 import { Drawer } from "@/components/drawer"
 import { DrawerContent } from "./drawer-content"
+import { ShortenedText } from "@/components/shortened-text"
 
 interface Props {
 	movie: SearchedMovie
@@ -25,12 +26,10 @@ export const SearchMovieItem = ({ movie }: Props) => {
 						<h2 className="font-semibold text-white text-lg">
 							{movie.title}
 						</h2>
-						<div className="text-gray-500">
+						<div className="text-gray-400 mb-2">
 							{useYearFromDate(movie.releaseDate)}
 						</div>
-						<p className="mt-2 text-sm text-gray-500">
-							{useTrimmedString(movie.overview, 300)}
-						</p>
+						<ShortenedText text={movie.overview} />
 					</div>
 				</div>
 				<button

@@ -6,7 +6,7 @@ interface Props {
 
 export const Toggle = ({ label, isChecked, onToggle }: Props) => (
 	<form className="flex justify-between items-center">
-		<div className="text-white font-bold">{label}</div>
+		<div className="text-white font-semibold">{label}</div>
 		<label className="relative flex items-center cursor-pointer">
 			<input
 				type="checkbox"

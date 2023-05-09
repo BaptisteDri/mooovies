@@ -12,6 +12,7 @@ export const mapMovieToDomainModel = (movie: InfraMovie): Movie => ({
 	id: movie.id,
 	originalLanguage: movie.original_language,
 	originalTitle: movie.original_title,
+	overview: movie.overview,
 })
 
 export const mapMoviesToDomainModel = (movies: InfraMovie[]): Movie[] =>

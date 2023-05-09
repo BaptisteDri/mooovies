@@ -9,6 +9,7 @@ export type Movie = {
 	userId: string
 	originalTitle: string
 	originalLanguage: string
+	overview: string
 }
 
 export type SearchedMovie = {

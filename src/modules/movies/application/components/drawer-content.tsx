@@ -9,13 +9,10 @@ interface Props {
 
 export const DrawerContent = ({ movie }: Props) => (
 	<>
-		<div className="mb-2 flex items-baseline flex-wrap">
-			<h3 className="mr-2 text-xl font-semibold text-gray-500 dark:text-white">
-				{movie.title}
-			</h3>
-			<p className="text-sm text-gray-400">({movie.originalTitle})</p>
-		</div>
-		<p className="mb-8 text-gray-400 text-lg">{movie.director}</p>
+		<h3 className="text-xl font-semibold text-gray-500 dark:text-white">
+			{movie.title}
+		</h3>
+		<p className="text-sm text-gray-400 mb-8">({movie.originalTitle})</p>
 
 		<ToggleMovieSeen movie={movie} />
 
@@ -23,6 +20,8 @@ export const DrawerContent = ({ movie }: Props) => (
 			year={movie.year}
 			genreIds={movie.genreIds}
 			originalLanguage={movie.originalLanguage}
+			overview={movie.overview}
+			director={movie.director}
 		/>
 
 		<DeleteMovie movieId={movie.id} />

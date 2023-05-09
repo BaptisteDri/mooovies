@@ -16,13 +16,14 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 		id: movie.id,
 		director: "",
 		genre_ids: movie.genreIds.join(", "),
-		is_seen: false, // to determine
+		is_seen: false,
 		poster: movie.posterPath,
 		title: movie.title,
 		user_id: selectLocalSessionData()?.user.id ?? "", // to determine
 		year: useYearFromDate(movie.releaseDate) ?? "",
 		original_language: movie.originalLanguage,
 		original_title: movie.originalTitle,
+		overview: movie.overview,
 	})
 
 	return (
@@ -37,9 +38,7 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 					})
 				}
 			/>
-
 			{children}
-
 			<AddMovie movie={newMovie} />
 		</>
 	)
