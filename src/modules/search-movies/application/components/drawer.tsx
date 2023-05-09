@@ -2,6 +2,9 @@ import { useEffect } from "react"
 import { SearchedMovie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { Icon } from "@/components/icon"
+import { Director } from "./director"
+import { useYearFromDate } from "@/hooks/useYearFromDate"
+import { GenresList } from "@/components/genres-list"
 
 interface Props {
 	isOpen: boolean
@@ -46,10 +49,13 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 				</button>
 			</div>
 
-			<h3 className="mb-2 text-xl font-semibold text-gray-500 dark:text-white">
-				{movie.title}
-			</h3>
-			{/* <p className="mb-6 text-gray-400 text-lg">{movie.director}</p> */}
+			<div className="mb-2 flex items-baseline flex-wrap">
+				<h3 className="mr-2 text-xl font-semibold text-gray-500 dark:text-white">
+					{movie.title}
+				</h3>
+				<p className="text-sm text-gray-400">({movie.originalTitle})</p>
+			</div>
+			{isOpen && <Director movieId={movie.id} />}
 
 			{/* <ToggleMovieSeen movie={movie} /> */}
 
@@ -62,25 +68,21 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 						Année de sortie
 					</p>
 					<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-						{/* {movie.year} */}
+						{useYearFromDate(movie.releaseDate)}
 					</div>
 				</li>
 				<li className="h-12 flex justify-between items-center">
 					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
 						Genre(s)
 					</p>
-					<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
-						{/* {movie.genre.map((genre, i) => (
-							<GenreIcon genre={genre} key={i} />
-						))} */}
-					</div>
+					<GenresList genreIds={movie.genreIds} />
 				</li>
 				<li className="h-12 flex justify-between items-center">
 					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-						Durée
+						Langue
 					</p>
 					<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-						{/* {movie.runtime} */}
+						{movie.originalLanguage}
 					</div>
 				</li>
 			</ul>

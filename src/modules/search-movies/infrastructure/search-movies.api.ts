@@ -14,4 +14,20 @@ export class SearchMoviesApi implements SearchMoviesOutput {
 			.get("/search/movie", { params, headers })
 			.then(({ data }) => mapSearchMoviesToDomainModel(data))
 	}
+
+	getMovieCredits({ movieId }: { movieId: number }): Promise<string[]> {
+		const params = { language: "fr-FR" }
+		const headers = {
+			Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+		}
+
+		return api
+			.get(`/movie/${movieId}/credits`, { params, headers })
+			.then(
+				({ data }) =>
+					data.crew
+						.filter((member: any) => member.job === "Director")
+						.map((member: any) => member.name) ?? []
+			)
+	}
 }

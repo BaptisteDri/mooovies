@@ -27,7 +27,7 @@ export const SearchMoviesView = ({
 						movie.posterPath ? (
 							<SearchMovieItem key={movie.id} movie={movie} />
 						) : (
-							<></>
+							<span key={movie.id}></span>
 						)
 					)}
 				</ul>

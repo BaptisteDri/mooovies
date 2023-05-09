@@ -11,7 +11,7 @@ export type Movie = {
 	is_seen: boolean
 	user_id: string
 }
-// missing attributes : director
+
 export type SearchedMovie = {
 	genreIds: number[]
 	id: number

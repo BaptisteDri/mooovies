@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Movie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
-import { GenreIcon } from "./genre-icon"
+import { GenreIcon } from "../../../../../components/genres-list"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
 import { Icon } from "@/components/icon"
