@@ -1,17 +1,16 @@
 import { addMovie } from "@/modules/movies/domain/movies.actions"
 import { appOutputs } from "@/config/app-outputs"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
-import { useState } from "react"
 import { getMovieCredits } from "@/modules/search-movies/domain/search-movies.actions"
+import { useRouter } from "next/router"
 
 interface Props {
 	movie: InfraMovie
 }
 
 export const AddMovie = ({ movie }: Props) => {
-	const { moviesOutput } = appOutputs
-
-	const { searchMoviesOutput } = appOutputs
+	const router = useRouter()
+	const { searchMoviesOutput, moviesOutput } = appOutputs
 
 	const _getMovieCredits = async () => {
 		try {
@@ -28,8 +27,8 @@ export const AddMovie = ({ movie }: Props) => {
 	const _addMovie = async () => {
 		try {
 			await _getMovieCredits()
-			console.log(movie)
-			await addMovie({ moviesOutput, movie: movie })
+			await addMovie({ moviesOutput, movie })
+			router.push("/")
 		} catch (error: any) {
 			console.error(error)
 		}

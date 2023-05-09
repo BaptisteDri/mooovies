@@ -2,7 +2,9 @@ import { useState } from "react"
 import { useTrimmedString } from "@/hooks/useTrimmedString"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchedMovie } from "@/types/movie"
-import { Drawer } from "./drawer"
+import { usePosterFullPath } from "@/hooks/usePosterFullPath"
+import { Drawer } from "@/components/drawer"
+import { DrawerContent } from "./drawer-content"
 
 interface Props {
 	movie: SearchedMovie
@@ -16,7 +18,7 @@ export const SearchMovieItem = ({ movie }: Props) => {
 			<li className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 				<div className="flex">
 					<img
-						src={`https://image.tmdb.org/t/p/original/${movie.posterPath}`}
+						src={usePosterFullPath(movie.posterPath)}
 						className="h-48 rounded-md mr-4"
 					/>
 					<div>
@@ -42,8 +44,9 @@ export const SearchMovieItem = ({ movie }: Props) => {
 			<Drawer
 				isOpen={isDrawerOpen}
 				onCloseDrawer={() => setDrawerVisibility(false)}
-				movie={movie}
-			/>
+			>
+				<DrawerContent movie={movie} />
+			</Drawer>
 		</>
 	)
 }

@@ -1,6 +1,10 @@
 import { Movie } from "@/types/movie"
-import { Drawer } from "./drawer"
+// import { Drawer } from "./drawer"
 import { useState } from "react"
+import { Icon } from "@/components/icon"
+import { usePosterFullPath } from "@/hooks/usePosterFullPath"
+import { Drawer } from "@/components/drawer"
+import { DrawerContent } from "./drawer-content"
 
 interface Props {
 	movie: Movie
@@ -19,7 +23,7 @@ export const MovieItem = ({ movie }: Props) => {
 				<div className="rounded-lg overflow-hidden">
 					<img
 						className="object-cover w-full h-96 overflow-hidden"
-						src={movie.poster}
+						src={usePosterFullPath(movie.poster)}
 						alt={movie.title}
 					/>
 				</div>
@@ -31,20 +35,20 @@ export const MovieItem = ({ movie }: Props) => {
 						{movie.director}
 					</p>
 				</div>
-				{movie.is_seen && (
-					<span
-						className="material-symbols-rounded -top-2 -right-2 absolute text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.5)]"
-						style={{ fontVariationSettings: "'FILL' 1" }}
-					>
-						check_circle
-					</span>
+				{movie.isSeen && (
+					<Icon
+						name="check_circle"
+						className="-top-2 -right-2 absolute text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.5)]"
+						fill
+					/>
 				)}
 			</li>
 			<Drawer
 				isOpen={isDrawerOpen}
 				onCloseDrawer={() => setDrawerVisibility(false)}
-				movie={movie}
-			/>
+			>
+				<DrawerContent movie={movie} />
+			</Drawer>
 		</>
 	)
 }

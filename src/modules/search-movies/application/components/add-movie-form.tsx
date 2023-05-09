@@ -4,6 +4,7 @@ import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { SearchedMovie } from "@/types/movie"
+import { Toggle } from "@/components/toggle"
 
 interface Props {
 	movie: SearchedMovie
@@ -25,7 +26,16 @@ export const AddMovieForm = ({ movie }: Props) => {
 
 	return (
 		<>
-			{/* <ToggleMovieSeen movie={movie} /> */}
+			<Toggle
+				isChecked={newMovie.is_seen}
+				label="Marquer comme vu"
+				onToggle={() =>
+					setNewMovie({
+						...newMovie,
+						is_seen: !newMovie.is_seen,
+					})
+				}
+			/>
 
 			<AddMovie movie={newMovie} />
 		</>

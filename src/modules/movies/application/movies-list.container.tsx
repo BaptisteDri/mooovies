@@ -21,8 +21,7 @@ export const MoviesListContainer = () => {
 	const _getMovies = async () => {
 		try {
 			const moviesData = await getUserMovies({ moviesOutput, userId })
-			// setMovies(moviesData)
-			console.log(moviesData)
+			setMovies(moviesData)
 		} catch (error: any) {
 			console.error(error)
 		}

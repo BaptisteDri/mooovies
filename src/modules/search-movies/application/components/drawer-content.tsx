@@ -1,54 +1,15 @@
-import { useEffect } from "react"
 import { SearchedMovie } from "@/types/movie"
-import { useClickOutside } from "@/hooks/useClickOutside"
-import { Icon } from "@/components/icon"
 import { AddMovieForm } from "./add-movie-form"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { GenresList } from "@/components/genres-list"
 
 interface Props {
-	isOpen: boolean
-	onCloseDrawer: () => void
 	movie: SearchedMovie
 }
 
-export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
-	const ref = useClickOutside(
-		onCloseDrawer
-	) as React.RefObject<HTMLDivElement>
-
-	useEffect(() => {
-		function handleKeyPress(event: KeyboardEvent) {
-			if (event.keyCode === 27) {
-				onCloseDrawer()
-			}
-		}
-
-		document.addEventListener("keydown", handleKeyPress)
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyPress)
-		}
-	}, [])
-
+export const DrawerContent = ({ movie }: Props) => {
 	return (
-		<div
-			ref={ref}
-			className={`fixed top-0 right-0 z-40 h-screen p-6 overflow-y-auto transition-transform bg-white w-96 dark:bg-gray-800 border-l border-gray-700 ${
-				!isOpen && "translate-x-full"
-			}`}
-			tabIndex={-1}
-		>
-			<div className="flex justify-end mb-4">
-				<button
-					onClick={() => onCloseDrawer()}
-					type="button"
-					className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-				>
-					<Icon name="close" />
-				</button>
-			</div>
-
+		<>
 			<div className="mb-2 flex items-baseline flex-wrap">
 				<h3 className="mr-2 text-xl font-semibold text-gray-500 dark:text-white">
 					{movie.title}
@@ -85,6 +46,6 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 			</ul>
 
 			<AddMovieForm movie={movie} />
-		</div>
+		</>
 	)
 }
