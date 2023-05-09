@@ -30,3 +30,7 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+*:focus-visible {
+	outline-style: solid;
+}
