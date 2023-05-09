@@ -1,15 +1,14 @@
-// missing attributes : overview, originalTitle, originalLanguage
-// remove: runtime
 export type Movie = {
 	id: number
 	title: string
 	director: string
 	year: string
-	runtime: string
-	genre: string[]
+	genreIds: string[]
 	poster: string
-	is_seen: boolean
-	user_id: string
+	isSeen: boolean
+	userId: string
+	originalTitle: string
+	originalLanguage: string
 }
 
 export type SearchedMovie = {

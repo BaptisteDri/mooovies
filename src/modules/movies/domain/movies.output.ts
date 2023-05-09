@@ -1,9 +1,9 @@
-import { Movie as MovieDomain } from "@/modules/movies/domain/movies"
+import { Movie } from "@/types/movie"
+import { Movie as MovieInfra } from "@/modules/movies/infrastructure/movies"
 
 export interface MoviesOutput {
-	getUserMovies({ userId }: { userId: string }): Promise<MovieDomain[]>
-	searchMovies({ query }: { query: string }): Promise<MovieDomain>
-	addMovie({ movie }: { movie: MovieDomain }): Promise<void>
+	getUserMovies({ userId }: { userId: string }): Promise<Movie[]>
+	addMovie({ movie }: { movie: MovieInfra }): Promise<void>
 	deleteMovie({ movieId }: { movieId: number }): Promise<void>
-	updateMovie({ movie }: { movie: MovieDomain }): Promise<void>
+	updateMovie({ movie }: { movie: MovieInfra }): Promise<void>
 }

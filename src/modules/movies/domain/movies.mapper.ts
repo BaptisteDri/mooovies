@@ -1,15 +1,16 @@
-import { SearchResultsMovie as InfraMovie } from "../infrastructure/movies"
-import { Movie } from "./movies"
+import { Movie } from "@/types/movie"
+import { Movie as InfraMovie } from "../infrastructure/movies"
 
-export const mapInfraMovieToAppModel = (
-	searchResultsMovie: InfraMovie
-): Movie => ({
-	user_id: "",
-	is_seen: false,
-	director: searchResultsMovie.Director,
-	genre: searchResultsMovie.Genre,
-	poster: searchResultsMovie.Poster,
-	runtime: searchResultsMovie.Runtime,
-	title: searchResultsMovie.Title,
-	year: searchResultsMovie.Released,
-})
+export const mapMoviesToDomainModel = (movies: InfraMovie[]): Movie[] =>
+	movies.map((movie) => ({
+		userId: movie.user_id,
+		isSeen: movie.is_seen,
+		director: movie.director,
+		genreIds: movie.genre_ids.split(", "),
+		poster: movie.poster,
+		title: movie.title,
+		year: movie.year,
+		id: movie.id,
+		originalLanguage: movie.original_language,
+		originalTitle: movie.original_title,
+	}))

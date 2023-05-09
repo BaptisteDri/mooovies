@@ -1,4 +1,5 @@
-import { Movie } from "./movies"
+import { Movie } from "@/types/movie"
+import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { MoviesOutput } from "./movies.output"
 
 export const getUserMovies = async ({
@@ -15,26 +16,12 @@ export const getUserMovies = async ({
 	}
 }
 
-export const searchMovies = async ({
-	moviesOutput,
-	query,
-}: {
-	moviesOutput: MoviesOutput
-	query: string
-}): Promise<Movie> => {
-	try {
-		return await moviesOutput.searchMovies({ query })
-	} catch (error: any) {
-		throw new Error(error)
-	}
-}
-
 export const addMovie = async ({
 	moviesOutput,
 	movie,
 }: {
 	moviesOutput: MoviesOutput
-	movie: Movie
+	movie: InfraMovie
 }): Promise<void> => {
 	try {
 		return await moviesOutput.addMovie({ movie })
@@ -62,7 +49,7 @@ export const updateMovie = async ({
 	movie,
 }: {
 	moviesOutput: MoviesOutput
-	movie: Movie
+	movie: InfraMovie
 }): Promise<void> => {
 	try {
 		return await moviesOutput.updateMovie({ movie })

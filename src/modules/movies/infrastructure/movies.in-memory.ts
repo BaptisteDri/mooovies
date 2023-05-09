@@ -1,17 +1,14 @@
-import { Movie } from "../domain/movies"
+import { Movie } from "@/types/movie"
+import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { MoviesOutput } from "../domain/movies.output"
-import { movieFakes, moviesFakes } from "./movies.fakes"
+import { moviesFakes } from "./movies.fakes"
+import { mapMoviesToDomainModel } from "../domain/movies.mapper"
 
 export class MoviesInMemory implements MoviesOutput {
-	private movies: Movie[] | undefined = moviesFakes
-	private movie: Movie | undefined = movieFakes
+	private movies: InfraMovie[] | undefined = moviesFakes
 
-	setMovies(movies: Movie[] | undefined): void {
+	setMovies(movies: InfraMovie[] | undefined): void {
 		this.movies = movies ?? undefined
-	}
-
-	setMovie(movie: Movie | undefined): void {
-		this.movie = movie ?? undefined
 	}
 
 	getUserMovies({ userId }: { userId: string }): Promise<Movie[]> {
@@ -19,18 +16,10 @@ export class MoviesInMemory implements MoviesOutput {
 			throw new Error("Please, add a movie to your list")
 		}
 
-		return Promise.resolve(this.movies)
+		return Promise.resolve(mapMoviesToDomainModel(this.movies))
 	}
 
-	searchMovies({ query }: { query: string }): Promise<Movie> {
-		if (!this.movie) {
-			throw new Error("An error occured while searching movies")
-		}
-
-		return Promise.resolve(this.movie)
-	}
-
-	addMovie({ movie }: { movie: Movie }): Promise<void> {
+	addMovie({ movie }: { movie: InfraMovie }): Promise<void> {
 		return Promise.resolve()
 	}
 
@@ -38,7 +27,7 @@ export class MoviesInMemory implements MoviesOutput {
 		return Promise.resolve()
 	}
 
-	updateMovie({ movie }: { movie: Movie }): Promise<void> {
+	updateMovie({ movie }: { movie: InfraMovie }): Promise<void> {
 		return Promise.resolve()
 	}
 }
