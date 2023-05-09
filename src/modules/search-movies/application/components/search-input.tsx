@@ -24,6 +24,7 @@ export const SearchInput = ({ query, handleOnQueryChange }: Props) => {
 				type="text"
 				placeholder="Rechercher un titre de film..."
 				id="search-input"
+				autoComplete="off"
 			/>
 		</div>
 	)

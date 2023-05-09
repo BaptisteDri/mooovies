@@ -1,7 +1,7 @@
 import { useGenreIcon, useGenreName } from "@/hooks/useGenre"
 
 interface Props {
-	genreIds: number[]
+	genreIds: number[] | string[]
 }
 
 export const GenresList = ({ genreIds }: Props) => (

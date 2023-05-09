@@ -102,8 +102,8 @@ const genres: Genre[] = [
 	},
 ]
 
-export const useGenreIcon = (genreId: number): string | undefined =>
-	genres.find((genre) => genre.id === genreId)?.icon
+export const useGenreIcon = (genreId: number | string): string | undefined =>
+	genres.find((genre) => genre.id == genreId)?.icon
 
-export const useGenreName = (genreId: number): string | undefined =>
-	genres.find((genre) => genre.id === genreId)?.name ?? ""
+export const useGenreName = (genreId: number | string): string | undefined =>
+	genres.find((genre) => genre.id == genreId)?.name ?? ""

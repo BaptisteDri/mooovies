@@ -8,9 +8,10 @@ import { Toggle } from "@/components/toggle"
 
 interface Props {
 	movie: SearchedMovie
+	children?: React.ReactNode
 }
 
-export const AddMovieForm = ({ movie }: Props) => {
+export const AddMovieForm = ({ movie, children }: Props) => {
 	const [newMovie, setNewMovie] = useState<InfraMovie>({
 		id: movie.id,
 		director: "",
@@ -36,6 +37,8 @@ export const AddMovieForm = ({ movie }: Props) => {
 					})
 				}
 			/>
+
+			{children}
 
 			<AddMovie movie={newMovie} />
 		</>
