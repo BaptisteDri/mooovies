@@ -1,5 +1,5 @@
 import { supabase } from "@/config/supabase"
-import { mapMovieToApplicationModel } from "@/modules/movies/application/movies.mapper"
+import { mapMovieToDomainModel } from "@/modules/movies/domain/movies.mapper"
 import { Movie } from "@/types/movie"
 
 enum EVENTTYPES {
@@ -26,14 +26,14 @@ export const useRealTimeMovies = (
 					setMovies(
 						movies.map((movie) =>
 							movie.id === payload.new.id
-								? mapMovieToApplicationModel(newMovie)
+								? mapMovieToDomainModel(newMovie)
 								: movie
 						)
 					)
 				}
 
 				if (payload.eventType === EVENTTYPES.INSERT) {
-					setMovies([...movies, mapMovieToApplicationModel(newMovie)])
+					setMovies([...movies, mapMovieToDomainModel(newMovie)])
 				}
 
 				if (payload.eventType === EVENTTYPES.DELETE) {

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Movie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
-import { GenreIcon } from "../../../../../components/genres-list"
+// import { GenreIcon } from "../../../../components/genres-list"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
 import { Icon } from "@/components/icon"
@@ -73,17 +73,9 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 						Genre(s)
 					</p>
 					<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
-						{movie.genre.map((genre, i) => (
+						{/* {movie.genre.map((genre, i) => (
 							<GenreIcon genre={genre} key={i} />
-						))}
-					</div>
-				</li>
-				<li className="h-12 flex justify-between items-center">
-					<p className="text-sm text-gray-500 truncate dark:text-gray-400">
-						Durée
-					</p>
-					<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-						{movie.runtime}
+						))} */}
 					</div>
 				</li>
 			</ul>

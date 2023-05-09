@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import { MoviesListView } from "./movies-list.view"
 import { Movie } from "@/types/movie"
 import { appOutputs } from "@/config/app-outputs"
-import { getUserMovies } from "../../domain/movies.actions"
-import { mapMoviesToApplicationModel } from "../movies.mapper"
+import { getUserMovies } from "@/modules/movies/domain/movies.actions"
 import { useRealTimeMovies } from "@/hooks/useRealTimeMovies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 
@@ -22,7 +21,8 @@ export const MoviesListContainer = () => {
 	const _getMovies = async () => {
 		try {
 			const moviesData = await getUserMovies({ moviesOutput, userId })
-			setMovies(mapMoviesToApplicationModel(moviesData))
+			// setMovies(moviesData)
+			console.log(moviesData)
 		} catch (error: any) {
 			console.error(error)
 		}
