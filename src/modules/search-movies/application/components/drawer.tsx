@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { SearchedMovie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { Icon } from "@/components/icon"
-import { Director } from "./director"
+import { AddMovieForm } from "./add-movie-form"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { GenresList } from "@/components/genres-list"
-import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 
 interface Props {
 	isOpen: boolean
@@ -14,19 +13,6 @@ interface Props {
 }
 
 export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
-	const [newMovie, setNewMovie] = useState<InfraMovie>({
-		id: movie.id,
-		director: "", // to determine
-		genre_ids: movie.genreIds.join(", "),
-		is_seen: false, // to determine
-		poster: movie.posterPath,
-		title: movie.title,
-		user_id: "", // to determine
-		year: "", // to determine
-		original_language: movie.originalLanguage,
-		original_title: movie.originalTitle,
-	})
-
 	const ref = useClickOutside(
 		onCloseDrawer
 	) as React.RefObject<HTMLDivElement>
@@ -69,9 +55,6 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 				</h3>
 				<p className="text-sm text-gray-400">({movie.originalTitle})</p>
 			</div>
-			{isOpen && <Director movieId={movie.id} />}
-
-			{/* <ToggleMovieSeen movie={movie} /> */}
 
 			<ul
 				role="list"
@@ -101,7 +84,7 @@ export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
 				</li>
 			</ul>
 
-			{/* <DeleteMovie movieId={movie.id} /> */}
+			<AddMovieForm movie={movie} />
 		</div>
 	)
 }

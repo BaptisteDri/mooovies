@@ -14,9 +14,7 @@ export class MoviesSupabase implements MoviesOutput {
 	}
 
 	async addMovie({ movie }: { movie: InfraMovie }): Promise<void> {
-		await supabase
-			.from("films")
-			.upsert(movie, { onConflict: "title, director" })
+		await supabase.from("films").insert(movie)
 	}
 
 	async deleteMovie({ movieId }: { movieId: number }): Promise<void> {
