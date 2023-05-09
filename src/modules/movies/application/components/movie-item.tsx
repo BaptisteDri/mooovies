@@ -38,7 +38,7 @@ export const MovieItem = ({ movie }: Props) => {
 				{movie.isSeen && (
 					<Icon
 						name="check_circle"
-						className="-top-2 -right-2 absolute text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.5)]"
+						className="-top-2 -right-2 absolute text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.4)]"
 						fill
 					/>
 				)}

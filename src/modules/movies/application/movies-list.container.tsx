@@ -27,5 +27,5 @@ export const MoviesListContainer = () => {
 		}
 	}
 
-	return <MoviesListView movies={movies} />
+	return <MoviesListView movies={movies} setMovies={setMovies} />
 }
