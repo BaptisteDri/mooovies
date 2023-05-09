@@ -26,7 +26,7 @@ export const SearchMovieItem = ({ movie }: Props) => {
 						<h2 className="font-semibold text-white text-lg">
 							{movie.title}
 						</h2>
-						<div className="text-gray-400 mb-2">
+						<div className="text-gray-400 mb-2 font-semibold">
 							{useYearFromDate(movie.releaseDate)}
 						</div>
 						<ShortenedText text={movie.overview} />

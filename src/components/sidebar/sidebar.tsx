@@ -5,7 +5,7 @@ export const Sidebar = () => {
 	return (
 		<aside
 			id="default-sidebar"
-			className="fixed top-0 left-0 z-40 w-64 h-screen"
+			className="fixed top-0 left-0 z-40 w-64 h-screen hidden sm:block"
 			aria-label="Sidebar"
 		>
 			<div className="h-full p-6 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-700">

@@ -11,6 +11,7 @@ const movie1: InfraMovie = {
 	year: "1989",
 	is_seen: true,
 	user_id: "",
+	overview: "",
 }
 
 export const moviesFakes: InfraMovie[] = [movie1, movie1, movie1]

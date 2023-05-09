@@ -5,15 +5,22 @@ import { getMovieCredits } from "@/modules/search-movies/domain/search-movies.ac
 import { useRouter } from "next/router"
 import { useRequestStatus, STATUS } from "@/hooks/useRequestStatus"
 import { Spinner } from "@/components/spinner"
+import { useEffect, useState } from "react"
 
 interface Props {
 	movie: InfraMovie
 }
 
 export const AddMovie = ({ movie }: Props) => {
+	const [error, setError] = useState<string | undefined>(undefined)
 	const router = useRouter()
 	const { requestStatus, setRequestStatus } = useRequestStatus()
 	const { searchMoviesOutput, moviesOutput } = appOutputs
+
+	useEffect(() => {
+		// requestStatus === STATUS.DONE && !error && router.push("/")
+		console.log(error)
+	}, [requestStatus])
 
 	const _getMovieCredits = async () => {
 		try {
@@ -33,10 +40,10 @@ export const AddMovie = ({ movie }: Props) => {
 			await _getMovieCredits()
 			await addMovie({ moviesOutput, movie })
 			setRequestStatus(STATUS.DONE)
-			router.push("/")
 		} catch (error: any) {
 			setRequestStatus(STATUS.DONE)
-			console.error(error)
+			setError(error.message)
+			alert("error")
 		}
 	}
 

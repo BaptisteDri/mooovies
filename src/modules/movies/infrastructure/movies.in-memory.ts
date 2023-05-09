@@ -27,7 +27,13 @@ export class MoviesInMemory implements MoviesOutput {
 		return Promise.resolve()
 	}
 
-	updateMovie({ movie }: { movie: InfraMovie }): Promise<void> {
+	toggleMovieIsSeen({
+		movieId,
+		isSeen,
+	}: {
+		movieId: number
+		isSeen: boolean
+	}): Promise<void> {
 		return Promise.resolve()
 	}
 }
