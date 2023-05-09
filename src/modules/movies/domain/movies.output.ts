@@ -5,5 +5,11 @@ export interface MoviesOutput {
 	getUserMovies({ userId }: { userId: string }): Promise<Movie[]>
 	addMovie({ movie }: { movie: MovieInfra }): Promise<void>
 	deleteMovie({ movieId }: { movieId: number }): Promise<void>
-	updateMovie({ movie }: { movie: MovieInfra }): Promise<void>
+	toggleMovieIsSeen({
+		movieId,
+		isSeen,
+	}: {
+		movieId: number
+		isSeen: boolean
+	}): Promise<void>
 }

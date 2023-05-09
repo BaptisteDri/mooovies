@@ -1,6 +1,6 @@
 import { Movie } from "@/types/movie"
-import { Movie as DomainMovie } from "@/modules/movies/domain/movies"
-import { updateMovie } from "@/modules/movies/domain/movies.actions"
+import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
+import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
 import { appOutputs } from "@/config/app-outputs"
 
 interface Props {
@@ -11,14 +11,12 @@ export const ToggleMovieSeen = ({ movie }: Props) => {
 	const { moviesOutput } = appOutputs
 
 	const _onToggleMovieIsSeen = async () => {
-		const newMovie: DomainMovie = {
-			...movie,
-			genre: movie.genre.join(", "),
-			is_seen: !movie.is_seen,
-		}
-
 		try {
-			await updateMovie({ moviesOutput, movie: newMovie })
+			await toggleMovieIsSeen({
+				moviesOutput,
+				movieId: movie.id,
+				isSeen: !movie.isSeen,
+			})
 		} catch (error: any) {
 			console.error(error)
 		}
@@ -30,7 +28,7 @@ export const ToggleMovieSeen = ({ movie }: Props) => {
 			<label className="relative flex items-center cursor-pointer">
 				<input
 					type="checkbox"
-					checked={movie.is_seen}
+					checked={movie.isSeen}
 					onChange={() => _onToggleMovieIsSeen()}
 					className="sr-only peer"
 				/>

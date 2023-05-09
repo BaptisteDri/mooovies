@@ -44,15 +44,17 @@ export const deleteMovie = async ({
 	}
 }
 
-export const updateMovie = async ({
+export const toggleMovieIsSeen = async ({
 	moviesOutput,
-	movie,
+	movieId,
+	isSeen,
 }: {
 	moviesOutput: MoviesOutput
-	movie: InfraMovie
+	movieId: number
+	isSeen: boolean
 }): Promise<void> => {
 	try {
-		return await moviesOutput.updateMovie({ movie })
+		return await moviesOutput.toggleMovieIsSeen({ movieId, isSeen })
 	} catch (error: any) {
 		throw new Error(error)
 	}

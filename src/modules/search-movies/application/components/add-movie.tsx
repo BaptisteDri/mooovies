@@ -1,7 +1,7 @@
 import { addMovie } from "@/modules/movies/domain/movies.actions"
 import { appOutputs } from "@/config/app-outputs"
 import { Movie } from "@/types/movie"
-import { Movie as DomainMovie } from "@/modules/movies/domain/movies"
+import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { Title } from "@/components/title"
 
@@ -14,10 +14,17 @@ export const AddMovie = ({ movie }: Props) => {
 	const userId = selectLocalSessionData()?.user.id ?? ""
 
 	const _addMovie = async () => {
-		const newMovie: DomainMovie = {
-			...movie,
-			genre: movie.genre.join(", "),
-			user_id: userId,
+		const newMovie: InfraMovie = {
+			director: movie.director,
+			genre_ids: movie.genreIds.join(", "),
+			id: movie.id,
+			is_seen: movie.isSeen,
+			original_language: movie.originalLanguage,
+			original_title: movie.originalLanguage,
+			poster: movie.poster,
+			title: movie.title,
+			user_id: movie.userId,
+			year: movie.year,
 		}
 
 		try {

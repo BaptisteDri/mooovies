@@ -5,7 +5,7 @@ import { Icon } from "@/components/icon"
 import { Director } from "./director"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { GenresList } from "@/components/genres-list"
-import { Movie } from "@/modules/movies/domain/movies"
+import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 
 interface Props {
 	isOpen: boolean
@@ -14,16 +14,17 @@ interface Props {
 }
 
 export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
-	const [newMovie, setNewMovie] = useState<Movie>({
+	const [newMovie, setNewMovie] = useState<InfraMovie>({
 		id: movie.id,
-		director: "",
-		genre: "",
-		is_seen: false,
+		director: "", // to determine
+		genre_ids: movie.genreIds.join(", "),
+		is_seen: false, // to determine
 		poster: movie.posterPath,
-		runtime: "",
 		title: movie.title,
-		user_id: "",
-		year: "",
+		user_id: "", // to determine
+		year: "", // to determine
+		original_language: movie.originalLanguage,
+		original_title: movie.originalTitle,
 	})
 
 	const ref = useClickOutside(
