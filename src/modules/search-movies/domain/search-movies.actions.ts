@@ -14,3 +14,17 @@ export const searchMovies = async ({
 		throw new Error(error)
 	}
 }
+
+export const getMovieCredits = async ({
+	searchMoviesOutput,
+	movieId,
+}: {
+	searchMoviesOutput: SearchMoviesOutput
+	movieId: number
+}): Promise<string[]> => {
+	try {
+		return await searchMoviesOutput.getMovieCredits({ movieId })
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}

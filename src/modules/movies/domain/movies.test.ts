@@ -27,7 +27,7 @@ describe("[movies] unit tests", () => {
 			expect(movies).toEqual(expectedMovies)
 		})
 
-		it("souldn't get it and throw an error", async () => {
+		it("shouldn't get it and throw an error", async () => {
 			moviesOutput.setMovies(undefined)
 
 			await expect(

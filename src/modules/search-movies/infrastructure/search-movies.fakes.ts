@@ -14,3 +14,5 @@ const searchedMovie: SearchedMovie = {
 export const searchResultsFakes: SearchResults = {
 	results: [searchedMovie],
 }
+
+export const directorFakes: string[] = ["Spike Lee", "Scorsese"]
