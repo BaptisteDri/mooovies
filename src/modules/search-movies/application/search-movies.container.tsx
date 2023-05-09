@@ -15,7 +15,7 @@ export const SearchMoviesContainer = () => {
 
 		const timer = setTimeout(() => {
 			_searchMovies()
-		}, 200)
+		}, 300)
 
 		return () => clearTimeout(timer)
 	}, [query])

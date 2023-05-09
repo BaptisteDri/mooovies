@@ -22,7 +22,7 @@ export const MovieItem = ({ movie }: Props) => {
 			>
 				<div className="rounded-lg overflow-hidden">
 					<img
-						className="object-cover w-full h-96 overflow-hidden"
+						className="object-cover w-full h-72 overflow-hidden"
 						src={usePosterFullPath(movie.poster)}
 						alt={movie.title}
 					/>
