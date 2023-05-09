@@ -43,7 +43,6 @@ export const AddMovie = ({ movie }: Props) => {
 		} catch (error: any) {
 			setRequestStatus(STATUS.DONE)
 			setError(error.message)
-			alert("error")
 		}
 	}
 

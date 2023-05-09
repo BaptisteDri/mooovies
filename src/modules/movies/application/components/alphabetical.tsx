@@ -10,13 +10,12 @@ interface MoviesGroups {
 }
 
 export const Alphabetical = ({ movies }: Props) => {
-	console.log(movies)
-
 	const moviesGroups: MoviesGroups = {}
 	for (let i = 65; i <= 90; i++) {
 		const letter = String.fromCharCode(i)
 		moviesGroups[letter] = []
 	}
+	moviesGroups["#"] = []
 
 	const removeAccents = (str: string) =>
 		str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -29,7 +28,9 @@ export const Alphabetical = ({ movies }: Props) => {
 			const letterIndex: string = removeAccents(
 				movie.title[0]
 			).toUpperCase()
-			moviesGroups[letterIndex].push(movie)
+			moviesGroups[letterIndex]
+				? moviesGroups[letterIndex].push(movie)
+				: moviesGroups["#"].push(movie)
 		})
 
 	return (

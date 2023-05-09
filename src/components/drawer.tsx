@@ -27,6 +27,8 @@ export const Drawer = ({ isOpen, onCloseDrawer, children }: Props) => {
 		}
 	}, [])
 
+	// todo responsive
+
 	// return (
 	// 	<div
 	// 		id="drawer-swipe"

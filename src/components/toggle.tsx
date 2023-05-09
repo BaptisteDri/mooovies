@@ -1,17 +1,17 @@
 interface Props {
-	label: string
+	label?: string
 	isChecked: boolean
-	onToggle: () => void
+	onToggle?: () => void
 }
 
 export const Toggle = ({ label, isChecked, onToggle }: Props) => (
 	<form className="flex justify-between items-center">
-		<div className="text-white font-semibold">{label}</div>
+		{label && <div className="text-white font-semibold">{label}</div>}
 		<label className="relative flex items-center cursor-pointer">
 			<input
 				type="checkbox"
 				checked={isChecked}
-				onChange={() => onToggle()}
+				onChange={() => onToggle && onToggle()}
 				className="sr-only peer"
 			/>
 
