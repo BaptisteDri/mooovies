@@ -1,4 +1,5 @@
 import { GenresList } from "@/components/genres-list"
+import { useLanguageFullName } from "@/hooks/useLanguageFullName"
 
 interface Props {
 	year: string
@@ -31,7 +32,7 @@ export const MovieDetails = ({ genreIds, originalLanguage, year }: Props) => {
 					Langue
 				</p>
 				<div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-					{originalLanguage}
+					{useLanguageFullName(originalLanguage)}
 				</div>
 			</li>
 		</ul>

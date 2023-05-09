@@ -10,16 +10,25 @@ interface MoviesGroups {
 }
 
 export const Alphabetical = ({ movies }: Props) => {
+	console.log(movies)
+
 	const moviesGroups: MoviesGroups = {}
 	for (let i = 65; i <= 90; i++) {
 		const letter = String.fromCharCode(i)
 		moviesGroups[letter] = []
 	}
 
+	const removeAccents = (str: string) =>
+		str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+
 	movies
-		.sort((a, b) => a.title.localeCompare(b.title))
+		.sort((a, b) =>
+			removeAccents(a.title).localeCompare(removeAccents(b.title))
+		)
 		.forEach((movie: Movie) => {
-			const letterIndex: string = movie.title[0].toUpperCase()
+			const letterIndex: string = removeAccents(
+				movie.title[0]
+			).toUpperCase()
 			moviesGroups[letterIndex].push(movie)
 		})
 

@@ -2648,6 +2648,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+iso-639-language@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/iso-639-language/-/iso-639-language-1.0.1.tgz#3bbf61b170793a7060fa4907f95a3221cc8066b7"
+  integrity sha512-oGzS3VL30Orib1UDBmMRmVXfnwxZmjM9+O72R5oOHNMKdk6P4apD4z5cQuLYHwbo3NgbL6iN2ATQ5tzlrJ4tug==
+
 istanbul-lib-coverage@^3.0.0, istanbul-lib-coverage@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-3.2.0.tgz#189e7909d0a39fa5a3dfad5b03f71947770191d3"

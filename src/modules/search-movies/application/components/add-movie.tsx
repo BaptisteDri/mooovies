@@ -3,6 +3,8 @@ import { appOutputs } from "@/config/app-outputs"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { getMovieCredits } from "@/modules/search-movies/domain/search-movies.actions"
 import { useRouter } from "next/router"
+import { useRequestStatus, STATUS } from "@/hooks/useRequestStatus"
+import { Spinner } from "@/components/spinner"
 
 interface Props {
 	movie: InfraMovie
@@ -10,6 +12,7 @@ interface Props {
 
 export const AddMovie = ({ movie }: Props) => {
 	const router = useRouter()
+	const { requestStatus, setRequestStatus } = useRequestStatus()
 	const { searchMoviesOutput, moviesOutput } = appOutputs
 
 	const _getMovieCredits = async () => {
@@ -26,10 +29,13 @@ export const AddMovie = ({ movie }: Props) => {
 
 	const _addMovie = async () => {
 		try {
+			setRequestStatus(STATUS.LOADING)
 			await _getMovieCredits()
 			await addMovie({ moviesOutput, movie })
+			setRequestStatus(STATUS.DONE)
 			router.push("/")
 		} catch (error: any) {
+			setRequestStatus(STATUS.DONE)
 			console.error(error)
 		}
 	}
@@ -38,8 +44,10 @@ export const AddMovie = ({ movie }: Props) => {
 		<button
 			type="button"
 			onClick={() => _addMovie()}
-			className="h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+			className="flex items-center h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+			disabled={requestStatus === STATUS.LOADING}
 		>
+			{requestStatus === STATUS.LOADING && <Spinner />}
 			Ajouter à la liste
 		</button>
 	)
