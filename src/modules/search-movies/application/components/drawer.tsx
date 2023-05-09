@@ -1,10 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { SearchedMovie } from "@/types/movie"
 import { useClickOutside } from "@/hooks/useClickOutside"
 import { Icon } from "@/components/icon"
 import { Director } from "./director"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { GenresList } from "@/components/genres-list"
+import { Movie } from "@/modules/movies/domain/movies"
 
 interface Props {
 	isOpen: boolean
@@ -13,6 +14,18 @@ interface Props {
 }
 
 export const Drawer = ({ isOpen, onCloseDrawer, movie }: Props) => {
+	const [newMovie, setNewMovie] = useState<Movie>({
+		id: movie.id,
+		director: "",
+		genre: "",
+		is_seen: false,
+		poster: movie.posterPath,
+		runtime: "",
+		title: movie.title,
+		user_id: "",
+		year: "",
+	})
+
 	const ref = useClickOutside(
 		onCloseDrawer
 	) as React.RefObject<HTMLDivElement>
