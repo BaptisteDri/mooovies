@@ -1,6 +1,6 @@
 export type User = {
 	id: string
-	email: string
+	email?: string
 }
 
 export type Session = {
