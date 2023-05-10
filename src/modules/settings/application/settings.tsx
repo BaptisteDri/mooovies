@@ -16,7 +16,7 @@ export const Settings = () => {
 		await router.push("/sign-in")
 	}
 
-	const onDeleteAccount = async () => {}
+	// const onDeleteAccount = async () => {}
 
 	return (
 		<div>
