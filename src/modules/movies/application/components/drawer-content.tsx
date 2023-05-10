@@ -24,13 +24,11 @@ export const DrawerContent = ({ movie }: Props) => {
 			{isLoggedInSession && <ToggleMovieSeen movie={movie} />}
 
 			<MovieDetails
-				isLoggedInSession={isLoggedInSession}
 				year={movie.year}
 				genreIds={movie.genreIds}
 				originalLanguage={movie.originalLanguage}
 				overview={movie.overview}
 				director={movie.director}
-				isSeen={movie.isSeen}
 			/>
 
 			{isLoggedInSession && <DeleteMovie movieId={movie.id} />}
