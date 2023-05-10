@@ -18,7 +18,6 @@ export const AddMovie = ({ movie }: Props) => {
 	const { searchMoviesOutput, moviesOutput } = appOutputs
 
 	useEffect(() => {
-		// requestStatus === STATUS.DONE && !error && router.push("/")
 		console.log(error)
 	}, [requestStatus])
 
@@ -39,6 +38,7 @@ export const AddMovie = ({ movie }: Props) => {
 			setRequestStatus(STATUS.LOADING)
 			await _getMovieCredits()
 			await addMovie({ moviesOutput, movie })
+			router.push("/")
 			setRequestStatus(STATUS.DONE)
 		} catch (error: any) {
 			setRequestStatus(STATUS.DONE)

@@ -12,7 +12,7 @@ export const Layout = ({ content, title }: Props) => (
 		<span className="hidden sm:block">
 			<Sidebar />
 		</span>
-		<div className="p-6 sm:ml-64">
+		<div className="p-6 sm:ml-64 mb-16 sm:mb-0">
 			{title && <Title content={title} />}
 			{content}
 		</div>
