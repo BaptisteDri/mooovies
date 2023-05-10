@@ -17,22 +17,25 @@ export const MovieItem = ({ movie }: Props) => {
 		<>
 			<li
 				onClick={() => setDrawerVisibility(!isDrawerOpen)}
-				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative`}
+				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative flex sm:block`}
 				role="button"
 			>
-				<div className="rounded-lg overflow-hidden">
+				<div className="rounded-lg overflow-hidden h-40 sm:h-auto sm:w-full aspect-[27/40] mr-4 sm:mr-0 table sm:block">
 					<img
-						className="object-cover w-full h-72 overflow-hidden"
+						className="object-cover w-full h-full overflow-hidden"
 						src={usePosterFullPath(movie.poster)}
 						alt={movie.title}
 					/>
 				</div>
-				<div className="mt-2 text-ellipsis overflow-hidden">
-					<h2 className="text-gray-900 dark:text-white text-lg font-bold text-ellipsis overflow-hidden whitespace-nowrap	">
+				<div className="mt-2 text-ellipsis overflow-hidden whitespace-nowrap">
+					<h2 className="text-gray-900 dark:text-white sm:text-lg font-bold text-ellipsis overflow-hidden whitespace-nowrap">
 						{movie.title}
 					</h2>
-					<p className="text-gray-500 dark:text-gray-500 text-ellipsis overflow-hidden whitespace-nowrap	">
+					<p className="text-gray-500 dark:text-gray-400 text-ellipsis overflow-hidden whitespace-nowrap text-sm sm:text-base sm:mt-0 mt-1">
 						{movie.director}
+					</p>
+					<p className="block sm:hidden mt-2 text-white text-sm">
+						{movie.year}
 					</p>
 				</div>
 				{movie.isSeen && (

@@ -1,16 +1,13 @@
 import { GenresList } from "@/components/genres-list"
 import { useLanguageFullName } from "@/hooks/useLanguageFullName"
 import { ShortenedText } from "./shortened-text"
-import { Toggle } from "./toggle"
 
 interface Props {
 	year: string
 	genreIds: string[] | number[]
 	originalLanguage: string
 	overview: string
-	isSeen: boolean
 	director?: string
-	isLoggedInSession: boolean
 }
 
 export const MovieDetails = ({
@@ -19,8 +16,6 @@ export const MovieDetails = ({
 	year,
 	overview,
 	director,
-	isSeen,
-	isLoggedInSession,
 }: Props) => {
 	return (
 		<div className="mb-8">
@@ -29,14 +24,6 @@ export const MovieDetails = ({
 				role="list"
 				className="divide-y divide-gray-200 dark:divide-gray-700 mb-8 text-sm"
 			>
-				{!isLoggedInSession && (
-					<li className="h-12 flex justify-between items-center">
-						<p className="text-gray-500 truncate dark:text-gray-400">
-							Vu
-						</p>
-						<Toggle isChecked={isSeen} />
-					</li>
-				)}
 				{director && (
 					<li className="h-12 flex justify-between items-center">
 						<p className="text-gray-500 truncate dark:text-gray-400">

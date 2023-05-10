@@ -1,0 +1,7 @@
+{
+  "name": "Mooovies",
+  "theme_color": "#121826",
+  "background_color": "#121826",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

@@ -12,7 +12,7 @@ const genres: Genre[] = [
 	},
 	{
 		id: 12,
-		name: "Adventure",
+		name: "Aventure",
 		icon: "🤠",
 	},
 	{
@@ -22,7 +22,7 @@ const genres: Genre[] = [
 	},
 	{
 		id: 35,
-		name: "Comedy",
+		name: "Comédie",
 		icon: "😂",
 	},
 	{
@@ -32,42 +32,42 @@ const genres: Genre[] = [
 	},
 	{
 		id: 99,
-		name: "Documentary",
+		name: "Documentaire",
 		icon: "🌍",
 	},
 	{
 		id: 18,
-		name: "Drama",
+		name: "Drame",
 		icon: "🎭",
 	},
 	{
 		id: 10751,
-		name: "Family",
+		name: "Famille",
 		icon: "👨‍👨‍👧‍👦",
 	},
 	{
 		id: 14,
-		name: "Fantasy",
+		name: "Fantastique",
 		icon: "🧝🏼‍♂️",
 	},
 	{
 		id: 36,
-		name: "History",
+		name: "Historique",
 		icon: "👑",
 	},
 	{
 		id: 27,
-		name: "Horror",
+		name: "Horreur",
 		icon: "👻",
 	},
 	{
 		id: 10402,
-		name: "Music",
+		name: "Musique",
 		icon: "🎶",
 	},
 	{
 		id: 9648,
-		name: "Mystery",
+		name: "Mistère",
 		icon: "🕵🏼",
 	},
 	{
@@ -92,7 +92,7 @@ const genres: Genre[] = [
 	},
 	{
 		id: 10752,
-		name: "War",
+		name: "Guerre",
 		icon: "🪖",
 	},
 	{
