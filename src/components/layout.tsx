@@ -1,3 +1,4 @@
+import { Menu } from "./menu"
 import { Sidebar } from "./sidebar/sidebar"
 import { Title } from "./title"
 
@@ -8,10 +9,15 @@ interface Props {
 
 export const Layout = ({ content, title }: Props) => (
 	<main>
-		<Sidebar />
+		<span className="hidden sm:block">
+			<Sidebar />
+		</span>
 		<div className="p-6 sm:ml-64">
 			{title && <Title content={title} />}
 			{content}
 		</div>
+		<span className="sm:hidden">
+			<Menu />
+		</span>
 	</main>
 )

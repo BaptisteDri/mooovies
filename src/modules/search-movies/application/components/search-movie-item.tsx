@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useTrimmedString } from "@/hooks/useTrimmedString"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchedMovie } from "@/types/movie"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"

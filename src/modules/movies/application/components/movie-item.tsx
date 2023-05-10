@@ -1,5 +1,4 @@
 import { Movie } from "@/types/movie"
-// import { Drawer } from "./drawer"
 import { useState } from "react"
 import { Icon } from "@/components/icon"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"

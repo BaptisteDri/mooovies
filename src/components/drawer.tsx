@@ -28,44 +28,32 @@ export const Drawer = ({ isOpen, onCloseDrawer, children }: Props) => {
 	}, [])
 
 	return (
-		<>
+		<div
+			ref={ref}
+			className={`fixed sm:top-0 right-0 bottom-0 sm:bottom-auto left-0 sm:left-auto z-40 w-full sm:w-96 max-h-full sm:h-screen pl-6 pr-6 pb-6 pt-0 sm:pt-6 overflow-y-auto transition-transform bg-white dark:bg-gray-800 border-t sm:border-t-0 sm:border-l border-gray-700 ${
+				!isOpen &&
+				"translate-y-full sm:translate-y-0 sm:translate-x-full"
+			}`}
+			tabIndex={-1}
+		>
 			<div
-				ref={ref}
-				className={`sm:hidden fixed p-6 z-40 w-full max-h-full overflow-y-auto bg-white border-t border-gray-200 rounded-t-lg dark:border-gray-700 dark:bg-gray-800 transition-transform bottom-0 left-0 right-0 ${
-					!isOpen && "translate-y-full"
-				}`}
-				tabIndex={-1}
-				aria-labelledby="drawer-swipe-label"
+				onClick={() => onCloseDrawer()}
+				role="button"
+				className="cursor-pointer sm:hidden flex justify-center mb-4 py-4"
+				data-drawer-toggle="drawer-swipe"
 			>
-				<div
+				<span className="w-8 h-1 bg-gray-300 rounded-lg dark:bg-gray-600" />
+			</div>
+			<div className="hidden sm:flex justify-end mb-4">
+				<button
 					onClick={() => onCloseDrawer()}
-					role="button"
-					className="p-4 cursor-pointer"
-					data-drawer-toggle="drawer-swipe"
+					type="button"
+					className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
 				>
-					<span className="absolute w-8 h-1 -translate-x-1/2 bg-gray-300 rounded-lg top-3 left-1/2 dark:bg-gray-600" />
-				</div>
-
-				{children}
+					<Icon name="close" />
+				</button>
 			</div>
-			<div
-				ref={ref}
-				className={`hidden sm:block fixed top-0 right-0 z-40 h-screen p-6 overflow-y-auto transition-transform bg-white w-96 dark:bg-gray-800 border-l border-gray-700 ${
-					!isOpen && "translate-x-full"
-				}`}
-				tabIndex={-1}
-			>
-				<div className="flex justify-end mb-4">
-					<button
-						onClick={() => onCloseDrawer()}
-						type="button"
-						className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-					>
-						<Icon name="close" />
-					</button>
-				</div>
-				{children}
-			</div>
-		</>
+			{children}
+		</div>
 	)
 }
