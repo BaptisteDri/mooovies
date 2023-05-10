@@ -15,7 +15,7 @@ describe("[search-movies] unit tests", () => {
 	})
 
 	describe("when the user wants to search for a movie", () => {
-		const query: string = ""
+		const query = ""
 
 		it("should get the result without error", async () => {
 			searchMoviesOutput.setSearchResults(searchResultsFakes)
@@ -41,7 +41,7 @@ describe("[search-movies] unit tests", () => {
 	})
 
 	describe("when the user wants to get searched movie director", () => {
-		const movieId: number = 0
+		const movieId = 0
 
 		it("should get it without error", async () => {
 			searchMoviesOutput.setDirector(directorFakes)

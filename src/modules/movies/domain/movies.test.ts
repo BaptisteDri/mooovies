@@ -12,7 +12,7 @@ describe("[movies] unit tests", () => {
 	})
 
 	describe("when the user wants to get his movies list", () => {
-		const userId: string = ""
+		const userId = ""
 
 		it("should get it without error", async () => {
 			moviesOutput.setMovies(moviesFakes)
