@@ -2,11 +2,17 @@ import NextLink from "next/link"
 import { Icon } from "./icon"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
-import { useIsStandalone } from "@/hooks/useIsStandalone"
+import { useEffect, useState } from "react"
 
 export const Menu = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
-	const isStandalone: boolean = useIsStandalone()
+	const [isStandalone, setIsStandalone] = useState<boolean>(false)
+
+	useEffect(() => {
+		setIsStandalone(
+			window?.matchMedia("(display-mode: standalone)").matches
+		)
+	}, [])
 
 	return isLoggedInSession ? (
 		<div

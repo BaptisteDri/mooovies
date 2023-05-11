@@ -3,13 +3,14 @@ import { MovieItem } from "./movie-item"
 
 interface Props {
 	movies: Movie[]
+	setSelectedMovie: (movie: Movie) => void
 }
 
 interface MoviesGroups {
 	[letter: string]: Movie[]
 }
 
-export const Alphabetical = ({ movies }: Props) => {
+export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 	const moviesGroups: MoviesGroups = {}
 	for (let i = 65; i <= 90; i++) {
 		const letter = String.fromCharCode(i)
@@ -49,7 +50,11 @@ export const Alphabetical = ({ movies }: Props) => {
 					{movies.length > 0 && (
 						<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-6 mt-4">
 							{movies.map((movie: Movie, i: number) => (
-								<MovieItem key={i} movie={movie} />
+								<MovieItem
+									key={i}
+									movie={movie}
+									setSelectedMovie={setSelectedMovie}
+								/>
 							))}
 						</ul>
 					)}

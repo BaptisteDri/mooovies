@@ -1,21 +1,17 @@
 import { Movie } from "@/types/movie"
-import { useState } from "react"
 import { Icon } from "@/components/icon"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
-import { Drawer } from "@/components/drawer"
-import { DrawerContent } from "./drawer-content"
 
 interface Props {
 	movie: Movie
+	setSelectedMovie: (movie: Movie) => void
 }
 
-export const MovieItem = ({ movie }: Props) => {
-	const [isDrawerOpen, setDrawerVisibility] = useState<boolean>(false)
-
+export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 	return (
 		<>
 			<li
-				onClick={() => setDrawerVisibility(!isDrawerOpen)}
+				onClick={() => setSelectedMovie(movie)}
 				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative flex sm:block`}
 				role="button"
 			>
@@ -45,12 +41,6 @@ export const MovieItem = ({ movie }: Props) => {
 					/>
 				)}
 			</li>
-			<Drawer
-				isOpen={isDrawerOpen}
-				onCloseDrawer={() => setDrawerVisibility(false)}
-			>
-				<DrawerContent movie={movie} />
-			</Drawer>
 		</>
 	)
 }
