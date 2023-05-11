@@ -15,7 +15,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative flex sm:block`}
 				role="button"
 			>
-				<div className="rounded-lg overflow-hidden h-40 sm:h-auto sm:w-full aspect-[27/40] mr-4 sm:mr-0 table sm:block">
+				<div className="rounded-lg overflow-hidden h-40 sm:h-auto aspect-[27/40] mr-3 sm:mr-0 table sm:block min-w-min">
 					<img
 						className="object-cover w-full h-full overflow-hidden"
 						src={usePosterFullPath(movie.poster)}

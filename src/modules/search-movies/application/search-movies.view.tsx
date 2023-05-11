@@ -1,8 +1,10 @@
+import { useState } from "react"
 import { SearchedMovie } from "@/types/movie"
 import { Placeholder } from "./components/placeholder"
 import { SearchInput } from "./components/search-input"
-import { AddMovie } from "./components/add-movie"
 import { SearchMovieItem } from "./components/search-movie-item"
+import { Drawer } from "@/components/drawer"
+import { DrawerContent } from "./components/drawer-content"
 
 interface Props {
 	query: string
@@ -15,6 +17,10 @@ export const SearchMoviesView = ({
 	handleOnQueryChange,
 	searchResultsMovies,
 }: Props) => {
+	const [selectedMovie, setSelectedMovie] = useState<
+		SearchedMovie | undefined
+	>(undefined)
+
 	return (
 		<>
 			<SearchInput
@@ -25,7 +31,11 @@ export const SearchMoviesView = ({
 				<ul>
 					{searchResultsMovies.map((movie: SearchedMovie) =>
 						movie.posterPath ? (
-							<SearchMovieItem key={movie.id} movie={movie} />
+							<SearchMovieItem
+								key={movie.id}
+								movie={movie}
+								setSelectedMovie={setSelectedMovie}
+							/>
 						) : (
 							<span key={movie.id}></span>
 						)
@@ -34,6 +44,12 @@ export const SearchMoviesView = ({
 			) : (
 				<Placeholder />
 			)}
+			<Drawer
+				isOpen={selectedMovie !== undefined}
+				onCloseDrawer={() => setSelectedMovie(undefined)}
+			>
+				{selectedMovie && <DrawerContent movie={selectedMovie} />}
+			</Drawer>
 		</>
 	)
 }
