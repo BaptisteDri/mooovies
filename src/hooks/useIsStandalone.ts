@@ -1,2 +1,3 @@
 export const useIsStandalone = (): boolean =>
-	window?.matchMedia("(display-mode: standalone)").matches
+	typeof window !== "undefined" &&
+	window.matchMedia("(display-mode: standalone)").matches
