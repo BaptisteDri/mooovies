@@ -2,28 +2,18 @@ import NextLink from "next/link"
 import { Icon } from "./icon"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
-import { useEffect, useState } from "react"
 
 export const Menu = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
-	const [isStandalone, setIsStandalone] = useState<boolean>(false)
-
-	useEffect(() => {
-		setIsStandalone(
-			window?.matchMedia("(display-mode: standalone)").matches
-		)
-	}, [])
 
 	return isLoggedInSession ? (
 		<div
-			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-gray-700 left-1/2 bg-gray-800 ${
-				isStandalone && "pb-6"
-			}`}
+			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-gray-700 left-1/2 bg-gray-800 pb-4`}
 		>
 			<div className="grid h-full max-w-lg grid-cols-3 mx-auto">
 				<NextLink
 					href={"/"}
-					className="inline-flex flex-col items-center justify-center group text-white p-4"
+					className="inline-flex flex-col items-center justify-center group text-white p-6"
 				>
 					<Icon name="home" />
 				</NextLink>
@@ -36,7 +26,7 @@ export const Menu = () => {
 				</NextLink>
 				<NextLink
 					href={"/settings"}
-					className="inline-flex flex-col items-center justify-center group text-white p-4"
+					className="inline-flex flex-col items-center justify-center group text-white p-6"
 				>
 					<Icon name="manage_accounts" />
 				</NextLink>

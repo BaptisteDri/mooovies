@@ -5,7 +5,7 @@ import { getMovieCredits } from "@/modules/search-movies/domain/search-movies.ac
 import { useRouter } from "next/router"
 import { useRequestStatus, STATUS } from "@/hooks/useRequestStatus"
 import { Spinner } from "@/components/spinner"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 interface Props {
 	movie: InfraMovie
@@ -16,10 +16,6 @@ export const AddMovie = ({ movie }: Props) => {
 	const router = useRouter()
 	const { requestStatus, setRequestStatus } = useRequestStatus()
 	const { searchMoviesOutput, moviesOutput } = appOutputs
-
-	useEffect(() => {
-		console.log(error)
-	}, [requestStatus])
 
 	const _getMovieCredits = async () => {
 		try {
