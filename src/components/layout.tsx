@@ -13,9 +13,7 @@ export const Layout = ({ content, title }: Props) => (
 			<Sidebar />
 		</span>
 		<div className="p-6 sm:ml-64 mb-16 sm:mb-0">
-			<div className={`flex ${title && "mb-8"}`}>
-				{title && <Title content={title} />}
-			</div>
+			{title && <Title content={title} />}
 			{content}
 		</div>
 		<span className="sm:hidden">

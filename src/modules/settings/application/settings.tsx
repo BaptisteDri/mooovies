@@ -19,7 +19,7 @@ export const Settings = () => {
 	// const onDeleteAccount = async () => {}
 
 	return (
-		<div>
+		<div className="mt-8">
 			<h2 className="text-white mb-6 text-lg">
 				Bonjour,{" "}
 				<span className="font-bold">
