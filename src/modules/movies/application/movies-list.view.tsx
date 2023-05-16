@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Movie } from "@/types/movie"
 import { Alphabetical } from "./components/alphabetical"
 import { Drawer } from "@/components/drawer"
@@ -15,12 +15,19 @@ export const MoviesListView = ({ movies }: Props) => {
 	)
 	const [query, setQuery] = useState<string | undefined>(undefined)
 
+	useEffect(() => {
+		selectedMovie &&
+			setSelectedMovie(
+				movies.find((movie) => movie.id === selectedMovie.id)
+			)
+	}, [movies])
+
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)
 	}
 
 	const filterMovies = (movies: Movie[], query: string): Movie[] => {
-		const lowerCaseQuery = query.toLowerCase()
+		const lowerCaseQuery = query.toLowerCase().trim()
 
 		return movies.filter((movie) => {
 			const lowerCaseTitle = movie.title.toLowerCase()

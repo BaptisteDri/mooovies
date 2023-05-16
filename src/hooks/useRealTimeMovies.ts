@@ -18,7 +18,6 @@ export const useRealTimeMovies = (
 			"postgres_changes",
 			{ event: "*", schema: "public", table: "films" },
 			(payload) => {
-				console.log("Change received!", payload)
 				const newMovie: any = payload.new
 				const oldMovie: any = payload.old
 

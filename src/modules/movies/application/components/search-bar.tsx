@@ -10,7 +10,7 @@ export const SearchBar = ({ query, handleOnQueryChange }: Props) => {
 	const navbarId = "navbar"
 	const placeholderId = "placeholder"
 	const stickyClassName =
-		"fixed w-[calc(100%-16rem)] left-64 px-6 border-b border-gray-700"
+		"fixed sm:w-[calc(100%-16rem)] left-0 sm:left-64 right-0 px-6 border-b border-gray-700"
 	const placeHolderClassName = "h-24"
 
 	useEffect(() => {
