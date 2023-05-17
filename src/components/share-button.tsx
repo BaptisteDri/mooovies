@@ -7,6 +7,8 @@ interface Props {
 export const ShareButton = ({ url }: Props) => {
 	const _onShare = async () => {}
 
+	return <></>
+
 	return (
 		<button
 			onClick={() => _onShare()}
