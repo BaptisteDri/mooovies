@@ -6,7 +6,7 @@ import { MoviesListContainer } from "@/modules/movies/application/movies-list.co
 import { ShareButton } from "@/components/share-button"
 
 const IndexPage: NextPage = () => {
-	const url: string = `https://main--mooovies-tracker.netlify.app/`
+	const url = `https://main--mooovies-tracker.netlify.app/`
 
 	return (
 		<>

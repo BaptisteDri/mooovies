@@ -42,7 +42,9 @@ export const moviesReducers = {
 		{ payload }: PayloadAction<{ movie: Movie; error: CustomError | null }>
 	) => {
 		state.movies = state.movies
-			? state.movies.filter((movie) => movie.id !== payload.movie!.id)
+			? [...state.movies].filter(
+					(movie) => movie.id !== payload.movie!.id
+			  )
 			: null
 		state.deleteMovieError = payload.error
 
