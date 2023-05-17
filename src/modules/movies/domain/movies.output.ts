@@ -12,17 +12,15 @@ export interface MoviesOutput {
 		movie,
 	}: {
 		movie: MovieInfra
-	}): Promise<{ movie: Movie | null; error: CustomError | null }>
+	}): Promise<{ movie: Movie; error: CustomError | null }>
 	deleteMovie({
-		movieId,
+		movie,
 	}: {
-		movieId: number
-	}): Promise<{ movie: Movie | null; error: CustomError | null }>
+		movie: MovieInfra
+	}): Promise<{ movie: Movie; error: CustomError | null }>
 	toggleMovieIsSeen({
-		movieId,
-		isSeen,
+		movie,
 	}: {
-		movieId: number
-		isSeen: boolean
-	}): Promise<{ movie: Movie | null; error: CustomError | null }>
+		movie: MovieInfra
+	}): Promise<{ movie: Movie; error: CustomError | null }>
 }

@@ -26,60 +26,57 @@ export const getUserMovies =
 		dispatch(actions.getUserMovies(getUserMoviesRo))
 	}
 
-// export const getUserMovies = async ({
-// 	moviesOutput,
-// 	userId,
-// }: {
-// 	moviesOutput: MoviesOutput
-// 	userId: string
-// }): Promise<Movie[]> => {
-// 	try {
-// 		return await moviesOutput.getUserMovies({ userId })
-// 	} catch (error: any) {
-// 		throw new Error(error)
-// 	}
-// }
+export const addMovie =
+	({ movie }: { movie: InfraMovie }) =>
+	async (
+		dispatch: any,
+		_: any,
+		{ moviesOutput }: { moviesOutput: MoviesOutput }
+	) => {
+		dispatch(actions.startCall({ callType: MoviesCallTypes.ADD_MOVIE }))
 
-// export const addMovie = async ({
-// 	moviesOutput,
-// 	movie,
-// }: {
-// 	moviesOutput: MoviesOutput
-// 	movie: InfraMovie
-// }): Promise<void> => {
-// 	try {
-// 		return await moviesOutput.addMovie({ movie })
-// 	} catch (error: any) {
-// 		throw new Error(error)
-// 	}
-// }
+		const addMovieRo: {
+			movie: Movie
+			error: CustomError | null
+		} = await moviesOutput.addMovie({ movie })
 
-// export const deleteMovie = async ({
-// 	moviesOutput,
-// 	movieId,
-// }: {
-// 	moviesOutput: MoviesOutput
-// 	movieId: number
-// }): Promise<void> => {
-// 	try {
-// 		return await moviesOutput.deleteMovie({ movieId })
-// 	} catch (error: any) {
-// 		throw new Error(error)
-// 	}
-// }
+		dispatch(actions.addMovie(addMovieRo))
+	}
 
-// export const toggleMovieIsSeen = async ({
-// 	moviesOutput,
-// 	movieId,
-// 	isSeen,
-// }: {
-// 	moviesOutput: MoviesOutput
-// 	movieId: number
-// 	isSeen: boolean
-// }): Promise<void> => {
-// 	try {
-// 		return await moviesOutput.toggleMovieIsSeen({ movieId, isSeen })
-// 	} catch (error: any) {
-// 		throw new Error(error)
-// 	}
-// }
+export const deleteMovie =
+	({ movie }: { movie: InfraMovie }) =>
+	async (
+		dispatch: any,
+		_: any,
+		{ moviesOutput }: { moviesOutput: MoviesOutput }
+	) => {
+		dispatch(actions.startCall({ callType: MoviesCallTypes.DELETE_MOVIE }))
+
+		const deleteMovieRo: {
+			movie: Movie
+			error: CustomError | null
+		} = await moviesOutput.deleteMovie({ movie })
+
+		dispatch(actions.deleteMovie(deleteMovieRo))
+	}
+
+export const toggleMovieIsSeen =
+	({ movie }: { movie: InfraMovie }) =>
+	async (
+		dispatch: any,
+		_: any,
+		{ moviesOutput }: { moviesOutput: MoviesOutput }
+	) => {
+		dispatch(
+			actions.startCall({
+				callType: MoviesCallTypes.TOGGLE_MOVIE_IS_SEEN,
+			})
+		)
+
+		const toggleMovieIsSeenRo: {
+			movie: Movie
+			error: CustomError | null
+		} = await moviesOutput.toggleMovieIsSeen({ movie })
+
+		dispatch(actions.toggleMovieIsSeen(toggleMovieIsSeenRo))
+	}

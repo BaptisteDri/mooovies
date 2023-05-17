@@ -31,7 +31,7 @@ export const DrawerContent = ({ movie }: Props) => {
 				director={movie.director}
 			/>
 
-			{isLoggedInSession && <DeleteMovie movieId={movie.id} />}
+			{isLoggedInSession && <DeleteMovie movie={movie} />}
 		</>
 	)
 }

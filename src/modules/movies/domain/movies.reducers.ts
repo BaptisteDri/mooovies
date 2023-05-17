@@ -1,15 +1,15 @@
-import { AuthState } from "@/modules/auth/auth.state"
 import { PayloadAction } from "@reduxjs/toolkit"
-import { AuthCallTypes } from "@/modules/auth/auth.call-types"
 import { RequestStatus } from "@/types/request-status"
 import { MoviesState } from "./movies.state"
 import { Movie } from "@/types/movie"
 import { CustomError } from "@/types/error"
+import { MoviesCallTypes } from "./movies.call-types"
+import { mapMovieToDomainModel } from "./movies.mapper"
 
 export const moviesReducers = {
 	startCall: (
-		state: AuthState,
-		{ payload }: PayloadAction<{ callType: AuthCallTypes }>
+		state: MoviesState,
+		{ payload }: PayloadAction<{ callType: MoviesCallTypes }>
 	) => {
 		state[payload.callType] = RequestStatus.LOADING
 	},
@@ -28,8 +28,9 @@ export const moviesReducers = {
 	},
 	addMovie: (
 		state: MoviesState,
-		{ payload }: PayloadAction<{ error: CustomError | null }>
+		{ payload }: PayloadAction<{ movie: Movie; error: CustomError | null }>
 	) => {
+		state.movies = state.movies ? [...state.movies, payload.movie] : null
 		state.addMovieError = payload.error
 
 		state.addMovieStatus = payload.error
@@ -38,8 +39,11 @@ export const moviesReducers = {
 	},
 	deleteMovie: (
 		state: MoviesState,
-		{ payload }: PayloadAction<{ error: CustomError | null }>
+		{ payload }: PayloadAction<{ movie: Movie; error: CustomError | null }>
 	) => {
+		state.movies = state.movies
+			? state.movies.filter((movie) => movie.id !== payload.movie!.id)
+			: null
 		state.deleteMovieError = payload.error
 
 		state.deleteMovieStatus = payload.error
@@ -48,8 +52,13 @@ export const moviesReducers = {
 	},
 	toggleMovieIsSeen: (
 		state: MoviesState,
-		{ payload }: PayloadAction<{ error: CustomError | null }>
+		{ payload }: PayloadAction<{ movie: Movie; error: CustomError | null }>
 	) => {
+		state.movies = state.movies
+			? state.movies.map((movie) =>
+					movie.id === payload.movie?.id ? payload.movie : movie
+			  )
+			: null
 		state.toggleMovieIsSeenError = payload.error
 
 		state.toggleMovieIsSeenStatus = payload.error

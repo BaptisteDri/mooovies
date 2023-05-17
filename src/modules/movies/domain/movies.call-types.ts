@@ -1,6 +1,6 @@
 export enum MoviesCallTypes {
-	GET_USER_MOVIES = "getUserMovies",
-	ADD_MOVIE = "addMovie",
-	DELETE_MOVIE = "deleteMovie",
-	TOGGLE_MOVIE_IS_SEEN = "toggleMovieIsSeen",
+	GET_USER_MOVIES = "getUserMoviesStatus",
+	ADD_MOVIE = "addMovieStatus",
+	DELETE_MOVIE = "deleteMovieStatus",
+	TOGGLE_MOVIE_IS_SEEN = "toggleMovieIsSeenStatus",
 }
