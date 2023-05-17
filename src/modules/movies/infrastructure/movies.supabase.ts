@@ -28,7 +28,7 @@ export class MoviesSupabase implements MoviesOutput {
 		movie,
 	}: {
 		movie: InfraMovie
-	}): Promise<{ movie: Movie | null; error: CustomError | null }> {
+	}): Promise<{ movie: Movie; error: CustomError | null }> {
 		const { error } = await supabase
 			.from("films")
 			.insert({ ...movie, id: undefined })
@@ -40,7 +40,7 @@ export class MoviesSupabase implements MoviesOutput {
 		movie,
 	}: {
 		movie: InfraMovie
-	}): Promise<{ movie: Movie | null; error: CustomError | null }> {
+	}): Promise<{ movie: Movie; error: CustomError | null }> {
 		const { error } = await supabase
 			.from("films")
 			.delete()
@@ -53,7 +53,7 @@ export class MoviesSupabase implements MoviesOutput {
 		movie,
 	}: {
 		movie: InfraMovie
-	}): Promise<{ movie: Movie | null; error: CustomError | null }> {
+	}): Promise<{ movie: Movie; error: CustomError | null }> {
 		const { error } = await supabase
 			.from("films")
 			.update({ is_seen: movie.is_seen })

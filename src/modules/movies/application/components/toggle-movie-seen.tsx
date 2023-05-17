@@ -1,26 +1,25 @@
 import { Movie } from "@/types/movie"
-import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
-import { appOutputs } from "@/config/app-outputs"
 import { Toggle } from "@/components/toggle"
+import { useAppDispatch } from "@/config/store"
+import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
 
 interface Props {
 	movie: Movie
 }
 
 export const ToggleMovieSeen = ({ movie }: Props) => {
-	const { moviesOutput } = appOutputs
+	const dispatch = useAppDispatch()
 
 	const _onToggleMovieIsSeen = async () => {
-		try {
-			await toggleMovieIsSeen({
-				moviesOutput,
-				movieId: movie.id,
-				isSeen: !movie.isSeen,
+		await dispatch(
+			toggleMovieIsSeen({
+				movie: mapMovieToInfraModel({
+					...movie,
+					isSeen: !movie.isSeen,
+				}),
 			})
-		} catch (error: any) {
-			console.error(error)
-		}
+		)
 	}
 
 	return (
