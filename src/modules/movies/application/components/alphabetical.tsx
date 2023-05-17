@@ -1,5 +1,6 @@
 import { Movie } from "@/types/movie"
 import { MovieItem } from "./movie-item"
+import { useState } from "react"
 
 interface Props {
 	movies: Movie[]
@@ -21,7 +22,9 @@ export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 	const removeAccents = (str: string) =>
 		str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
-	movies
+	const orderedMovies = [...movies]
+
+	orderedMovies
 		.sort((a, b) =>
 			removeAccents(a.title).localeCompare(removeAccents(b.title))
 		)

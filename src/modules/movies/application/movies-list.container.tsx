@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { MoviesListView } from "./movies-list.view"
 import { Movie } from "@/types/movie"
-import { appOutputs } from "@/config/app-outputs"
 import { getUserMovies } from "@/modules/movies/domain/movies.actions"
-import { useRealTimeMovies } from "@/hooks/useRealTimeMovies"
 import {
 	selectIsLoggedInSession,
 	selectLocalSessionData,
 } from "@/modules/auth/auth.selectors"
 import { useRouter } from "next/router"
-import { useAppSelector } from "@/config/store"
+import { useAppDispatch, useAppSelector } from "@/config/store"
+import { selectMovies } from "../domain/movies.selectors"
 
 export const MoviesListContainer = () => {
-	const [movies, setMovies] = useState<Movie[]>([])
 	const router = useRouter()
+	const dispatch = useAppDispatch()
+
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
+	const movies: Movie[] | null = useAppSelector(selectMovies)
+
 	const userId = isLoggedInSession
 		? selectLocalSessionData()?.user.id
 		: router.query.userId?.toString()
@@ -23,19 +25,9 @@ export const MoviesListContainer = () => {
 		userId && _getMovies()
 	}, [userId])
 
-	useRealTimeMovies(movies, setMovies)
-
-	const { moviesOutput } = appOutputs
-
 	const _getMovies = async () => {
-		if (!userId) return
-		try {
-			const moviesData = await getUserMovies({ moviesOutput, userId })
-			setMovies(moviesData)
-		} catch (error: any) {
-			console.error(error)
-		}
+		await dispatch(getUserMovies({ userId: userId ?? "" }))
 	}
 
-	return <MoviesListView movies={movies} />
+	return movies ? <MoviesListView movies={movies} /> : <></>
 }
