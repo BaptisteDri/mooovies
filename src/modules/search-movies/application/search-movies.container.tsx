@@ -1,8 +1,10 @@
-import { SearchedMovie } from "@/types/movie"
+import { Movie, SearchedMovie } from "@/types/movie"
 import { useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
 import { searchMovies } from "@/modules/search-movies/domain/search-movies.actions"
+import { useAppSelector } from "@/config/store"
+import { selectMovies } from "@/modules/movies/domain/movies.selectors"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
@@ -19,6 +21,8 @@ export const SearchMoviesContainer = () => {
 
 		return () => clearTimeout(timer)
 	}, [query])
+
+	const movies: Movie[] | null = useAppSelector(selectMovies)
 
 	const { searchMoviesOutput } = appOutputs
 
@@ -40,6 +44,7 @@ export const SearchMoviesContainer = () => {
 			query={query}
 			handleOnQueryChange={handleOnQueryChange}
 			searchResultsMovies={searchResultsMovies}
+			movies={movies ?? []}
 		/>
 	)
 }

@@ -31,6 +31,7 @@ export const AddMovie = ({ movie }: Props) => {
 	}
 
 	const _addMovie = async () => {
+		await _getMovieCredits()
 		await dispatch(addMovie({ movie }))
 		router.push("/")
 	}

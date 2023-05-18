@@ -6,9 +6,14 @@ import { ShortenedText } from "@/components/shortened-text"
 interface Props {
 	movie: SearchedMovie
 	setSelectedMovie: (movie: SearchedMovie) => void
+	alreadyAdded: boolean
 }
 
-export const SearchMovieItem = ({ movie, setSelectedMovie }: Props) => {
+export const SearchMovieItem = ({
+	movie,
+	setSelectedMovie,
+	alreadyAdded,
+}: Props) => {
 	return (
 		<li className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 			<div className="flex">
@@ -35,8 +40,9 @@ export const SearchMovieItem = ({ movie, setSelectedMovie }: Props) => {
 				type="button"
 				onClick={() => setSelectedMovie(movie)}
 				className="font-medium rounded-lg text-sm px-3 py-1.5 sm:px-5 sm:py-2.5 ml-3 sm:ml-4 h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-center"
+				disabled={alreadyAdded}
 			>
-				Ajouter
+				{alreadyAdded ? "Ajouté" : "Ajouter"}
 			</button>
 		</li>
 	)
