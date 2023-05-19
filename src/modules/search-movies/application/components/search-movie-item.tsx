@@ -40,7 +40,7 @@ export const SearchMovieItem = ({
 			{alreadyAdded ? (
 				<button
 					type="button"
-					className="cursor-not-allowed flex items-center font-medium rounded-lg text-sm px-3 py-1.5 sm:px-5 sm:py-2.5 ml-3 sm:ml-4 h-fit text-center bg-gray-800 text-gray-400 border-gray-600 border"
+					className="cursor-not-allowed flex items-center font-medium rounded-lg text-sm px-3 py-2 ml-3 sm:ml-4 h-fit text-center bg-gray-800 text-gray-400 border-gray-600 border"
 					disabled
 				>
 					Ajouté
@@ -50,7 +50,7 @@ export const SearchMovieItem = ({
 				<button
 					type="button"
 					onClick={() => setSelectedMovie(movie)}
-					className="font-medium rounded-lg text-sm px-3 py-1.5 sm:px-5 sm:py-2.5 ml-3 sm:ml-4 h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-center"
+					className="font-medium rounded-lg text-sm px-3 py-2 ml-3 sm:ml-4 h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-center"
 				>
 					Ajouter
 				</button>

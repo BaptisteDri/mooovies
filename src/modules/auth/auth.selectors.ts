@@ -5,6 +5,8 @@ import { CustomError } from "@/types/error"
 import { RequestStatus } from "@/types/request-status"
 
 export const selectLocalSessionData = (): Session | null => {
+	if (typeof window === "undefined") return null
+
 	const localSessionDataString: string | null = localStorage.getItem(
 		`sb-${process.env.NEXT_PUBLIC_SUPABASE_REFRENCE_ID}-auth-token`
 	)
