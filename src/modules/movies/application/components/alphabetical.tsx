@@ -38,34 +38,45 @@ export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 		})
 
 	return (
-		<div className="flex flex-col gap-4">
-			{Object.entries(moviesGroups).map(
-				([letter, movies]) =>
-					movies.length > 0 && (
-						<div key={letter}>
-							<h2
-								className={`${
-									movies.length > 0
-										? "text-gray-900 dark:text-white"
-										: "text-gray-500 dark:text-gray-400"
-								} font-bold text-lg`}
-							>
-								{letter}
-							</h2>
-							{movies.length > 0 && (
-								<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-6 mt-4">
-									{movies.map((movie: Movie, i: number) => (
-										<MovieItem
-											key={i}
-											movie={movie}
-											setSelectedMovie={setSelectedMovie}
-										/>
-									))}
-								</ul>
-							)}
-						</div>
-					)
+		<div>
+			{movies.length > 0 && (
+				<h3 className="text-gray-500 mb-4">
+					{movies.length} résultats
+				</h3>
 			)}
+			<div className="flex flex-col gap-4">
+				{Object.entries(moviesGroups).map(
+					([letter, movies]) =>
+						movies.length > 0 && (
+							<div key={letter}>
+								<h2
+									className={`${
+										movies.length > 0
+											? "text-gray-900 dark:text-white"
+											: "text-gray-500 dark:text-gray-400"
+									} font-bold text-lg`}
+								>
+									{letter}
+								</h2>
+								{movies.length > 0 && (
+									<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-6 mt-4">
+										{movies.map(
+											(movie: Movie, i: number) => (
+												<MovieItem
+													key={i}
+													movie={movie}
+													setSelectedMovie={
+														setSelectedMovie
+													}
+												/>
+											)
+										)}
+									</ul>
+								)}
+							</div>
+						)
+				)}
+			</div>
 		</div>
 	)
 }

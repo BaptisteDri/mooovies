@@ -14,6 +14,9 @@ export const MoviesListView = ({ movies }: Props) => {
 		undefined
 	)
 	const [query, setQuery] = useState<string | undefined>(undefined)
+	const [filter, setFilter] = useState<"SEEN" | "NOT_SEEN" | undefined>(
+		undefined
+	)
 
 	useEffect(() => {
 		selectedMovie &&
@@ -26,7 +29,7 @@ export const MoviesListView = ({ movies }: Props) => {
 		setQuery(e.target.value)
 	}
 
-	const filterMovies = (movies: Movie[], query: string): Movie[] => {
+	const getSearchedMovies = (movies: Movie[], query: string): Movie[] => {
 		const lowerCaseQuery = query.toLowerCase().trim()
 
 		return movies.filter((movie) => {
@@ -42,14 +45,27 @@ export const MoviesListView = ({ movies }: Props) => {
 		})
 	}
 
+	const getFilteredMovies = (movies: Movie[]) => {
+		if (!filter) return movies
+		const isSeen: boolean = filter === "SEEN"
+
+		return movies.filter((movie) => movie.isSeen === isSeen)
+	}
+
 	return (
 		<>
 			<SearchBar
 				query={query ?? ""}
 				handleOnQueryChange={handleOnQueryChange}
+				setFilter={setFilter}
+				filter={filter}
 			/>
 			<Alphabetical
-				movies={query ? filterMovies(movies, query) : movies}
+				movies={
+					query
+						? getSearchedMovies(getFilteredMovies(movies), query)
+						: getFilteredMovies(movies)
+				}
 				setSelectedMovie={setSelectedMovie}
 			/>
 

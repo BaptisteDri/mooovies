@@ -4,9 +4,16 @@ import { Icon } from "@/components/icon"
 interface Props {
 	query: string
 	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	setFilter: (filter?: "SEEN" | "NOT_SEEN") => void
+	filter?: "SEEN" | "NOT_SEEN"
 }
 
-export const SearchBar = ({ query, handleOnQueryChange }: Props) => {
+export const SearchBar = ({
+	query,
+	handleOnQueryChange,
+	setFilter,
+	filter,
+}: Props) => {
 	const navbarId = "navbar"
 	const placeholderId = "placeholder"
 	const stickyClassName =
@@ -66,6 +73,46 @@ export const SearchBar = ({ query, handleOnQueryChange }: Props) => {
 					value={query}
 					onChange={handleOnQueryChange}
 				/>
+				<ul className="flex gap-2">
+					<li>
+						<input
+							type="checkbox"
+							id="seen_movies"
+							className="hidden peer"
+							onChange={() =>
+								filter === "SEEN"
+									? setFilter(undefined)
+									: setFilter("SEEN")
+							}
+							checked={filter === "SEEN"}
+						/>
+						<label
+							htmlFor="seen_movies"
+							className="select-none flex items-center justify-center h-11 w-11 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+						>
+							<Icon name="visibility" className="text-lg" />
+						</label>
+					</li>
+					<li>
+						<input
+							type="checkbox"
+							id="not_seen_movies"
+							className="hidden peer"
+							onChange={() =>
+								filter === "NOT_SEEN"
+									? setFilter(undefined)
+									: setFilter("NOT_SEEN")
+							}
+							checked={filter === "NOT_SEEN"}
+						/>
+						<label
+							htmlFor="not_seen_movies"
+							className="select-none flex items-center justify-center h-11 w-11 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+						>
+							<Icon name="visibility_off" className="text-lg" />
+						</label>
+					</li>
+				</ul>
 			</div>
 		</div>
 	)
