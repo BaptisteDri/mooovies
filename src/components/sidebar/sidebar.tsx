@@ -20,13 +20,13 @@ export const Sidebar = () => {
 					<>
 						<ul className="space-y-3 font-medium">
 							<Link
-								content="Mes films"
+								content="Accueil"
 								icon={<Icon name="home" />}
 								path={"/"}
 							/>
 							<Link
-								content="Ajouter un film"
-								icon={<Icon name="video_call" />}
+								content="Rechercher"
+								icon={<Icon name="search" />}
 								path={"/add-movie"}
 							/>
 						</ul>
@@ -34,7 +34,7 @@ export const Sidebar = () => {
 						<ul className="space-y-3 font-medium">
 							<Link
 								content="Paramètres"
-								icon={<Icon name="manage_accounts" />}
+								icon={<Icon name="settings" />}
 								path={"/settings"}
 							/>
 						</ul>

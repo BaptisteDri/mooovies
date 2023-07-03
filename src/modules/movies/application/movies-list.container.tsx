@@ -22,6 +22,8 @@ export const MoviesListContainer = () => {
 		: router.query.userId?.toString()
 
 	useEffect(() => {
+		if (!userId) return
+
 		userId && _getMovies()
 	}, [userId])
 
