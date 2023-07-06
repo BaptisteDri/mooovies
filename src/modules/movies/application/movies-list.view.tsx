@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useDeferredValue, useEffect, useState } from "react"
 import { Movie } from "@/types/movie"
 import { Alphabetical } from "./components/alphabetical"
 import { Drawer } from "@/components/drawer"
@@ -14,6 +14,7 @@ export const MoviesListView = ({ movies }: Props) => {
 		undefined
 	)
 	const [query, setQuery] = useState<string | undefined>(undefined)
+	const deferredQuery = useDeferredValue(query)
 	const [filter, setFilter] = useState<"SEEN" | "NOT_SEEN" | undefined>(
 		undefined
 	)
@@ -62,8 +63,11 @@ export const MoviesListView = ({ movies }: Props) => {
 			/>
 			<Alphabetical
 				movies={
-					query
-						? getSearchedMovies(getFilteredMovies(movies), query)
+					deferredQuery
+						? getSearchedMovies(
+								getFilteredMovies(movies),
+								deferredQuery
+						  )
 						: getFilteredMovies(movies)
 				}
 				setSelectedMovie={setSelectedMovie}

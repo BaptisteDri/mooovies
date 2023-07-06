@@ -12,8 +12,13 @@ interface MoviesGroups {
 }
 
 export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
-	const removeAccents = (str: string) =>
-		str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+	const removeAccents = (str: string) => {
+		return str
+			.normalize("NFD")
+			.replace(/[\u0300-\u036f]/g, "")
+			.replace(/đ/g, "d")
+			.replace(/Đ/g, "D")
+	}
 
 	const moviesGroups = useMemo(() => {
 		const groups: MoviesGroups = {}

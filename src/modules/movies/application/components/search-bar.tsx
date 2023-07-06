@@ -57,7 +57,7 @@ export const SearchBar = ({
 			>
 				<label
 					htmlFor="search-input"
-					className="flex items-center justify-center mr-3 sm:mr-6"
+					className="flex items-center justify-center mr-3"
 				>
 					<Icon
 						name="search"
@@ -65,7 +65,7 @@ export const SearchBar = ({
 					/>
 				</label>
 				<input
-					className="mr-0 sm:mr-6 h-11 flex-auto rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
+					className="mr-0 sm:mr-2 h-11 flex-auto rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
 					type="text"
 					placeholder="Rechercher un titre, un réalisateur..."
 					id="search-input"

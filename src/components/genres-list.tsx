@@ -11,7 +11,7 @@ export const GenresList = ({ genreIds }: Props) => (
 				key={genreId}
 				className="relative flex flex-col items-center group"
 			>
-				<span className="hover:text-gray-400 text-2xl">
+				<span className="hover:text-gray-400 text-2xl cursor-default">
 					{useGenreIcon(genreId)}
 				</span>
 				<div className="absolute top-0 flex-col items-center hidden mt-6 group-hover:flex">

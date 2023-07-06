@@ -18,7 +18,7 @@ export const ShortenedText = ({ text, title }: Props) => {
 				<h3 className="text-white mb-2 font-semibold">{title}</h3>
 			)}
 			<p className="text-gray-400 text-sm">
-				{text.length < 200 ? (
+				{text.length <= 200 ? (
 					text
 				) : isShortened ? (
 					<>
