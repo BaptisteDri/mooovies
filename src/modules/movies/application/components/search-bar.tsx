@@ -55,25 +55,27 @@ export const SearchBar = ({
 				id={navbarId}
 				className="py-4 bg-gray-900 flex items-center top-0 z-40 mb-6"
 			>
-				<label
-					htmlFor="search-input"
-					className="flex items-center justify-center mr-3"
-				>
-					<Icon
-						name="search"
-						className="w-6 h-6 text-gray-500 dark:text-gray-400"
+				<div className="relative flex-auto mr-2">
+					<label
+						htmlFor="search-input"
+						className="flex items-center justify-center absolute left-2 top-0 bottom-0"
+					>
+						<Icon
+							name="search"
+							className="w-6 h-6 text-gray-500 dark:text-gray-400"
+						/>
+					</label>
+					<input
+						className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
+						type="text"
+						placeholder="Rechercher un titre, un réalisateur..."
+						id="search-input"
+						autoComplete="off"
+						value={query}
+						onChange={handleOnQueryChange}
 					/>
-				</label>
-				<input
-					className="mr-0 sm:mr-2 h-11 flex-auto rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
-					type="text"
-					placeholder="Rechercher un titre, un réalisateur..."
-					id="search-input"
-					autoComplete="off"
-					value={query}
-					onChange={handleOnQueryChange}
-				/>
-				<ul className="gap-2 hidden sm:flex">
+				</div>
+				<ul className="gap-2 flex">
 					<li>
 						<input
 							type="checkbox"
