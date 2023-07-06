@@ -66,7 +66,7 @@ export const SearchBar = ({
 						/>
 					</label>
 					<input
-						className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
+						className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white placeholder-shown:text-ellipsis"
 						type="text"
 						placeholder="Rechercher un titre, un réalisateur..."
 						id="search-input"
