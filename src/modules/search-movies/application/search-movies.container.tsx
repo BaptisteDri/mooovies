@@ -8,12 +8,13 @@ import { selectMovies } from "@/modules/movies/domain/movies.selectors"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
-	const [searchResultsMovies, setsearchResultsMovies] = useState<
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+	const [searchResultsMovies, setSearchResultsMovies] = useState<
 		SearchedMovie[]
 	>([])
 
 	useEffect(() => {
-		if (!query) return setsearchResultsMovies([])
+		if (!query) return setSearchResultsMovies([])
 
 		const timer = setTimeout(() => {
 			_searchMovies()
@@ -27,10 +28,14 @@ export const SearchMoviesContainer = () => {
 	const { searchMoviesOutput } = appOutputs
 
 	const _searchMovies = async () => {
+		setIsLoading(true)
+
 		try {
 			const moviesData = await searchMovies({ searchMoviesOutput, query })
-			setsearchResultsMovies(moviesData)
+			setSearchResultsMovies(moviesData)
+			setIsLoading(false)
 		} catch (error: any) {
+			setIsLoading(false)
 			console.error(error)
 		}
 	}
@@ -45,6 +50,7 @@ export const SearchMoviesContainer = () => {
 			handleOnQueryChange={handleOnQueryChange}
 			searchResultsMovies={searchResultsMovies}
 			movies={movies ?? []}
+			isLoading={isLoading}
 		/>
 	)
 }

@@ -6,12 +6,14 @@ import { SearchMovieItem } from "./components/search-movie-item"
 import { Drawer } from "@/components/drawer"
 import { DrawerContent } from "./components/drawer-content"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
+import { SearchMoviesSkeleton } from "./components/search-movies-skeleton"
 
 interface Props {
 	query: string
 	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	searchResultsMovies: SearchedMovie[]
 	movies: Movie[]
+	isLoading: boolean
 }
 
 export const SearchMoviesView = ({
@@ -19,6 +21,7 @@ export const SearchMoviesView = ({
 	handleOnQueryChange,
 	searchResultsMovies,
 	movies,
+	isLoading,
 }: Props) => {
 	const [selectedMovie, setSelectedMovie] = useState<
 		SearchedMovie | undefined
@@ -55,6 +58,8 @@ export const SearchMoviesView = ({
 						)
 					)}
 				</ul>
+			) : isLoading ? (
+				<SearchMoviesSkeleton />
 			) : (
 				<Placeholder />
 			)}

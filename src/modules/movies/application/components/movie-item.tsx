@@ -1,6 +1,7 @@
 import { Movie } from "@/types/movie"
 import { Icon } from "@/components/icon"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
+import Image from "next/image"
 
 interface Props {
 	movie: Movie
@@ -17,7 +18,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 			>
 				<div className="rounded-lg overflow-hidden h-40 sm:h-auto aspect-[27/40] mr-3 sm:mr-0 table sm:block min-w-min">
 					<img
-						className="object-cover w-full h-full overflow-hidden"
+						className="object-cover w-full h-full overflow-hidden animate-fadeIn bg-slate-300"
 						src={usePosterFullPath(movie.poster)}
 						alt={movie.title}
 					/>
