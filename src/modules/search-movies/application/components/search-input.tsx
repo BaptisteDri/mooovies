@@ -7,10 +7,10 @@ interface Props {
 
 export const SearchInput = ({ query, handleOnQueryChange }: Props) => {
 	return (
-		<div className="flex gap-6 items-center mb-8">
+		<div className="flex gap-6 items-center mb-8 relative">
 			<label
 				htmlFor="search-input"
-				className="flex items-center justify-center"
+				className="flex items-center justify-center absolute left-2 top-0 bottom-0"
 			>
 				<Icon
 					name="search"
@@ -20,7 +20,7 @@ export const SearchInput = ({ query, handleOnQueryChange }: Props) => {
 			<input
 				value={query}
 				onChange={handleOnQueryChange}
-				className="h-11 flex-auto rounded-md px-4 bg-gray-800 border border-gray-700 text-white"
+				className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white placeholder-shown:text-ellipsis"
 				type="text"
 				placeholder="Rechercher un titre de film..."
 				id="search-input"
