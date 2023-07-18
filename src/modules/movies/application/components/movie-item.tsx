@@ -22,11 +22,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 						alt={movie.title}
 						fill
 						className="object-cover"
-					/>
-					<img
-						className="object-cover w-full h-full overflow-hidden animate-fadeIn bg-slate-300"
-						src={usePosterFullPath(movie.poster)}
-						alt={movie.title}
+						quality={10}
 					/>
 				</div>
 				<div className="mt-2 text-ellipsis overflow-hidden whitespace-nowrap">
