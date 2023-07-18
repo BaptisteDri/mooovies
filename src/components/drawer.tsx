@@ -30,7 +30,7 @@ export const Drawer = ({ isOpen, onCloseDrawer, children }: Props) => {
 	return (
 		<div
 			ref={ref}
-			className={`fixed sm:top-0 right-0 bottom-0 sm:bottom-auto left-0 sm:left-auto z-40 w-full sm:w-96 max-h-full sm:h-screen p-6 pb-10 overflow-y-auto transition-transform bg-white dark:bg-gray-800 border-t sm:border-t-0 sm:border-l border-gray-700 ${
+			className={`z-50 fixed sm:top-0 right-0 bottom-0 sm:bottom-auto left-0 sm:left-auto 50 w-full sm:w-96 max-h-full sm:h-screen p-6 pb-10 overflow-y-auto transition-transform bg-white dark:bg-gray-800 border-t sm:border-t-0 sm:border-l border-gray-700 ${
 				!isOpen &&
 				"translate-y-full sm:translate-y-0 sm:translate-x-full"
 			} ${"pb-6"}`}

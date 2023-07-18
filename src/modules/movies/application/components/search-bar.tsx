@@ -14,47 +14,9 @@ export const SearchBar = ({
 	setFilter,
 	filter,
 }: Props) => {
-	const navbarId = "navbar"
-	const placeholderId = "placeholder"
-	const stickyClassName =
-		"fixed sm:w-[calc(100%-16rem)] left-0 sm:left-64 right-0 px-6 border-b border-gray-700"
-	const placeHolderClassName = "h-24"
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const sticky =
-				document.getElementById(placeholderId)?.offsetTop || 0
-
-			if (window.pageYOffset >= sticky) {
-				document
-					.getElementById(navbarId)
-					?.classList.add(...stickyClassName.split(" "))
-				document
-					.getElementById(placeholderId)
-					?.classList.add(...placeHolderClassName.split(" "))
-			} else {
-				document
-					.getElementById(navbarId)
-					?.classList.remove(...stickyClassName.split(" "))
-				document
-					.getElementById(placeholderId)
-					?.classList.remove(...placeHolderClassName.split(" "))
-			}
-		}
-
-		window.addEventListener("scroll", handleScroll)
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll)
-		}
-	}, [])
-
 	return (
-		<div id={placeholderId}>
-			<div
-				id={navbarId}
-				className="py-4 bg-gray-900 flex items-center top-0 z-40 mb-6"
-			>
+		<div className="sticky top-0 right-0 z-10">
+			<div className="py-4 bg-gray-900 flex items-center top-0 z-40 mb-6">
 				<div className="relative flex-auto mr-2">
 					<label
 						htmlFor="search-input"

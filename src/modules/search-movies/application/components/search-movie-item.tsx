@@ -19,12 +19,13 @@ export const SearchMovieItem = ({
 	return (
 		<li className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 			<div className="flex">
-				<div className="rounded-lg overflow-hidden h-40 sm:h-72 aspect-[27/40] mr-3 sm:mr-4 table min-w-min relative bg-gray-700">
+				<div className="rounded-lg overflow-hidden h-40 sm:h-60 aspect-[27/40] mr-3 sm:mr-4 table min-w-min relative bg-gray-700">
 					<Image
 						src={usePosterFullPath(movie.posterPath)}
 						alt={movie.title}
 						fill
-						className="object-cover"
+						className="object-cover transition-all duration-150 opacity-100"
+						quality={10}
 					/>
 				</div>
 				<div>

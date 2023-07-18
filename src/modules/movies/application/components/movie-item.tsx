@@ -13,7 +13,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 		<>
 			<li
 				onClick={() => setSelectedMovie(movie)}
-				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative flex sm:block`}
+				className={`p-3 cursor-pointer bg-gray-800 rounded-lg relative flex sm:block overflow-hidden`}
 				role="button"
 			>
 				<div className="relative rounded-lg overflow-hidden h-40 sm:h-auto aspect-[27/40] mr-3 sm:mr-0 table sm:block min-w-min bg-gray-700">
@@ -23,6 +23,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 						fill
 						className="object-cover"
 						quality={10}
+						loading="lazy"
 					/>
 				</div>
 				<div className="mt-2 text-ellipsis overflow-hidden whitespace-nowrap">
@@ -37,11 +38,13 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 					</p>
 				</div>
 				{movie.isSeen && (
-					<Icon
-						name="check_circle"
-						className="-top-2 -right-2 absolute text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.4)]"
-						fill
-					/>
+					<div className="top-0 right-0 absolute bg-gray-700 h-9 w-9 rounded-bl-[70%] flex items-start justify-end p-1 drop-shadow-lg">
+						<Icon
+							name="check_circle"
+							className="text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.4)]"
+							fill
+						/>
+					</div>
 				)}
 			</li>
 		</>
