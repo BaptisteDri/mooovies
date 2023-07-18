@@ -1,6 +1,6 @@
 export const SearchMoviesSkeleton = () => {
 	return (
-		<div className="animate-pulse">
+		<div className="animate-pulse w-full">
 			<SearchMoviesSkeletonItem />
 			<SearchMoviesSkeletonItem />
 			<SearchMoviesSkeletonItem />
@@ -25,8 +25,8 @@ const SearchMoviesSkeletonItem = () => (
 				</svg>
 			</div>
 			<div className="w-full">
-				<div className="h-7 bg-gray-200 rounded-full dark:bg-gray-700 w-72 max-w-full mb-2"></div>
-				<div className="h-5 bg-gray-200 rounded-full dark:bg-gray-700 w-16 max-w-full mb-3"></div>
+				<div className="h-7 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full mb-2"></div>
+				<div className="h-5 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full mb-3"></div>
 				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></div>
 				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></div>
 				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
