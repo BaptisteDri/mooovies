@@ -3,6 +3,7 @@ import { SearchedMovie } from "@/types/movie"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
 import { ShortenedText } from "@/components/shortened-text"
 import { Icon } from "@/components/icon"
+import Image from "next/image"
 
 interface Props {
 	movie: SearchedMovie
@@ -18,11 +19,12 @@ export const SearchMovieItem = ({
 	return (
 		<li className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 			<div className="flex">
-				<div className="rounded-lg overflow-hidden h-40 sm:h-72 aspect-[27/40] mr-3 sm:mr-4 table min-w-min">
-					<img
-						className="object-cover w-full h-full overflow-hidden"
+				<div className="rounded-lg overflow-hidden h-40 sm:h-72 aspect-[27/40] mr-3 sm:mr-4 table min-w-min relative bg-gray-700">
+					<Image
 						src={usePosterFullPath(movie.posterPath)}
 						alt={movie.title}
+						fill
+						className="object-cover"
 					/>
 				</div>
 				<div>
