@@ -2,7 +2,7 @@ import { Menu } from "./menu"
 import { Sidebar } from "./sidebar/sidebar"
 import { Title } from "./title"
 
-interface Props {
+type Props = {
 	content: React.ReactNode
 	title?: string
 	headerContent?: React.ReactNode

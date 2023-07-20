@@ -6,7 +6,7 @@ import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { SearchedMovie } from "@/types/movie"
 import { Toggle } from "@/components/toggle"
 
-interface Props {
+type Props = {
 	movie: SearchedMovie
 	children?: React.ReactNode
 }

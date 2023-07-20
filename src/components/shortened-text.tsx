@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-interface Props {
+type Props = {
 	text: string
 	title?: string
 }

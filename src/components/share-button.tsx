@@ -1,7 +1,7 @@
 import { toast } from "react-toastify"
 import { Icon } from "./icon"
 
-interface Props {
+type Props = {
 	url: string
 }
 

@@ -2,7 +2,7 @@ import { GenresList } from "@/components/genres-list"
 import { useLanguageFullName } from "@/hooks/useLanguageFullName"
 import { ShortenedText } from "./shortened-text"
 
-interface Props {
+type Props = {
 	year: string
 	genreIds: string[] | number[]
 	originalLanguage: string

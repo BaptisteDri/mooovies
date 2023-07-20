@@ -13,7 +13,7 @@ export const SearchMoviesSkeleton = () => {
 const SearchMoviesSkeletonItem = () => (
 	<div className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 		<div className="flex w-full">
-			<div className="flex items-center bg-gray-700 justify-center rounded-lg overflow-hidden h-40 sm:h-72 aspect-[27/40] mr-3 sm:mr-4 min-w-min">
+			<div className="flex items-center bg-gray-700 justify-center rounded-lg overflow-hidden h-40 sm:h-60 aspect-[27/40] mr-3 sm:mr-4 min-w-min">
 				<svg
 					className="w-10 h-10 text-gray-200 dark:text-gray-500"
 					aria-hidden="true"

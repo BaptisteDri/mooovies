@@ -1,6 +1,6 @@
 import { useGenreIcon, useGenreName } from "@/hooks/useGenre"
 
-interface Props {
+type Props = {
 	genreIds: number[] | string[]
 }
 

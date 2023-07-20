@@ -6,7 +6,7 @@ import { RequestStatus } from "@/types/request-status"
 import { Movie } from "@/types/movie"
 import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
 
-interface Props {
+type Props = {
 	movie: Movie
 }
 

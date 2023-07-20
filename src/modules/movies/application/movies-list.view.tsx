@@ -5,7 +5,7 @@ import { Drawer } from "@/components/drawer"
 import { DrawerContent } from "./components/drawer-content"
 import { SearchBar } from "./components/search-bar"
 
-interface Props {
+type Props = {
 	movies: Movie[]
 }
 

@@ -5,7 +5,7 @@ import { Movie } from "@/types/movie"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 
-interface Props {
+type Props = {
 	movie: Movie
 }
 

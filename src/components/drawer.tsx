@@ -2,7 +2,7 @@ import { useClickOutside } from "@/hooks/useClickOutside"
 import { useEffect } from "react"
 import { Icon } from "./icon"
 
-interface Props {
+type Props = {
 	isOpen: boolean
 	onCloseDrawer: () => void
 	children: React.ReactNode

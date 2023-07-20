@@ -2,9 +2,13 @@ import NextLink from "next/link"
 import { Icon } from "./icon"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
+import { useRouter } from "next/router"
+import { useMergedClassName } from "@/hooks/useMergedClassName"
 
 export const Menu = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
+	const router = useRouter()
+	const mergedClassName = useMergedClassName()
 
 	return isLoggedInSession ? (
 		<div
@@ -15,20 +19,27 @@ export const Menu = () => {
 					href={"/"}
 					className="inline-flex flex-col items-center justify-center group text-white p-6"
 				>
-					<Icon name="home" />
+					<Icon name="home" fill={router.pathname === "/"} />
 				</NextLink>
 
 				<NextLink
 					href={"/add-movie"}
 					className="inline-flex flex-col items-center justify-center group text-white"
 				>
-					<Icon name="add_circle" className="text-4xl" fill />
+					<Icon
+						name="add_circle"
+						className="text-4xl"
+						fill={router.pathname === "/add-movie"}
+					/>
 				</NextLink>
 				<NextLink
 					href={"/settings"}
 					className="inline-flex flex-col items-center justify-center group text-white p-6"
 				>
-					<Icon name="manage_accounts" />
+					<Icon
+						name="manage_accounts"
+						fill={router.pathname === "/settings"}
+					/>
 				</NextLink>
 			</div>
 		</div>

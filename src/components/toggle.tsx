@@ -1,4 +1,4 @@
-interface Props {
+type Props = {
 	label?: string
 	isChecked: boolean
 	onToggle?: () => void

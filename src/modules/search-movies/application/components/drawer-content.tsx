@@ -3,7 +3,7 @@ import { AddMovieForm } from "./add-movie-form"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { MovieDetails } from "@/components/movie-details"
 
-interface Props {
+type Props = {
 	movie: SearchedMovie
 }
 

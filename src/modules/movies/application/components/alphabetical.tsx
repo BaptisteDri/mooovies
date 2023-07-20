@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react"
 import { Movie } from "@/types/movie"
 import { MovieItem } from "./movie-item"
 
-interface Props {
+type Props = {
 	movies: Movie[]
 	setSelectedMovie: (movie: Movie) => void
 }

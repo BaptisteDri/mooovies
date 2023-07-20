@@ -5,7 +5,7 @@ import { ShortenedText } from "@/components/shortened-text"
 import { Icon } from "@/components/icon"
 import Image from "next/image"
 
-interface Props {
+type Props = {
 	movie: SearchedMovie
 	setSelectedMovie: (movie: SearchedMovie) => void
 	alreadyAdded: boolean
@@ -19,7 +19,7 @@ export const SearchMovieItem = ({
 	return (
 		<li className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
 			<div className="flex">
-				<div className="rounded-lg overflow-hidden h-40 sm:h-60 aspect-[27/40] mr-3 sm:mr-4 table min-w-min relative bg-gray-700">
+				<div className="rounded-xl overflow-hidden h-40 sm:h-60 aspect-[27/40] mr-3 sm:mr-4 table min-w-min relative bg-gray-700">
 					<Image
 						src={usePosterFullPath(movie.posterPath)}
 						alt={movie.title}
@@ -53,9 +53,9 @@ export const SearchMovieItem = ({
 				<button
 					type="button"
 					onClick={() => setSelectedMovie(movie)}
-					className="font-medium rounded-lg text-sm px-3 py-2 ml-3 sm:ml-4 h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-center"
+					className="whitespace-nowrap font-medium rounded-lg text-sm px-3 py-2 ml-3 sm:ml-4 h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-center"
 				>
-					Ajouter
+					Ajouter à ma liste
 				</button>
 			)}
 		</li>

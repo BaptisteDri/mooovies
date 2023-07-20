@@ -1,5 +1,5 @@
 import { Movie, SearchedMovie } from "@/types/movie"
-import { useEffect, useState } from "react"
+import { useDeferredValue, useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
 import { searchMovies } from "@/modules/search-movies/domain/search-movies.actions"
@@ -8,20 +8,21 @@ import { selectMovies } from "@/modules/movies/domain/movies.selectors"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
+	const deferredQuery = useDeferredValue(query)
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [searchResultsMovies, setSearchResultsMovies] = useState<
 		SearchedMovie[]
 	>([])
 
 	useEffect(() => {
-		if (!query) return setSearchResultsMovies([])
+		if (!deferredQuery) return setSearchResultsMovies([])
 
 		const timer = setTimeout(() => {
 			_searchMovies()
 		}, 300)
 
 		return () => clearTimeout(timer)
-	}, [query])
+	}, [deferredQuery])
 
 	const movies: Movie[] | null = useAppSelector(selectMovies)
 

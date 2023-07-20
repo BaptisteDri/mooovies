@@ -8,7 +8,7 @@ import { DrawerContent } from "./components/drawer-content"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchMoviesSkeleton } from "./components/search-movies-skeleton"
 
-interface Props {
+type Props = {
 	query: string
 	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	searchResultsMovies: SearchedMovie[]

@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/config/store"
 import { selectAddMovieStatus } from "@/modules/movies/domain/movies.selectors"
 import { RequestStatus } from "@/types/request-status"
 
-interface Props {
+type Props = {
 	movie: InfraMovie
 }
 
@@ -44,7 +44,7 @@ export const AddMovie = ({ movie }: Props) => {
 			disabled={requestStatus === RequestStatus.LOADING}
 		>
 			{requestStatus === RequestStatus.LOADING && <Spinner />}
-			Ajouter à la liste
+			Ajouter à ma liste
 		</button>
 	)
 }

@@ -4,7 +4,7 @@ import { Toggle } from "@/components/toggle"
 import { useAppDispatch } from "@/config/store"
 import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
 
-interface Props {
+type Props = {
 	movie: Movie
 }
 

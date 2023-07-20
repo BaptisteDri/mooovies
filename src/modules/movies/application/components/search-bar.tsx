@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Icon } from "@/components/icon"
 
-interface Props {
+type Props = {
 	query: string
 	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	setFilter: (filter?: "SEEN" | "NOT_SEEN") => void
@@ -29,7 +29,7 @@ export const SearchBar = ({
 					</label>
 					<input
 						className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white placeholder-shown:text-ellipsis"
-						type="text"
+						type="search"
 						placeholder="Rechercher un titre, un réalisateur..."
 						id="search-input"
 						autoComplete="off"
