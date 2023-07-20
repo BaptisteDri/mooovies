@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { Icon } from "../icon"
 import { Link } from "./link"
 import { useAppSelector } from "@/config/store"
@@ -5,6 +6,7 @@ import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 
 export const Sidebar = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
+	const router = useRouter()
 
 	return (
 		<aside
@@ -13,7 +15,12 @@ export const Sidebar = () => {
 			aria-label="Sidebar"
 		>
 			<div className="h-full p-6 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-700">
-				<div className="text-gray-900 dark:text-white text-4xl font-bold mb-8">
+				<div
+					className="cursor-pointer text-gray-900 dark:text-white text-2xl font-bold mb-8 flex items-center gap-3"
+					role="link"
+					onClick={() => router.push("/")}
+				>
+					<img src={"/mooovies_logo.svg"} className="rounded" />
 					Mooovies
 				</div>
 				{isLoggedInSession ? (
