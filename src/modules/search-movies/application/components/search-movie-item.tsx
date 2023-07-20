@@ -25,7 +25,7 @@ export const SearchMovieItem = ({
 						alt={movie.title}
 						fill
 						className="object-cover transition-all duration-150 opacity-100"
-						quality={10}
+						quality={1}
 					/>
 				</div>
 				<div>

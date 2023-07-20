@@ -22,7 +22,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 						alt={movie.title}
 						fill
 						className="object-cover"
-						quality={10}
+						quality={1}
 						loading="lazy"
 					/>
 				</div>
