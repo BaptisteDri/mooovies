@@ -2,8 +2,8 @@ import { SearchedMovie } from "@/types/movie"
 import {
 	directorFakes,
 	searchResultsFakes,
-} from "../infrastructure/search-movies.fakes"
-import { SearchMoviesInMemory } from "../infrastructure/search-movies.in-memory"
+} from "@/modules/search-movies/infrastructure/search-movies.fakes"
+import { SearchMoviesInMemory } from "@/modules/search-movies/infrastructure/search-movies.in-memory"
 import { searchMovies, getMovieCredits } from "./search-movies.actions"
 import { mapSearchMoviesToDomainModel } from "./search-movies.mapper"
 
@@ -12,6 +12,7 @@ describe("[search-movies] unit tests", () => {
 
 	beforeEach(() => {
 		searchMoviesOutput.setSearchResults(searchResultsFakes)
+		searchMoviesOutput.setSearchPersonResults(searchPersonResultsFakes)
 	})
 
 	describe("when the user wants to search for a movie", () => {
@@ -61,6 +62,32 @@ describe("[search-movies] unit tests", () => {
 
 			await expect(
 				getMovieCredits({ searchMoviesOutput, movieId })
+			).rejects.toThrowError()
+		})
+	})
+
+	describe("when the user wants to search for a movie related to a person", () => {
+		const query = ""
+
+		it("should get the result without error", async () => {
+			searchMoviesOutput.searchPersonResults(searchPersonResultsFakes)
+
+			const searchedPerson: SearchedPerson = await searchPerson({
+				searchMoviesOutput,
+				query,
+			})
+
+			const expectedSearchedMovies: SearchedPerson =
+				mapSearchMoviesToDomainModel(searchPersonResultsFakes)
+
+			expect(searchedPerson).toEqual(expectedSearchedMovies)
+		})
+
+		it("shouldn't get it and throw an error", async () => {
+			searchMoviesOutput.setSearchPersonResults(undefined)
+
+			await expect(
+				searchPerson({ searchMoviesOutput, query })
 			).rejects.toThrowError()
 		})
 	})

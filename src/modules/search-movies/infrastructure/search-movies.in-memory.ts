@@ -6,10 +6,18 @@ import { searchResultsFakes, directorFakes } from "./search-movies.fakes"
 
 export class SearchMoviesInMemory implements SearchMoviesOutput {
 	private searchResults: SearchResults | undefined = searchResultsFakes
+	private searchPersonResults: SearchPersonResults | undefined =
+		searchPersonResultsFakes
 	private director: string[] | undefined = directorFakes
 
 	setSearchResults(searchResults: SearchResults | undefined): void {
 		this.searchResults = searchResults ?? undefined
+	}
+
+	setSearchPersonResults(
+		searchPersonResults: searchPersonResults | undefined
+	): void {
+		this.searchPersonResults = searchPersonResults ?? undefined
 	}
 
 	searchMovies({ query }: { query: string }): Promise<DomainSearchedMovie[]> {

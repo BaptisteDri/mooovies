@@ -27,6 +27,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 						className="object-cover"
 						quality={1}
 						loading="lazy"
+						sizes="100%"
 					/>
 				</div>
 				<div className="mt-2 text-ellipsis overflow-hidden whitespace-nowrap">
