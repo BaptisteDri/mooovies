@@ -1,4 +1,4 @@
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/types/movie"
 import { SearchMoviesOutput } from "./search-movies.output"
 
 export const searchMovies = async ({
@@ -10,6 +10,20 @@ export const searchMovies = async ({
 }): Promise<SearchedMovie[]> => {
 	try {
 		return await searchMoviesOutput.searchMovies({ query })
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}
+
+export const searchPersons = async ({
+	searchMoviesOutput,
+	query,
+}: {
+	searchMoviesOutput: SearchMoviesOutput
+	query: string
+}): Promise<SearchedPerson[]> => {
+	try {
+		return await searchMoviesOutput.searchPersons({ query })
 	} catch (error: any) {
 		throw new Error(error)
 	}

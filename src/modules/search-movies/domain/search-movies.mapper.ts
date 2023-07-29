@@ -1,5 +1,8 @@
-import { SearchedMovie } from "@/types/movie"
-import { SearchResults } from "../infrastructure/search-movies"
+import { SearchedMovie, SearchedPerson } from "@/types/movie"
+import {
+	SearchPersonsResults,
+	SearchResults,
+} from "../infrastructure/search-movies"
 
 export const mapSearchMoviesToDomainModel = (
 	searchResults: SearchResults
@@ -14,3 +17,8 @@ export const mapSearchMoviesToDomainModel = (
 		releaseDate: searchedMovie.release_date,
 		title: searchedMovie.title,
 	}))
+
+export const mapSearchPersonsToDomainModel = (
+	searchPersonsResults: SearchPersonsResults
+): SearchedPerson[] =>
+	searchPersonsResults.results.map((searchedPerson) => searchedPerson)

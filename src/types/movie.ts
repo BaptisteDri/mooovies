@@ -22,3 +22,5 @@ export type SearchedMovie = {
 	releaseDate: string
 	title: string
 }
+
+export type SearchedPerson = {}

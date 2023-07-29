@@ -12,3 +12,9 @@ export type SearchedMovie = {
 export type SearchResults = {
 	results: SearchedMovie[]
 }
+
+export type SearchedPerson = {}
+
+export type SearchPersonsResults = {
+	results: SearchedPerson[]
+}

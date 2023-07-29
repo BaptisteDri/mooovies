@@ -11,8 +11,14 @@ const searchedMovie: SearchedMovie = {
 	title: "Do the Right Thing",
 }
 
+const searchedPerson = {}
+
 export const searchResultsFakes: SearchResults = {
 	results: [searchedMovie],
+}
+
+export const searchPersonsResultsFakes = {
+	results: [searchedPerson],
 }
 
 export const directorFakes: string[] = ["Spike Lee", "Scorsese"]

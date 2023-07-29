@@ -1,18 +1,26 @@
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/types/movie"
 import {
 	directorFakes,
 	searchResultsFakes,
+	searchPersonsResultsFakes,
 } from "@/modules/search-movies/infrastructure/search-movies.fakes"
 import { SearchMoviesInMemory } from "@/modules/search-movies/infrastructure/search-movies.in-memory"
-import { searchMovies, getMovieCredits } from "./search-movies.actions"
-import { mapSearchMoviesToDomainModel } from "./search-movies.mapper"
+import {
+	searchMovies,
+	getMovieCredits,
+	searchPersons,
+} from "./search-movies.actions"
+import {
+	mapSearchMoviesToDomainModel,
+	mapSearchPersonsToDomainModel,
+} from "./search-movies.mapper"
 
 describe("[search-movies] unit tests", () => {
 	const searchMoviesOutput = new SearchMoviesInMemory()
 
 	beforeEach(() => {
 		searchMoviesOutput.setSearchResults(searchResultsFakes)
-		searchMoviesOutput.setSearchPersonResults(searchPersonResultsFakes)
+		searchMoviesOutput.setSearchPersonsResults(searchPersonsResultsFakes)
 	})
 
 	describe("when the user wants to search for a movie", () => {
@@ -70,24 +78,26 @@ describe("[search-movies] unit tests", () => {
 		const query = ""
 
 		it("should get the result without error", async () => {
-			searchMoviesOutput.searchPersonResults(searchPersonResultsFakes)
+			searchMoviesOutput.setSearchPersonsResults(
+				searchPersonsResultsFakes
+			)
 
-			const searchedPerson: SearchedPerson = await searchPerson({
+			const searchedPerson: SearchedPerson = await searchPersons({
 				searchMoviesOutput,
 				query,
 			})
 
 			const expectedSearchedMovies: SearchedPerson =
-				mapSearchMoviesToDomainModel(searchPersonResultsFakes)
+				mapSearchPersonsToDomainModel(searchPersonsResultsFakes)
 
 			expect(searchedPerson).toEqual(expectedSearchedMovies)
 		})
 
 		it("shouldn't get it and throw an error", async () => {
-			searchMoviesOutput.setSearchPersonResults(undefined)
+			searchMoviesOutput.setSearchPersonsResults(undefined)
 
 			await expect(
-				searchPerson({ searchMoviesOutput, query })
+				searchPersons({ searchMoviesOutput, query })
 			).rejects.toThrowError()
 		})
 	})
