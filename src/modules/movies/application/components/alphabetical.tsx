@@ -59,14 +59,14 @@ export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 							<h2
 								className={`${
 									movies.length > 0
-										? "text-gray-900 dark:text-white"
-										: "text-gray-500 dark:text-gray-400"
+										? "text-white"
+										: "text-gray-400"
 								} font-bold text-lg`}
 							>
 								{letter}
 							</h2>
 							{movies.length > 0 && (
-								<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-6 mt-4">
+								<ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 mt-4">
 									{movies.map((movie: Movie, i: number) => (
 										<MovieItem
 											key={i}

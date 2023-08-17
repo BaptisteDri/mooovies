@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const GenresList = ({ genreIds }: Props) => (
-	<div className="inline-flex items-center text-base gap-4 font-semibold text-gray-900 dark:text-white">
+	<div className="inline-flex items-center text-base gap-4 font-semibold text-white">
 		{genreIds.map((genreId) => (
 			<div
 				key={genreId}

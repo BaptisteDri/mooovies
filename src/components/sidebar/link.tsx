@@ -20,10 +20,11 @@ export const Link = ({ content, icon, path }: Props) => {
 	return (
 		<li>
 			<NextLink
+				scroll={false}
 				href={path}
 				className={mergedClassName(
-					"flex items-center px-2 py-3 rounded-lg text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700",
-					isActive && "bg-gray-50 dark:bg-gray-700 font-bold"
+					"flex items-center px-2 py-3 rounded-lg text-white hover:bg-gray-700",
+					isActive && "bg-gray-700 font-bold"
 				)}
 			>
 				<span
@@ -31,8 +32,8 @@ export const Link = ({ content, icon, path }: Props) => {
 						isActive ? { fontVariationSettings: "'FILL' 1" } : {}
 					}
 					className={mergedClassName(
-						"w-6 h-6 transition duration-75 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white",
-						isActive && "dark:text-white"
+						"w-6 h-6 transition duration-75 text-gray-400 group-hover:text-white",
+						isActive && "text-white"
 					)}
 				>
 					{icon}

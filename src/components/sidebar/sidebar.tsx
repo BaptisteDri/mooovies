@@ -14,9 +14,9 @@ export const Sidebar = () => {
 			className="fixed top-0 left-0 z-40 w-64 h-screen"
 			aria-label="Sidebar"
 		>
-			<div className="h-full p-6 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-700">
+			<div className="h-full p-6 overflow-y-auto bg-gray-800 border-r border-gray-700">
 				<div
-					className="cursor-pointer text-gray-900 dark:text-white text-2xl font-bold mb-8 flex items-center gap-3"
+					className="cursor-pointer text-white text-2xl font-bold mb-8 flex items-center gap-3"
 					role="link"
 					onClick={() => router.push("/")}
 				>

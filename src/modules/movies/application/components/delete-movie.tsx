@@ -21,7 +21,7 @@ export const DeleteMovie = ({ movie }: Props) => {
 	return (
 		<button
 			onClick={() => _deleteMovie()}
-			className="flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+			className="flex items-center px-4 py-2 text-sm font-medium text-center border rounded-lg focus:outline-none focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700"
 			disabled={requestStatus === RequestStatus.LOADING}
 		>
 			{requestStatus === RequestStatus.LOADING && <Spinner />}

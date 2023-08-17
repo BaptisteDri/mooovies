@@ -51,8 +51,8 @@ export const OrderedByDate = ({ movies, setSelectedMovie }: Props) => {
 							<h2
 								className={`${
 									movies.length > 0
-										? "text-gray-900 dark:text-white"
-										: "text-gray-500 dark:text-gray-400"
+										? "text-white"
+										: "text-gray-400"
 								} font-bold text-lg`}
 							>
 								{movies[0].year}

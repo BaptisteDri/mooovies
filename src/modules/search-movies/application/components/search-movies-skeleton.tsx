@@ -11,11 +11,11 @@ export const SearchMoviesSkeleton = () => {
 }
 
 const SearchMoviesSkeletonItem = () => (
-	<div className="flex justify-between py-4 border-b border-gray-200 dark:border-gray-800 last-of-type:border-none">
+	<div className="flex justify-between py-4 border-b border-gray-800 last-of-type:border-none">
 		<div className="flex w-full">
 			<div className="flex items-center bg-gray-700 justify-center rounded-lg overflow-hidden h-40 sm:h-60 aspect-[27/40] mr-3 sm:mr-4 min-w-min">
 				<svg
-					className="w-10 h-10 text-gray-200 dark:text-gray-500"
+					className="w-10 h-10 text-gray-500"
 					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					fill="currentColor"
@@ -25,13 +25,13 @@ const SearchMoviesSkeletonItem = () => (
 				</svg>
 			</div>
 			<div className="w-full">
-				<div className="h-7 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full mb-2"></div>
-				<div className="h-5 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full mb-3"></div>
-				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></div>
-				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></div>
-				<div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+				<div className="h-7 rounded-full bg-gray-700 max-w-full mb-2" />
+				<div className="h-5 rounded-full bg-gray-700 max-w-full mb-3" />
+				<div className="h-3 rounded-full bg-gray-700 w-full mb-2" />
+				<div className="h-3 rounded-full bg-gray-700 w-full mb-2" />
+				<div className="h-3 rounded-full bg-gray-700 w-full" />
 			</div>
 		</div>
-		<div className="ml-3 sm:ml-4 h-9 bg-gray-200 rounded-full dark:bg-gray-700 w-20 max-w-full mb-2"></div>
+		<div className="ml-3 sm:ml-4 h-9  rounded-full bg-gray-700 w-20 max-w-full mb-2" />
 	</div>
 )

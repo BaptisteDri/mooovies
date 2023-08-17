@@ -12,10 +12,7 @@ export const SearchInput = ({ query, handleOnQueryChange }: Props) => {
 				htmlFor="search-input"
 				className="flex items-center justify-center absolute left-2 top-0 bottom-0"
 			>
-				<Icon
-					name="search"
-					className="w-6 h-6 text-gray-500 dark:text-gray-400"
-				/>
+				<Icon name="search" className="w-6 h-6 text-gray-400" />
 			</label>
 			<input
 				value={query}
