@@ -23,4 +23,10 @@ export type SearchedMovie = {
 	title: string
 }
 
-export type SearchedPerson = {}
+export type SearchedPerson = {
+	knownFor: SearchedMovie[]
+	knownForDepartment: string
+	name: string
+	originalName: string
+	profilePath: string
+}

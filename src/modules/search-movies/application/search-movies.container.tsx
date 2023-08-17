@@ -1,8 +1,11 @@
-import { Movie, SearchedMovie } from "@/types/movie"
+import { Movie, SearchedMovie, SearchedPerson } from "@/types/movie"
 import { useDeferredValue, useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"
-import { searchMovies } from "@/modules/search-movies/domain/search-movies.actions"
+import {
+	searchMovies,
+	searchPersons,
+} from "@/modules/search-movies/domain/search-movies.actions"
 import { useAppSelector } from "@/config/store"
 import { selectMovies } from "@/modules/movies/domain/movies.selectors"
 
@@ -13,7 +16,8 @@ export const SearchMoviesContainer = () => {
 	const [searchResultsMovies, setSearchResultsMovies] = useState<
 		SearchedMovie[]
 	>([])
-
+	const [searchResultsPerson, setSearchResultsPerson] =
+		useState<SearchedPerson>()
 	useEffect(() => {
 		if (!deferredQuery) return setSearchResultsMovies([])
 
@@ -33,6 +37,11 @@ export const SearchMoviesContainer = () => {
 
 		try {
 			const moviesData = await searchMovies({ searchMoviesOutput, query })
+			const personsData = await searchPersons({
+				searchMoviesOutput,
+				query,
+			})
+			setSearchResultsPerson(personsData[0])
 			setSearchResultsMovies(moviesData)
 			setIsLoading(false)
 		} catch (error: any) {
@@ -50,6 +59,7 @@ export const SearchMoviesContainer = () => {
 			query={query}
 			handleOnQueryChange={handleOnQueryChange}
 			searchResultsMovies={searchResultsMovies}
+			searchResultsPerson={searchResultsPerson}
 			movies={movies ?? []}
 			isLoading={isLoading}
 		/>

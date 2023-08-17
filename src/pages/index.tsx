@@ -14,13 +14,13 @@ const IndexPage: NextPage = () => {
 	return (
 		<>
 			<Head />
-
 			<SessionProvider>
 				<Layout
-					content={<MoviesListContainer />}
 					title={"Mes films"}
 					headerContent={<ShareButton url={url} />}
-				/>
+				>
+					<MoviesListContainer />
+				</Layout>
 			</SessionProvider>
 		</>
 	)

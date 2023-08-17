@@ -82,15 +82,15 @@ describe("[search-movies] unit tests", () => {
 				searchPersonsResultsFakes
 			)
 
-			const searchedPerson: SearchedPerson = await searchPersons({
+			const searchedPersons: SearchedPerson[] = await searchPersons({
 				searchMoviesOutput,
 				query,
 			})
 
-			const expectedSearchedMovies: SearchedPerson =
+			const expectedSearchedPersons: SearchedPerson[] =
 				mapSearchPersonsToDomainModel(searchPersonsResultsFakes)
 
-			expect(searchedPerson).toEqual(expectedSearchedMovies)
+			expect(searchedPersons).toEqual(expectedSearchedPersons)
 		})
 
 		it("shouldn't get it and throw an error", async () => {

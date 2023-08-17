@@ -10,7 +10,9 @@ const AddMoviePage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<Layout content={<SearchMoviesContainer />} />
+				<Layout>
+					<SearchMoviesContainer />
+				</Layout>
 			</SessionProvider>
 		</>
 	)

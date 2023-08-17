@@ -23,7 +23,13 @@ export const searchPersons = async ({
 	query: string
 }): Promise<SearchedPerson[]> => {
 	try {
-		return await searchMoviesOutput.searchPersons({ query })
+		const persons = await searchMoviesOutput.searchPersons({ query })
+
+		return persons.filter(
+			(person) =>
+				person.knownForDepartment === "Acting" ||
+				person.knownForDepartment === "Directing"
+		)
 	} catch (error: any) {
 		throw new Error(error)
 	}

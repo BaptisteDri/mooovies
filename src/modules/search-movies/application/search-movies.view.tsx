@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Movie, SearchedMovie } from "@/types/movie"
+import { Movie, SearchedMovie, SearchedPerson } from "@/types/movie"
 import { Placeholder } from "./components/placeholder"
 import { SearchInput } from "./components/search-input"
 import { SearchMovieItem } from "./components/search-movie-item"
@@ -12,6 +12,7 @@ type Props = {
 	query: string
 	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	searchResultsMovies: SearchedMovie[]
+	searchResultsPerson?: SearchedPerson
 	movies: Movie[]
 	isLoading: boolean
 }
@@ -20,6 +21,7 @@ export const SearchMoviesView = ({
 	query,
 	handleOnQueryChange,
 	searchResultsMovies,
+	searchResultsPerson,
 	movies,
 	isLoading,
 }: Props) => {
@@ -43,6 +45,9 @@ export const SearchMoviesView = ({
 				query={query}
 				handleOnQueryChange={handleOnQueryChange}
 			/>
+			{searchResultsPerson && (
+				<div className="text-white"> {searchResultsPerson.name}</div>
+			)}
 			{searchResultsMovies.length > 0 ? (
 				<ul>
 					{searchResultsMovies.map((movie: SearchedMovie) =>

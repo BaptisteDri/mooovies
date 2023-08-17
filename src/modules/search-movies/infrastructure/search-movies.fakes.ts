@@ -1,4 +1,4 @@
-import { SearchResults, SearchedMovie } from "./search-movies"
+import { SearchResults, SearchedMovie, SearchedPerson } from "./search-movies"
 
 const searchedMovie: SearchedMovie = {
 	genre_ids: [1, 2, 3],
@@ -11,7 +11,13 @@ const searchedMovie: SearchedMovie = {
 	title: "Do the Right Thing",
 }
 
-const searchedPerson = {}
+const searchedPerson: SearchedPerson = {
+	known_for: [searchedMovie],
+	known_for_department: "Directing",
+	name: "Spike Lee",
+	original_name: "Spike Lee",
+	profile_path: "",
+}
 
 export const searchResultsFakes: SearchResults = {
 	results: [searchedMovie],

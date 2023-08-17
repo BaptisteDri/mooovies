@@ -22,9 +22,9 @@ export const MoviesListContainer = () => {
 		: router.query.userId?.toString()
 
 	useEffect(() => {
-		if (!userId) return
+		if (!userId || movies) return
 
-		userId && _getMovies()
+		_getMovies()
 	}, [userId])
 
 	const _getMovies = async () => {

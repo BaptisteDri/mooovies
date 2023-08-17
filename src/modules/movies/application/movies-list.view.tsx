@@ -4,6 +4,8 @@ import { Alphabetical } from "./components/alphabetical"
 import { Drawer } from "@/components/drawer"
 import { DrawerContent } from "./components/drawer-content"
 import { SearchBar } from "./components/search-bar"
+import { OrderedByGenres } from "./components/ordered-by-genres"
+import { OrderedByDate } from "./components/ordered-by-date"
 
 type Props = {
 	movies: Movie[]
@@ -61,6 +63,28 @@ export const MoviesListView = ({ movies }: Props) => {
 				setFilter={setFilter}
 				filter={filter}
 			/>
+			{/* <OrderedByDate
+				movies={
+					deferredQuery
+						? getSearchedMovies(
+								getFilteredMovies(movies),
+								deferredQuery
+						  )
+						: getFilteredMovies(movies)
+				}
+				setSelectedMovie={setSelectedMovie}
+			/> */}
+			{/* <OrderedByGenres
+				movies={
+					deferredQuery
+						? getSearchedMovies(
+								getFilteredMovies(movies),
+								deferredQuery
+						  )
+						: getFilteredMovies(movies)
+				}
+				setSelectedMovie={setSelectedMovie}
+			/> */}
 			<Alphabetical
 				movies={
 					deferredQuery

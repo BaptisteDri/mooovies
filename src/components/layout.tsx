@@ -3,12 +3,12 @@ import { Sidebar } from "./sidebar/sidebar"
 import { Title } from "./title"
 
 type Props = {
-	content: React.ReactNode
+	children: React.ReactNode
 	title?: string
 	headerContent?: React.ReactNode
 }
 
-export const Layout = ({ content, title, headerContent }: Props) => (
+export const Layout = ({ title, headerContent, children }: Props) => (
 	<main>
 		<span className="hidden sm:block">
 			<Sidebar />
@@ -18,7 +18,7 @@ export const Layout = ({ content, title, headerContent }: Props) => (
 				{title && <Title content={title} />}
 				{headerContent}
 			</div>
-			{content}
+			{children}
 		</div>
 		<span className="sm:hidden">
 			<Menu />
