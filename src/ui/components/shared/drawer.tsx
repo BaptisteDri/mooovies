@@ -1,4 +1,4 @@
-import { useClickOutside } from "@/hooks/useClickOutside"
+import { useClickOutside } from "@/ui/hooks/use-click-outside"
 import { useEffect } from "react"
 import { Icon } from "./icon"
 

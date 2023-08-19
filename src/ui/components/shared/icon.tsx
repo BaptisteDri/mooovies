@@ -1,4 +1,4 @@
-import { useMergedClassName } from "@/hooks/useMergedClassName"
+import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 
 type Props = {
 	name: string
@@ -6,12 +6,12 @@ type Props = {
 } & React.HTMLAttributes<HTMLSpanElement>
 
 export const Icon = ({ className, name, fill, ...props }: Props) => {
-	const mergedClassName = useMergedClassName()
+	const mCn = useMergedClassName()
 
 	return (
 		<span
 			{...props}
-			className={mergedClassName("material-symbols-rounded", className)}
+			className={mCn("material-symbols-rounded", className)}
 			style={fill ? { fontVariationSettings: "'FILL' 1" } : {}}
 		>
 			{name}

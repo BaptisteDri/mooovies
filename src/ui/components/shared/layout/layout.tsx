@@ -1,6 +1,6 @@
 import { Menu } from "./menu"
-import { Sidebar } from "./shared/sidebar/sidebar"
-import { Title } from "./title"
+import { Sidebar } from "./sidebar/sidebar"
+import { Title } from "../title"
 
 type Props = {
 	children: React.ReactNode

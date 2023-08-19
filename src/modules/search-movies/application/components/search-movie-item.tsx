@@ -1,6 +1,6 @@
-import { useYearFromDate } from "@/hooks/useYearFromDate"
+import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { SearchedMovie } from "@/types/movie"
-import { usePosterFullPath } from "@/hooks/usePosterFullPath"
+import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import { ShortenedText } from "@/ui/components/shortened-text"
 import { Icon } from "@/ui/components/shared/icon"
 import Image from "next/image"

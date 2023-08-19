@@ -1,4 +1,4 @@
-import { useGenre } from "@/hooks/useGenre"
+import { useGenre } from "@/ui/hooks/use-genre"
 
 type Props = {
 	genreIds: number[] | string[]

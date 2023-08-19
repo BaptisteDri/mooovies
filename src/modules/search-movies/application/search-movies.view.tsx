@@ -5,7 +5,7 @@ import { SearchInput } from "./components/search-input"
 import { SearchMovieItem } from "./components/search-movie-item"
 import { Drawer } from "@/ui/components/shared/drawer"
 import { DrawerContent } from "./components/drawer-content"
-import { useYearFromDate } from "@/hooks/useYearFromDate"
+import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { SearchMoviesSkeleton } from "./components/search-movies-skeleton"
 
 type Props = {

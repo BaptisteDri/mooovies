@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import NextLink from "next/link"
-import { useMergedClassName } from "@/hooks/useMergedClassName"
+import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 import { useMemo } from "react"
 
 type Props = {
@@ -15,14 +15,14 @@ export const Link = ({ content, icon, path }: Props) => {
 		() => router.pathname === path,
 		[path, router.pathname]
 	)
-	const mergedClassName = useMergedClassName()
+	const mCn = useMergedClassName()
 
 	return (
 		<li>
 			<NextLink
 				scroll={false}
 				href={path}
-				className={mergedClassName(
+				className={mCn(
 					"flex items-center px-2 py-3 rounded-lg text-white hover:bg-gray-700",
 					isActive && "bg-gray-700 font-bold"
 				)}
@@ -31,7 +31,7 @@ export const Link = ({ content, icon, path }: Props) => {
 					style={
 						isActive ? { fontVariationSettings: "'FILL' 1" } : {}
 					}
-					className={mergedClassName(
+					className={mCn(
 						"w-6 h-6 transition duration-75 text-gray-400 group-hover:text-white",
 						isActive && "text-white"
 					)}

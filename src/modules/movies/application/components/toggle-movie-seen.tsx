@@ -1,8 +1,8 @@
 import { Movie } from "@/types/movie"
 import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
-import { Toggle } from "@/ui/components/toggle"
+import { Toggle } from "@/ui/components/shared/form/toggle"
 import { useAppDispatch } from "@/config/store"
-import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
+import { mapMovieToInfraModel } from "@/modules/movies/infrastructure/movies.mapper"
 
 type Props = {
 	movie: Movie

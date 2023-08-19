@@ -8,7 +8,7 @@ import {
 	selectSignUpError,
 	selectSignUpStatus,
 } from "@/modules/auth/auth.selectors"
-import { Spinner } from "@/ui/components/spinner"
+import { Spinner } from "@/ui/components/shared/spinner"
 
 export const SignUp: NextPage = () => {
 	const dispatch = useAppDispatch()

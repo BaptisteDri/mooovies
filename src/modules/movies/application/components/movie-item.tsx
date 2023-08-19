@@ -1,8 +1,8 @@
 import { Movie } from "@/types/movie"
 import { Icon } from "@/ui/components/shared/icon"
-import { usePosterFullPath } from "@/hooks/usePosterFullPath"
+import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import Image from "next/image"
-import { useMergedClassName } from "@/hooks/useMergedClassName"
+import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 
 type Props = {
 	movie: Movie
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
-	const mergedClassName = useMergedClassName()
+	const mCn = useMergedClassName()
 
 	return (
 		<li
@@ -29,7 +29,7 @@ export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 			/>
 
 			<div
-				className={mergedClassName(
+				className={mCn(
 					"top-0 right-0 absolute bg-blue-600 h-7 w-7 rounded-bl-xl flex items-center justify-center drop-shadow-lg translate-x-full -translate-y-full rotate-90 ease-in-out transition-all duration-150",
 					movie.isSeen && "translate-x-0 rotate-0 translate-y-0"
 				)}

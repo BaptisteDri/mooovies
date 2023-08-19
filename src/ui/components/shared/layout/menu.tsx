@@ -1,14 +1,12 @@
 import NextLink from "next/link"
-import { Icon } from "./shared/icon"
+import { Icon } from "@/ui/components/shared/icon"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 import { useRouter } from "next/router"
-import { useMergedClassName } from "@/hooks/useMergedClassName"
 
 export const Menu = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
 	const router = useRouter()
-	const mergedClassName = useMergedClassName()
 
 	return isLoggedInSession ? (
 		<div

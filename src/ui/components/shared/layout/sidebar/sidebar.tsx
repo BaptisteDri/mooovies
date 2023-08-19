@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { Icon } from "../icon"
+import { Icon } from "../../icon"
 import { Link } from "./link"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"

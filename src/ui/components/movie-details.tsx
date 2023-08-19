@@ -1,5 +1,5 @@
 import { GenresList } from "@/ui/components/shared/genres-list"
-import { useLanguageFullName } from "@/hooks/useLanguageFullName"
+import { useLanguageFullName } from "@/ui/hooks/use-language-fullname"
 import { ShortenedText } from "./shortened-text"
 
 type Props = {
