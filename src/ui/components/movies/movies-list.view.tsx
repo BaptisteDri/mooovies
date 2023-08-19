@@ -8,7 +8,7 @@ import { OrderedByGenres } from "@/ui/components/movies/ordered-by-genres"
 import { OrderedByDate } from "@/ui/components/movies/ordered-by-date"
 
 type Props = {
-	movies: Movie[]
+	movies?: Movie[] | null
 }
 
 export const MoviesListView = ({ movies }: Props) => {
@@ -22,6 +22,8 @@ export const MoviesListView = ({ movies }: Props) => {
 	)
 
 	useEffect(() => {
+		if (!movies) return
+
 		selectedMovie &&
 			setSelectedMovie(
 				movies.find((movie) => movie.id === selectedMovie.id)
@@ -85,17 +87,19 @@ export const MoviesListView = ({ movies }: Props) => {
 				}
 				setSelectedMovie={setSelectedMovie}
 			/> */}
-			<Alphabetical
-				movies={
-					deferredQuery
-						? getSearchedMovies(
-								getFilteredMovies(movies),
-								deferredQuery
-						  )
-						: getFilteredMovies(movies)
-				}
-				setSelectedMovie={setSelectedMovie}
-			/>
+			{movies && (
+				<Alphabetical
+					movies={
+						deferredQuery
+							? getSearchedMovies(
+									getFilteredMovies(movies),
+									deferredQuery
+							  )
+							: getFilteredMovies(movies)
+					}
+					setSelectedMovie={setSelectedMovie}
+				/>
+			)}
 
 			<Drawer
 				isOpen={selectedMovie !== undefined}

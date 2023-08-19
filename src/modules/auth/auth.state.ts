@@ -1,4 +1,4 @@
-import { CustomError } from "@/modules/shared/types/error"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 import { Session } from "@/modules/shared/types/user"
 import { RequestStatus } from "@/modules/shared/types/request-status"
 

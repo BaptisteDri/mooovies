@@ -3,7 +3,7 @@ import { RequestStatus } from "@/modules/shared/types/request-status"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/config/store"
 import { signUp } from "@/modules/auth/auth.actions"
-import { CustomError } from "@/modules/shared/types/error"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 import {
 	selectSignUpError,
 	selectSignUpStatus,

@@ -1,7 +1,7 @@
 import { AuthState } from "@/modules/auth/auth.state"
 import { PayloadAction } from "@reduxjs/toolkit"
 import { Session } from "@/modules/shared/types/user"
-import { CustomError } from "@/modules/shared/types/error"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 import { RequestStatus } from "@/modules/shared/types/request-status"
 import { AuthCallTypes } from "@/modules/auth/auth.call-types"
 

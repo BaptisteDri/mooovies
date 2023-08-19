@@ -1,7 +1,7 @@
 import { RootState } from "@/config/store"
 import { Session, User } from "@/modules/shared/types/user"
 import { createSelector } from "reselect"
-import { CustomError } from "@/modules/shared/types/error"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 import { RequestStatus } from "@/modules/shared/types/request-status"
 
 export const selectLocalSessionData = (): Session | null => {

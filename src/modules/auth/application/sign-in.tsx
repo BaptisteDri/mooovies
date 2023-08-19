@@ -8,7 +8,7 @@ import {
 	selectSignInError,
 	selectSignInStatus,
 } from "@/modules/auth/auth.selectors"
-import { CustomError } from "@/modules/shared/types/error"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 import { Spinner } from "@/ui/components/shared/spinner"
 import Link from "next/link"
 
