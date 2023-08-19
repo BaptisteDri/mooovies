@@ -9,7 +9,7 @@ import {
 	selectSignInStatus,
 } from "@/modules/auth/auth.selectors"
 import { CustomError } from "@/types/error"
-import { Spinner } from "@/components/spinner"
+import { Spinner } from "@/ui/components/spinner"
 import Link from "next/link"
 
 export const SignIn = () => {

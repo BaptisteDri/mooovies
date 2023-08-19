@@ -4,7 +4,7 @@ import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { SearchedMovie } from "@/types/movie"
-import { Toggle } from "@/components/toggle"
+import { Toggle } from "@/ui/components/toggle"
 
 type Props = {
 	movie: SearchedMovie

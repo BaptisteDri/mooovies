@@ -1,5 +1,5 @@
 import { Movie } from "@/types/movie"
-import { Icon } from "@/components/icon"
+import { Icon } from "@/ui/components/shared/icon"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
 import Image from "next/image"
 import { useMergedClassName } from "@/hooks/useMergedClassName"

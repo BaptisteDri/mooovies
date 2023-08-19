@@ -1,9 +1,9 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/head"
-import { SessionProvider } from "@/components/session-provider"
-import { Layout } from "@/components/layout"
+import { Head } from "@/ui/components/head"
+import { SessionProvider } from "@/ui/components/session-provider"
+import { Layout } from "@/ui/components/layout"
 import { MoviesListContainer } from "@/modules/movies/application/movies-list.container"
-import { ShareButton } from "@/components/share-button"
+import { ShareButton } from "@/ui/components/share-button"
 import { Session } from "@/types/user"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 

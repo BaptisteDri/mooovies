@@ -1,7 +1,7 @@
 import { SearchedMovie } from "@/types/movie"
 import { AddMovieForm } from "./add-movie-form"
 import { useYearFromDate } from "@/hooks/useYearFromDate"
-import { MovieDetails } from "@/components/movie-details"
+import { MovieDetails } from "@/ui/components/movie-details"
 
 type Props = {
 	movie: SearchedMovie

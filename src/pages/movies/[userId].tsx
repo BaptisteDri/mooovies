@@ -1,5 +1,5 @@
-import { Head } from "@/components/head"
-import { Layout } from "@/components/layout"
+import { Head } from "@/ui/components/head"
+import { Layout } from "@/ui/components/layout"
 import { MoviesListContainer } from "@/modules/movies/application/movies-list.container"
 import type { NextPage } from "next"
 

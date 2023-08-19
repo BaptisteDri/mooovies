@@ -1,4 +1,4 @@
-import { Icon } from "@/components/icon"
+import { Icon } from "@/ui/components/shared/icon"
 
 type Props = {
 	query: string

@@ -1,5 +1,5 @@
 import { deleteMovie } from "@/modules/movies/domain/movies.actions"
-import { Spinner } from "@/components/spinner"
+import { Spinner } from "@/ui/components/spinner"
 import { useAppDispatch, useAppSelector } from "@/config/store"
 import { selectDeleteMovieStatus } from "../../domain/movies.selectors"
 import { RequestStatus } from "@/types/request-status"

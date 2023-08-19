@@ -1,5 +1,5 @@
 import { Menu } from "./menu"
-import { Sidebar } from "./sidebar/sidebar"
+import { Sidebar } from "./shared/sidebar/sidebar"
 import { Title } from "./title"
 
 type Props = {

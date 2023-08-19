@@ -1,5 +1,4 @@
-import { toast } from "react-toastify"
-import { Icon } from "./icon"
+import { Icon } from "./shared/icon"
 
 type Props = {
 	url: string
@@ -9,10 +8,10 @@ export const ShareButton = ({ url }: Props) => {
 	const copyToClipboard = async () => {
 		try {
 			await navigator.clipboard.writeText(url)
-			toast("Lien copié dans le presse-papiers!", {
-				theme: "dark",
-				position: "top-center",
-			})
+			// toast("Lien copié dans le presse-papiers!", {
+			// 	theme: "dark",
+			// 	position: "top-center",
+			// })
 		} catch (error) {
 			console.error(
 				"Erreur lors de la copie dans le presse-papier :",

@@ -1,4 +1,4 @@
-import { GenresList } from "@/components/genres-list"
+import { GenresList } from "@/ui/components/shared/genres-list"
 import { useLanguageFullName } from "@/hooks/useLanguageFullName"
 import { ShortenedText } from "./shortened-text"
 

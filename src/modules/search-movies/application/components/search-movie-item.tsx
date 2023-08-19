@@ -1,8 +1,8 @@
 import { useYearFromDate } from "@/hooks/useYearFromDate"
 import { SearchedMovie } from "@/types/movie"
 import { usePosterFullPath } from "@/hooks/usePosterFullPath"
-import { ShortenedText } from "@/components/shortened-text"
-import { Icon } from "@/components/icon"
+import { ShortenedText } from "@/ui/components/shortened-text"
+import { Icon } from "@/ui/components/shared/icon"
 import Image from "next/image"
 
 type Props = {

@@ -3,7 +3,7 @@ import { useAppDispatch } from "@/config/store"
 import { signOut } from "@/modules/auth/auth.actions"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { Session } from "@/types/user"
-import { Icon } from "@/components/icon"
+import { Icon } from "@/ui/components/shared/icon"
 
 export const Settings = () => {
 	const router = useRouter()

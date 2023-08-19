@@ -1,6 +1,6 @@
 import { Movie } from "@/types/movie"
 import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
-import { Toggle } from "@/components/toggle"
+import { Toggle } from "@/ui/components/toggle"
 import { useAppDispatch } from "@/config/store"
 import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
 
