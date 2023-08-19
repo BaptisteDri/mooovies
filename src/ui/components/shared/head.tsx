@@ -4,10 +4,7 @@ export const Head = () => {
 	return (
 		<NextHead>
 			<title>Mooovies - trackez vos films</title>
-			<meta
-				name="description"
-				content="App started with nextjs supabase auth redux"
-			/>
+			<meta name="description" content="Mooovies - trackez vos films" />
 			<meta
 				name="viewport"
 				content="width=device-width, initial-scale=1.0"

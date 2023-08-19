@@ -3,6 +3,7 @@ import { Icon } from "@/ui/components/shared/icon"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import Image from "next/image"
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
+import { useRouter } from "next/router"
 
 type Props = {
 	movie: Movie
@@ -11,10 +12,12 @@ type Props = {
 
 export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
 	const mCn = useMergedClassName()
+	const { push } = useRouter()
 
 	return (
 		<li
-			onClick={() => setSelectedMovie(movie)}
+			// onClick={() => setSelectedMovie(movie)}
+			onClick={() => push(`movie/${movie.id}`)}
 			className="relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-gray-700"
 			role="button"
 		>

@@ -15,7 +15,7 @@ export const Layout = ({ title, headerContent, children }: Props) => (
 		</span>
 		<div className="p-6 sm:ml-64 mb-24 sm:mb-0">
 			<div className="flex justify-between items-center mb-4">
-				{title && <Title content={title} />}
+				{title && <Title>{title}</Title>}
 				{headerContent}
 			</div>
 			{children}

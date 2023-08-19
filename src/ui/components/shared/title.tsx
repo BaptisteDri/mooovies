@@ -1,7 +1,7 @@
 type Props = {
-	content: string
+	children: React.ReactNode
 }
 
-export const Title = ({ content }: Props) => (
-	<h1 className="text-white text-4xl font-bold">{content}</h1>
+export const Title = ({ children }: Props) => (
+	<h1 className="text-white text-4xl font-bold">{children}</h1>
 )
