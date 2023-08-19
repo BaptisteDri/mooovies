@@ -20,6 +20,7 @@ export const useGetUserMovies = ({
 		() => actions.movies.getUserMovies(dependencies)(getUserMoviesDto),
 		{
 			enabled,
+			staleTime: Infinity,
 			onError: (error: CustomError) => console.error(error),
 		}
 	)

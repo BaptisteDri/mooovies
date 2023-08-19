@@ -26,12 +26,3 @@ a {
 *:focus-visible {
 	outline-style: solid;
 }
-
-:root {
-	--toastify-color-dark: rgb(31 41 55);
-	--toastify-color-progress-dark: rgb(30 64 175);
-}
-
-.Toastify__toast {
-	border: solid 1px rgb(55 65 81);
-}

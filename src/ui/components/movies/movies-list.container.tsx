@@ -1,6 +1,4 @@
-import { useEffect } from "react"
 import { MoviesListView } from "./movies-list.view"
-import { Movie } from "@/modules/shared/types/movie"
 import {
 	selectIsLoggedInSession,
 	selectLocalSessionData,
