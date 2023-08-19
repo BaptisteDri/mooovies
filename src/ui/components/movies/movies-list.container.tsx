@@ -8,7 +8,7 @@ import {
 } from "@/modules/auth/auth.selectors"
 import { useRouter } from "next/router"
 import { useAppDispatch, useAppSelector } from "@/config/store"
-import { selectMovies } from "../domain/movies.selectors"
+import { selectMovies } from "../../../modules/movies/domain/movies.selectors"
 
 export const MoviesListContainer = () => {
 	const router = useRouter()

@@ -1,4 +1,4 @@
-import { Icon } from "./shared/icon"
+import { Icon } from "@/ui/components/shared/icon"
 
 type Props = {
 	url: string

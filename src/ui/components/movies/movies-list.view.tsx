@@ -1,11 +1,11 @@
 import { useDeferredValue, useEffect, useState } from "react"
 import { Movie } from "@/modules/shared/types/movie"
-import { Alphabetical } from "./components/alphabetical"
+import { Alphabetical } from "@/ui/components/movies/alphabetical"
 import { Drawer } from "@/ui/components/shared/drawer"
-import { DrawerContent } from "./components/drawer-content"
-import { SearchBar } from "./components/search-bar"
-import { OrderedByGenres } from "./components/ordered-by-genres"
-import { OrderedByDate } from "./components/ordered-by-date"
+import { DrawerContent } from "@/ui/components/movies/drawer-content"
+import { SearchBar } from "@/ui/components/movies/search-bar"
+import { OrderedByGenres } from "@/ui/components/movies/ordered-by-genres"
+import { OrderedByDate } from "@/ui/components/movies/ordered-by-date"
 
 type Props = {
 	movies: Movie[]

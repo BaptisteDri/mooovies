@@ -1,4 +1,4 @@
-import { MovieDetails } from "@/ui/components/movie-details"
+import { MovieDetails } from "@/ui/components/shared/movie-details"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
 import { Movie } from "@/modules/shared/types/movie"
