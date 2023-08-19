@@ -12,13 +12,12 @@ const MoviePage: NextPage = () => {
 
 	const userId = selectLocalSessionData()?.user.id
 	const { data: movies } = useGetUserMovies({
-		getUserMoviesDto: { userId: userId ?? "" },
+		getUserMoviesDto: { userId: userId ?? "", filter: "title" },
 		enabled: true,
 	})
 
 	const movie = useMemo(
-		() =>
-			movies?.find((movie) => movie.id === parseInt(query.id as string)),
+		() => movies?.find((movie) => movie.uuid === (query.id as string)),
 		[movies]
 	)
 

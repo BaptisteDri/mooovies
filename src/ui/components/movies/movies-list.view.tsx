@@ -12,23 +12,11 @@ type Props = {
 }
 
 export const MoviesListView = ({ movies }: Props) => {
-	const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>(
-		undefined
-	)
 	const [query, setQuery] = useState<string | undefined>(undefined)
 	const deferredQuery = useDeferredValue(query)
 	const [filter, setFilter] = useState<"SEEN" | "NOT_SEEN" | undefined>(
 		undefined
 	)
-
-	useEffect(() => {
-		if (!movies) return
-
-		selectedMovie &&
-			setSelectedMovie(
-				movies.find((movie) => movie.id === selectedMovie.id)
-			)
-	}, [movies])
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)
@@ -52,7 +40,7 @@ export const MoviesListView = ({ movies }: Props) => {
 
 	const getFilteredMovies = (movies: Movie[]) => {
 		if (!filter) return movies
-		const isSeen: boolean = filter === "SEEN"
+		const isSeen = filter === "SEEN"
 
 		return movies.filter((movie) => movie.isSeen === isSeen)
 	}
@@ -97,16 +85,8 @@ export const MoviesListView = ({ movies }: Props) => {
 							  )
 							: getFilteredMovies(movies)
 					}
-					setSelectedMovie={setSelectedMovie}
 				/>
 			)}
-
-			<Drawer
-				isOpen={selectedMovie !== undefined}
-				onCloseDrawer={() => setSelectedMovie(undefined)}
-			>
-				{selectedMovie && <DrawerContent movie={selectedMovie} />}
-			</Drawer>
 		</>
 	)
 }

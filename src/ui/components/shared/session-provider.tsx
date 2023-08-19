@@ -13,7 +13,7 @@ type SessionProviderProps = {
 }
 
 export const SessionProvider = ({ children }: SessionProviderProps) => {
-	const router = useRouter()
+	const { push } = useRouter()
 	const dispatch = useAppDispatch()
 
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
@@ -26,7 +26,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
 		const localSessionData: Session | null = selectLocalSessionData()
 
 		if (!localSessionData) {
-			router.push("/sign-in")
+			push("/sign-in")
 			return
 		}
 

@@ -17,7 +17,7 @@ export const SearchInput = ({ query, handleOnQueryChange }: Props) => {
 			<input
 				value={query}
 				onChange={handleOnQueryChange}
-				className="pl-10 w-full h-11 rounded-md px-4 bg-gray-800 border border-gray-700 text-white placeholder-shown:text-ellipsis"
+				className="pl-10 w-full h-11 rounded-2xl px-4 bg-gray-800 border border-gray-700 text-white placeholder-shown:text-ellipsis"
 				type="search"
 				placeholder="Rechercher un titre de film..."
 				id="search-input"

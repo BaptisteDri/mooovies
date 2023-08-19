@@ -3,6 +3,7 @@ import { Movie as MovieInfra } from "@/modules/movies/infrastructure/movies"
 
 export type GetUserMoviesDto = {
 	userId: string
+	filter: "title" | "year" | "director"
 }
 
 export type AddMovieDto = {

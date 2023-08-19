@@ -1,34 +1,38 @@
 import { Movie } from "@/modules/shared/types/movie"
-// import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
 import { Toggle } from "@/ui/components/shared/form/toggle"
-import { useAppDispatch } from "@/config/store"
 import { mapMovieToInfraModel } from "@/modules/movies/infrastructure/movies.mapper"
+import { useToggleMovieIsSeen } from "@/ui/hooks/movies/use-toggle-movie-is-seen"
+import { useEffect, useState } from "react"
 
 type Props = {
 	movie: Movie
 }
 
 export const ToggleMovieSeen = ({ movie }: Props) => {
-	const dispatch = useAppDispatch()
+	const [checked, setChecked] = useState(movie.isSeen)
+	const toggleMovieIsSeen = useToggleMovieIsSeen()
 
-	// const _onToggleMovieIsSeen = async () => {
-	// 	await dispatch(
-	// 		toggleMovieIsSeen({
-	// 			movie: mapMovieToInfraModel({
-	// 				...movie,
-	// 				isSeen: !movie.isSeen,
-	// 			}),
-	// 		})
-	// 	)
-	// }
+	const onToggleMovieIsSeen = () => {
+		if (toggleMovieIsSeen.isLoading) return
 
-	// return (
-	// 	<Toggle
-	// 		isChecked={movie.isSeen}
-	// 		onToggle={() => _onToggleMovieIsSeen()}
-	// 		label="Marquer comme vu"
-	// 	/>
-	// )
+		setChecked((checked) => !checked)
+		toggleMovieIsSeen.mutate({
+			movie: mapMovieToInfraModel({
+				...movie,
+				isSeen: !movie.isSeen,
+			}),
+		})
+	}
 
-	return <></>
+	useEffect(() => {
+		setChecked(movie.isSeen)
+	}, [toggleMovieIsSeen.isError])
+
+	return (
+		<Toggle
+			isChecked={checked}
+			onToggle={onToggleMovieIsSeen}
+			label="Marquer comme vu"
+		/>
+	)
 }

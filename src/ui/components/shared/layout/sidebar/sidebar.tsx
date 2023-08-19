@@ -6,7 +6,7 @@ import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 
 export const Sidebar = () => {
 	const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession)
-	const router = useRouter()
+	const { push } = useRouter()
 
 	return (
 		<aside
@@ -18,7 +18,7 @@ export const Sidebar = () => {
 				<div
 					className="cursor-pointer text-white text-2xl font-bold mb-8 flex items-center gap-3"
 					role="link"
-					onClick={() => router.push("/")}
+					onClick={() => push("/")}
 				>
 					<img src={"/mooovies_logo.svg"} className="rounded" />
 					Mooovies

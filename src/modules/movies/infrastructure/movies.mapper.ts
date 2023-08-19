@@ -9,7 +9,7 @@ export const mapMovieToInfraModel = (movie: Movie): InfraMovie => ({
 	poster: movie.poster,
 	title: movie.title,
 	year: movie.year,
-	id: movie.id,
+	uuid: movie.uuid,
 	original_language: movie.originalLanguage,
 	original_title: movie.originalTitle,
 	overview: movie.overview,

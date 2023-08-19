@@ -13,7 +13,7 @@ export const Layout = ({ title, headerContent, children }: Props) => (
 		<span className="hidden sm:block">
 			<Sidebar />
 		</span>
-		<div className="p-6 sm:ml-64 mb-24 sm:mb-0">
+		<div className="p-4 sm:p-6 sm:ml-64 mb-24 sm:mb-0">
 			<div className="flex justify-between items-center mb-4">
 				{title && <Title>{title}</Title>}
 				{headerContent}

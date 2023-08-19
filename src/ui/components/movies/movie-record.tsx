@@ -1,16 +1,17 @@
-import { useGetUserMovies } from "@/ui/hooks/movies/use-get-user-movies"
 import { MovieDetails } from "../shared/movie-details"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
-import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
-import { useMemo } from "react"
 import { Movie } from "@/modules/shared/types/movie"
+import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
+import { useAppSelector } from "@/config/store"
 
 type Props = {
 	movie: Movie
 }
 
 export const MovieRecord = ({ movie }: Props) => {
+	const isLoggedInSession = useAppSelector(selectIsLoggedInSession)
+
 	return (
 		<div>
 			{movie && (
@@ -19,7 +20,7 @@ export const MovieRecord = ({ movie }: Props) => {
 						({movie.originalTitle})
 					</p>
 
-					{/* {isLoggedInSession && <ToggleMovieSeen movie={movie} />} */}
+					{isLoggedInSession && <ToggleMovieSeen movie={movie} />}
 
 					<MovieDetails
 						year={movie.year}
@@ -29,7 +30,7 @@ export const MovieRecord = ({ movie }: Props) => {
 						director={movie.director}
 					/>
 
-					{/* {isLoggedInSession && <DeleteMovie movie={movie} />} */}
+					{isLoggedInSession && <DeleteMovie movie={movie} />}
 				</>
 			)}
 		</div>

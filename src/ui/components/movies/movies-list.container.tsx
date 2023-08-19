@@ -16,7 +16,7 @@ export const MoviesListContainer = () => {
 		: router.query.userId?.toString()
 
 	const { data: movies } = useGetUserMovies({
-		getUserMoviesDto: { userId: userId ?? "" },
+		getUserMoviesDto: { userId: userId ?? "", filter: "title" },
 		enabled: true,
 	})
 

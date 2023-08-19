@@ -13,7 +13,7 @@ type Props = {
 
 export const AddMovieForm = ({ movie, children }: Props) => {
 	const [newMovie, setNewMovie] = useState<InfraMovie>({
-		id: movie.id,
+		uuid: "",
 		director: "",
 		genre_ids: movie.genreIds.join(", "),
 		is_seen: false,
@@ -39,7 +39,7 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 				}
 			/>
 			{children}
-			<AddMovie movie={newMovie} />
+			<AddMovie movie={newMovie} searchedMovieId={movie.id} />
 		</>
 	)
 }

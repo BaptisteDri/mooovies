@@ -1,17 +1,14 @@
 import { useEffect, useMemo } from "react"
 import { Movie } from "@/modules/shared/types/movie"
 import { MovieItem } from "./movie-item"
+import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
+import { isCharLetter } from "@/ui/utils/characters"
 
 type Props = {
 	movies: Movie[]
-	setSelectedMovie: (movie: Movie) => void
 }
 
-interface MoviesGroups {
-	[letter: string]: Movie[]
-}
-
-export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
+export const Alphabetical = ({ movies }: Props) => {
 	const removeAccents = (str: string) => {
 		return str
 			.normalize("NFD")
@@ -20,30 +17,7 @@ export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 			.replace(/Đ/g, "D")
 	}
 
-	const moviesGroups = useMemo(() => {
-		const groups: MoviesGroups = {}
-
-		for (let i = 65; i <= 90; i++) {
-			const letter = String.fromCharCode(i)
-			groups[letter] = []
-		}
-		groups["#"] = []
-
-		const sortedMovies = [...movies].sort((a, b) =>
-			removeAccents(a.title).localeCompare(removeAccents(b.title))
-		)
-
-		sortedMovies.forEach((movie: Movie) => {
-			const letterIndex: string = removeAccents(
-				movie.title[0]
-			).toUpperCase()
-			groups[letterIndex]
-				? groups[letterIndex].push(movie)
-				: groups["#"].push(movie)
-		})
-
-		return groups
-	}, [movies])
+	const mCn = useMergedClassName()
 
 	return (
 		<div>
@@ -52,34 +26,35 @@ export const Alphabetical = ({ movies, setSelectedMovie }: Props) => {
 					{movies.length} résultats
 				</h3>
 			)}
-			<div className="flex flex-col gap-4">
-				{Object.entries(moviesGroups).map(([letter, movies]) =>
-					movies.length > 0 ? (
-						<div key={letter}>
-							<h2
-								className={`${
-									movies.length > 0
-										? "text-white"
-										: "text-gray-400"
-								} font-bold text-lg`}
-							>
-								{letter}
-							</h2>
-							{movies.length > 0 && (
-								<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 mt-4">
-									{movies.map((movie: Movie, i: number) => (
-										<MovieItem
-											key={i}
-											movie={movie}
-											setSelectedMovie={setSelectedMovie}
-										/>
-									))}
-								</ul>
+
+			<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 mt-4">
+				{movies.map((movie, i) =>
+					!isCharLetter(movie.title[0]) ||
+					movie.title[0] === movies[i - 1]?.title[0] ? (
+						<>
+							{!isCharLetter(movie.title[0]) && i === 0 && (
+								<h2
+									key={movie.title[0]}
+									className="font-bold text-lg uppercase col-span-full text-white"
+								>
+									#
+								</h2>
 							)}
-						</div>
-					) : null
+							<MovieItem key={i} movie={movie} />
+						</>
+					) : (
+						<>
+							<h2
+								key={movie.title[0]}
+								className="font-bold text-lg uppercase col-span-full text-white"
+							>
+								{movie.title[0]}
+							</h2>
+							<MovieItem key={i} movie={movie} />
+						</>
+					)
 				)}
-			</div>
+			</ul>
 		</div>
 	)
 }

@@ -6,14 +6,13 @@ import { Session } from "@/modules/shared/types/user"
 import { Icon } from "@/ui/components/shared/icon"
 
 export const Settings = () => {
-	const router = useRouter()
+	const { push } = useRouter()
 	const dispatch = useAppDispatch()
 	const localSessionData: Session | null = selectLocalSessionData()
 
 	const onSignOut = async () => {
 		await dispatch(signOut())
-
-		await router.push("/sign-in")
+		await push("/sign-in")
 	}
 
 	// const onDeleteAccount = async () => {}

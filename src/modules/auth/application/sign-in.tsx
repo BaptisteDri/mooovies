@@ -13,7 +13,7 @@ import { Spinner } from "@/ui/components/shared/spinner"
 import Link from "next/link"
 
 export const SignIn = () => {
-	const router = useRouter()
+	const { push } = useRouter()
 	const dispatch = useAppDispatch()
 
 	const isLoggedInUser: boolean = useAppSelector(selectIsLoggedInUser)
@@ -22,7 +22,7 @@ export const SignIn = () => {
 
 	useEffect(() => {
 		if (isLoggedInUser) {
-			router.push("/")
+			push("/")
 		}
 	}, [isLoggedInUser])
 

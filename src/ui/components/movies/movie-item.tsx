@@ -7,17 +7,15 @@ import { useRouter } from "next/router"
 
 type Props = {
 	movie: Movie
-	setSelectedMovie: (movie: Movie) => void
 }
 
-export const MovieItem = ({ movie, setSelectedMovie }: Props) => {
+export const MovieItem = ({ movie }: Props) => {
 	const mCn = useMergedClassName()
 	const { push } = useRouter()
 
 	return (
 		<li
-			// onClick={() => setSelectedMovie(movie)}
-			onClick={() => push(`movie/${movie.id}`)}
+			onClick={() => push(`movie/${movie.uuid}`)}
 			className="relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-gray-700"
 			role="button"
 		>
