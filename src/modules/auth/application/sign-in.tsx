@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { RequestStatus } from "@/types/request-status"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 import { useRouter } from "next/router"
 import { signIn } from "@/modules/auth/auth.actions"
 import { useAppDispatch, useAppSelector } from "@/config/store"
@@ -8,7 +8,7 @@ import {
 	selectSignInError,
 	selectSignInStatus,
 } from "@/modules/auth/auth.selectors"
-import { CustomError } from "@/types/error"
+import { CustomError } from "@/modules/shared/types/error"
 import { Spinner } from "@/ui/components/shared/spinner"
 import Link from "next/link"
 

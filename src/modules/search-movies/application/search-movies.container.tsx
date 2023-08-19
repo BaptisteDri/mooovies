@@ -1,4 +1,8 @@
-import { Movie, SearchedMovie, SearchedPerson } from "@/types/movie"
+import {
+	Movie,
+	SearchedMovie,
+	SearchedPerson,
+} from "@/modules/shared/types/movie"
 import { useDeferredValue, useEffect, useState } from "react"
 import { SearchMoviesView } from "./search-movies.view"
 import { appOutputs } from "@/config/app-outputs"

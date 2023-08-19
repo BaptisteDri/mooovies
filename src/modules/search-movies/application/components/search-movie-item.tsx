@@ -1,5 +1,5 @@
 import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie } from "@/modules/shared/types/movie"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import { ShortenedText } from "@/ui/components/shortened-text"
 import { Icon } from "@/ui/components/shared/icon"

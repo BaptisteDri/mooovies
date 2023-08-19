@@ -1,5 +1,5 @@
-import { SearchedMovie as DomainSearchedMovie } from "@/types/movie"
-import { SearchedPerson as DomainSearchedPerson } from "@/types/movie"
+import { SearchedMovie as DomainSearchedMovie } from "@/modules/shared/types/movie"
+import { SearchedPerson as DomainSearchedPerson } from "@/modules/shared/types/movie"
 import { SearchMoviesOutput } from "@/modules/search-movies/domain/search-movies.output"
 import {
 	SearchResults,

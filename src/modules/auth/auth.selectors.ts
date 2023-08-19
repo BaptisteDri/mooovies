@@ -1,8 +1,8 @@
 import { RootState } from "@/config/store"
-import { Session, User } from "@/types/user"
+import { Session, User } from "@/modules/shared/types/user"
 import { createSelector } from "reselect"
-import { CustomError } from "@/types/error"
-import { RequestStatus } from "@/types/request-status"
+import { CustomError } from "@/modules/shared/types/error"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 
 export const selectLocalSessionData = (): Session | null => {
 	if (typeof window === "undefined") return null

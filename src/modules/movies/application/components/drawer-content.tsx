@@ -1,7 +1,7 @@
 import { MovieDetails } from "@/ui/components/movie-details"
 import { DeleteMovie } from "./delete-movie"
 import { ToggleMovieSeen } from "./toggle-movie-seen"
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { useAppSelector } from "@/config/store"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 

@@ -1,5 +1,5 @@
 import { useDeferredValue, useEffect, useState } from "react"
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { Alphabetical } from "./components/alphabetical"
 import { Drawer } from "@/ui/components/shared/drawer"
 import { DrawerContent } from "./components/drawer-content"

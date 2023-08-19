@@ -1,4 +1,4 @@
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie } from "@/modules/shared/types/movie"
 import { AddMovieForm } from "./add-movie-form"
 import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { MovieDetails } from "@/ui/components/movie-details"

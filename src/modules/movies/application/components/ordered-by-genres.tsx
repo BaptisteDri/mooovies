@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react"
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { MovieItem } from "./movie-item"
 import { genres, useGenre } from "@/ui/hooks/use-genre"
 

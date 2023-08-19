@@ -1,6 +1,6 @@
 import { AuthOutput, SignInDto, SignUpDto } from "@/modules/auth/auth.output"
-import { Session } from "@/types/user"
-import { CustomError } from "@/types/error"
+import { Session } from "@/modules/shared/types/user"
+import { CustomError } from "@/modules/shared/types/error"
 import { supabase } from "@/config/supabase"
 
 export class AuthSupabase implements AuthOutput {

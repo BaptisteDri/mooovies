@@ -1,7 +1,7 @@
 import { RootState } from "@/config/store"
-import { CustomError } from "@/types/error"
-import { Movie } from "@/types/movie"
-import { RequestStatus } from "@/types/request-status"
+import { CustomError } from "@/modules/shared/types/error"
+import { Movie } from "@/modules/shared/types/movie"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 
 export const selectMovies = ({ movies }: RootState): Movie[] | null =>
 	movies.movies || null

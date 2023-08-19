@@ -1,6 +1,6 @@
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { Movie as MovieInfra } from "@/modules/movies/infrastructure/movies"
-import { CustomError } from "@/types/error"
+import { CustomError } from "@/modules/shared/types/error"
 
 export interface MoviesOutput {
 	getUserMovies({

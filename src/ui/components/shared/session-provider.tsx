@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react"
 import { useRouter } from "next/router"
-import { Session } from "@/types/user"
+import { Session } from "@/modules/shared/types/user"
 import {
 	selectIsLoggedInSession,
 	selectLocalSessionData,

@@ -1,12 +1,12 @@
 import { MoviesOutput } from "../domain/movies.output"
 import { supabase } from "@/config/supabase"
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import {
 	mapMovieToDomainModel,
 	mapMoviesToDomainModel,
 } from "../domain/movies.mapper"
-import { CustomError } from "@/types/error"
+import { CustomError } from "@/modules/shared/types/error"
 
 export class MoviesSupabase implements MoviesOutput {
 	async getUserMovies({

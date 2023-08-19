@@ -1,5 +1,9 @@
 import { useState } from "react"
-import { Movie, SearchedMovie, SearchedPerson } from "@/types/movie"
+import {
+	Movie,
+	SearchedMovie,
+	SearchedPerson,
+} from "@/modules/shared/types/movie"
 import { Placeholder } from "./components/placeholder"
 import { SearchInput } from "./components/search-input"
 import { SearchMovieItem } from "./components/search-movie-item"

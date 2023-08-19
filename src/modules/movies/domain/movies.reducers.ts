@@ -1,8 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit"
-import { RequestStatus } from "@/types/request-status"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 import { MoviesState } from "./movies.state"
-import { Movie } from "@/types/movie"
-import { CustomError } from "@/types/error"
+import { Movie } from "@/modules/shared/types/movie"
+import { CustomError } from "@/modules/shared/types/error"
 import { MoviesCallTypes } from "./movies.call-types"
 import { mapMovieToDomainModel } from "./movies.mapper"
 

@@ -1,4 +1,4 @@
-import { SearchedMovie, SearchedPerson } from "@/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/modules/shared/types/movie"
 import { SearchMoviesOutput } from "./search-movies.output"
 
 export const searchMovies = async ({

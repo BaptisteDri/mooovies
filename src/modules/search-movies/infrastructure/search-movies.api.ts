@@ -1,4 +1,4 @@
-import { SearchedMovie, SearchedPerson } from "@/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/modules/shared/types/movie"
 import { SearchMoviesOutput } from "../domain/search-movies.output"
 import { api } from "@/config/axios-instance"
 import {

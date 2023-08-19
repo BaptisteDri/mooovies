@@ -3,7 +3,7 @@ import { AddMovie } from "./add-movie"
 import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie } from "@/modules/shared/types/movie"
 import { Toggle } from "@/ui/components/shared/form/toggle"
 
 type Props = {

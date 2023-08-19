@@ -2,8 +2,8 @@ import { deleteMovie } from "@/modules/movies/domain/movies.actions"
 import { Spinner } from "@/ui/components/shared/spinner"
 import { useAppDispatch, useAppSelector } from "@/config/store"
 import { selectDeleteMovieStatus } from "../../domain/movies.selectors"
-import { RequestStatus } from "@/types/request-status"
-import { Movie } from "@/types/movie"
+import { RequestStatus } from "@/modules/shared/types/request-status"
+import { Movie } from "@/modules/shared/types/movie"
 import { mapMovieToInfraModel } from "../../infrastructure/movies.mapper"
 
 type Props = {

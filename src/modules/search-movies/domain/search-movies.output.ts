@@ -1,4 +1,4 @@
-import { SearchedMovie, SearchedPerson } from "@/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/modules/shared/types/movie"
 
 export interface SearchMoviesOutput {
 	searchMovies({ query }: { query: string }): Promise<SearchedMovie[]>

@@ -1,6 +1,6 @@
-import { CustomError } from "@/types/error"
-import { Session } from "@/types/user"
-import { RequestStatus } from "@/types/request-status"
+import { CustomError } from "@/modules/shared/types/error"
+import { Session } from "@/modules/shared/types/user"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 
 export interface AuthState {
 	session: Session | null

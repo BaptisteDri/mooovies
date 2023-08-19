@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useAppDispatch } from "@/config/store"
 import { signOut } from "@/modules/auth/auth.actions"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
-import { Session } from "@/types/user"
+import { Session } from "@/modules/shared/types/user"
 import { Icon } from "@/ui/components/shared/icon"
 
 export const Settings = () => {

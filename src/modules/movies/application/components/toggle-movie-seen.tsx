@@ -1,4 +1,4 @@
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { toggleMovieIsSeen } from "@/modules/movies/domain/movies.actions"
 import { Toggle } from "@/ui/components/shared/form/toggle"
 import { useAppDispatch } from "@/config/store"

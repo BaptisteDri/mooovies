@@ -1,9 +1,9 @@
 import type { NextPage } from "next"
-import { RequestStatus } from "@/types/request-status"
+import { RequestStatus } from "@/modules/shared/types/request-status"
 import Link from "next/link"
 import { useAppDispatch, useAppSelector } from "@/config/store"
 import { signUp } from "@/modules/auth/auth.actions"
-import { CustomError } from "@/types/error"
+import { CustomError } from "@/modules/shared/types/error"
 import {
 	selectSignUpError,
 	selectSignUpStatus,

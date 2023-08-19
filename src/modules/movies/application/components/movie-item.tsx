@@ -1,4 +1,4 @@
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { Icon } from "@/ui/components/shared/icon"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import Image from "next/image"

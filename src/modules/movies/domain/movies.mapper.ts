@@ -1,4 +1,4 @@
-import { Movie } from "@/types/movie"
+import { Movie } from "@/modules/shared/types/movie"
 import { Movie as InfraMovie } from "../infrastructure/movies"
 
 export const mapMovieToDomainModel = (movie: InfraMovie): Movie => ({
