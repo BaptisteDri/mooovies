@@ -23,8 +23,8 @@ export const Link = ({ content, icon, path }: Props) => {
 				scroll={false}
 				href={path}
 				className={mCn(
-					"flex items-center px-2 py-3 rounded-lg text-white hover:bg-gray-700",
-					isActive && "bg-gray-700 font-bold"
+					"flex items-center px-2 py-3 rounded-lg text-white hover:bg-blue-800",
+					isActive && "bg-blue-800 font-bold"
 				)}
 			>
 				<span

@@ -14,6 +14,7 @@ export const Menu = () => {
 		>
 			<div className="grid h-full max-w-lg grid-cols-3 mx-auto">
 				<NextLink
+					scroll={false}
 					href={"/"}
 					className="inline-flex flex-col items-center justify-center group text-white p-6"
 				>
