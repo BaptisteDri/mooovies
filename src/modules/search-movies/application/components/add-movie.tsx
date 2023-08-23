@@ -1,31 +1,27 @@
-import { addMovie } from "@/modules/movies/domain/movies.actions"
+// import { addMovie } from "@/modules/movies/domain/movies.actions"
 import { appOutputs } from "@/config/app-outputs"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { getMovieCredits } from "@/modules/search-movies/domain/search-movies.actions"
 import { useRouter } from "next/router"
-import { useRequestStatus, STATUS } from "@/hooks/useRequestStatus"
-import { Spinner } from "@/components/spinner"
-import { useEffect, useState } from "react"
+import { Spinner } from "@/ui/components/shared/spinner"
+import { useAddMovie } from "@/ui/hooks/movies/use-add-movie"
 
-interface Props {
+type Props = {
 	movie: InfraMovie
+	searchedMovieId: number
 }
 
-export const AddMovie = ({ movie }: Props) => {
-	const [error, setError] = useState<string | undefined>(undefined)
-	const router = useRouter()
-	const { requestStatus, setRequestStatus } = useRequestStatus()
-	const { searchMoviesOutput, moviesOutput } = appOutputs
+export const AddMovie = ({ movie, searchedMovieId }: Props) => {
+	const { push } = useRouter()
+	const addMovie = useAddMovie()
 
-	useEffect(() => {
-		console.log(error)
-	}, [requestStatus])
+	const { searchMoviesOutput } = appOutputs
 
 	const _getMovieCredits = async () => {
 		try {
 			const director: string[] = await getMovieCredits({
 				searchMoviesOutput,
-				movieId: movie.id,
+				movieId: searchedMovieId,
 			})
 			movie.director = director.join(", ")
 		} catch (error: any) {
@@ -34,27 +30,20 @@ export const AddMovie = ({ movie }: Props) => {
 	}
 
 	const _addMovie = async () => {
-		try {
-			setRequestStatus(STATUS.LOADING)
-			await _getMovieCredits()
-			await addMovie({ moviesOutput, movie })
-			router.push("/")
-			setRequestStatus(STATUS.DONE)
-		} catch (error: any) {
-			setRequestStatus(STATUS.DONE)
-			setError(error.message)
-		}
+		await _getMovieCredits()
+		addMovie.mutate({ movie })
+		push("/")
 	}
 
 	return (
 		<button
 			type="button"
 			onClick={() => _addMovie()}
-			className="flex items-center h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
-			disabled={requestStatus === STATUS.LOADING}
+			className="flex items-center h-fit text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-800 shadow-lg shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+			disabled={addMovie.isLoading}
 		>
-			{requestStatus === STATUS.LOADING && <Spinner />}
-			Ajouter à la liste
+			{addMovie.isLoading && <Spinner />}
+			Ajouter à ma liste
 		</button>
 	)
 }

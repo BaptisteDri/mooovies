@@ -1,5 +1,5 @@
-import { Session } from "@/types/user"
-import { CustomError } from "@/types/error"
+import { Session } from "@/modules/shared/types/user"
+import { OldCustomError as CustomError } from "@/modules/shared/types/error"
 
 export type SignInDto = {
 	email: string

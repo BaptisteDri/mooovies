@@ -1,36 +1,27 @@
-import { MoviesOutput } from "../domain/movies.output"
 import { supabase } from "@/config/supabase"
-import { Movie } from "@/types/movie"
-import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
-import { mapMoviesToDomainModel } from "../domain/movies.mapper"
+import { mapMoviesToDomainModel } from "@/modules/movies/domain/movies.mapper"
+import { MoviesRepository } from "@/modules/movies/application/movies.repository"
 
-export class MoviesSupabase implements MoviesOutput {
-	async getUserMovies({ userId }: { userId: string }): Promise<Movie[]> {
+export const MoviesSupabase = (): MoviesRepository => ({
+	getUserMovies: async ({ userId, filter = "title" }) => {
 		const { data } = await supabase
 			.from("films")
 			.select()
 			.eq("user_id", userId)
-		return Promise.resolve(data ? mapMoviesToDomainModel(data) : [])
-	}
+			.order(filter)
 
-	async addMovie({ movie }: { movie: InfraMovie }): Promise<void> {
-		await supabase.from("films").insert(movie)
-	}
-
-	async deleteMovie({ movieId }: { movieId: number }): Promise<void> {
-		await supabase.from("films").delete().eq("id", movieId)
-	}
-
-	async toggleMovieIsSeen({
-		movieId,
-		isSeen,
-	}: {
-		movieId: number
-		isSeen: boolean
-	}): Promise<void> {
+		return Promise.resolve(data ? mapMoviesToDomainModel(data) : null)
+	},
+	addMovie: async ({ movie }) => {
+		await supabase.from("films").insert({ ...movie, uuid: undefined })
+	},
+	deleteMovie: async ({ movie }) => {
+		await supabase.from("films").delete().eq("uuid", movie.uuid)
+	},
+	toggleMovieIsSeen: async ({ movie }) => {
 		await supabase
 			.from("films")
-			.update({ is_seen: isSeen })
-			.eq("id", movieId)
-	}
-}
+			.update({ is_seen: movie.is_seen })
+			.eq("uuid", movie.uuid)
+	},
+})

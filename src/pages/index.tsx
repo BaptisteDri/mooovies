@@ -1,16 +1,26 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/head"
-import { SessionProvider } from "@/components/session-provider"
-import { Layout } from "@/components/layout"
-import { MoviesListContainer } from "@/modules/movies/application/movies-list.container"
+import { Head } from "@/ui/components/shared/head"
+import { SessionProvider } from "@/ui/components/shared/session-provider"
+import { Layout } from "@/ui/components/shared/layout/layout"
+import { MoviesListContainer } from "@/ui/components/movies/movies-list.container"
+import { ShareButton } from "@/ui/components/shared/share-button"
+import { Session } from "@/modules/shared/types/user"
+import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 
 const IndexPage: NextPage = () => {
+	const localSessionData: Session | null = selectLocalSessionData()
+	const url = `https://main--mooovies-tracker.netlify.app/movies/${localSessionData?.user.id}`
+
 	return (
 		<>
 			<Head />
-
 			<SessionProvider>
-				<Layout content={<MoviesListContainer />} title={"Mes films"} />
+				<Layout
+					title={"Mes films"}
+					headerContent={<ShareButton url={url} />}
+				>
+					<MoviesListContainer />
+				</Layout>
 			</SessionProvider>
 		</>
 	)

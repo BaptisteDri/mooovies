@@ -1,17 +1,15 @@
-import { SearchedMovie } from "@/types/movie"
+import { SearchedMovie } from "@/modules/shared/types/movie"
 import { AddMovieForm } from "./add-movie-form"
-import { useYearFromDate } from "@/hooks/useYearFromDate"
-import { MovieDetails } from "@/components/movie-details"
+import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
+import { MovieDetails } from "@/ui/components/shared/movie-details"
 
-interface Props {
+type Props = {
 	movie: SearchedMovie
 }
 
 export const DrawerContent = ({ movie }: Props) => (
 	<>
-		<h3 className="text-xl font-semibold text-gray-500 dark:text-white">
-			{movie.title}
-		</h3>
+		<h3 className="text-xl font-semibold text-white">{movie.title}</h3>
 		<p className="text-sm text-gray-400 mb-8">({movie.originalTitle})</p>
 
 		<AddMovieForm movie={movie}>

@@ -1,19 +1,19 @@
 import { useState } from "react"
 import { AddMovie } from "./add-movie"
-import { useYearFromDate } from "@/hooks/useYearFromDate"
+import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { Movie as InfraMovie } from "@/modules/movies/infrastructure/movies"
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
-import { SearchedMovie } from "@/types/movie"
-import { Toggle } from "@/components/toggle"
+import { SearchedMovie } from "@/modules/shared/types/movie"
+import { Toggle } from "@/ui/components/shared/form/toggle"
 
-interface Props {
+type Props = {
 	movie: SearchedMovie
 	children?: React.ReactNode
 }
 
 export const AddMovieForm = ({ movie, children }: Props) => {
 	const [newMovie, setNewMovie] = useState<InfraMovie>({
-		id: movie.id,
+		uuid: "",
 		director: "",
 		genre_ids: movie.genreIds.join(", "),
 		is_seen: false,
@@ -39,7 +39,7 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 				}
 			/>
 			{children}
-			<AddMovie movie={newMovie} />
+			<AddMovie movie={newMovie} searchedMovieId={movie.id} />
 		</>
 	)
 }

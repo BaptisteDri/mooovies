@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
-import { Head } from "@/components/head"
-import { SessionProvider } from "@/components/session-provider"
-import { Layout } from "@/components/layout"
+import { Head } from "@/ui/components/shared/head"
+import { SessionProvider } from "@/ui/components/shared/session-provider"
+import { Layout } from "@/ui/components/shared/layout/layout"
 import { Settings } from "@/modules/settings/application/settings"
 
 const SettingsPage: NextPage = () => {
@@ -10,7 +10,9 @@ const SettingsPage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<Layout content={<Settings />} title="Paramètres" />
+				<Layout title="Paramètres">
+					<Settings />
+				</Layout>
 			</SessionProvider>
 		</>
 	)
