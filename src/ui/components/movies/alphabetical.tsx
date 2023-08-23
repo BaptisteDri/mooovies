@@ -1,6 +1,7 @@
 import { Movie } from "@/modules/shared/types/movie"
 import { MovieItem } from "./movie-item"
 import { isCharLetter } from "@/ui/utils/characters"
+import { Fragment } from "react"
 
 type Props = {
 	movies: Movie[]
@@ -51,31 +52,25 @@ export const Alphabetical = ({ movies }: Props) => {
 				</h3>
 			)}
 
-			<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-4 mt-4">
+			<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-4">
 				{movies.map((movie, i) =>
 					!isCharLetter(movie.title[0]) ||
 					movie.title[0] === movies[i - 1]?.title[0] ? (
-						<>
+						<Fragment key={movie.uuid}>
 							{!isCharLetter(movie.title[0]) && i === 0 && (
-								<h2
-									key={movie.title[0]}
-									className="font-bold text-lg uppercase col-span-full text-white mt-6 first:mt-0"
-								>
+								<h2 className="font-bold text-2xl uppercase col-span-full text-white -mb-2">
 									#
 								</h2>
 							)}
-							<MovieItem key={i} movie={movie} />
-						</>
+							<MovieItem movie={movie} />
+						</Fragment>
 					) : (
-						<>
-							<h2
-								key={movie.title[0]}
-								className="font-bold text-lg uppercase col-span-full text-white mt-6"
-							>
+						<Fragment key={movie.uuid}>
+							<h2 className="font-bold text-2xl uppercase col-span-full text-white mt-6 -mb-2">
 								{movie.title[0]}
 							</h2>
-							<MovieItem key={i} movie={movie} />
-						</>
+							<MovieItem movie={movie} />
+						</Fragment>
 					)
 				)}
 			</ul>

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Icon } from "@/ui/components/shared/icon"
+import { Input } from "../shared/form/input"
 
 type Props = {
 	query: string
@@ -16,22 +17,25 @@ export const SearchBar = ({
 }: Props) => {
 	return (
 		<div className="sticky top-0 right-0 z-10">
-			<div className="py-4 bg-slate-900 flex items-center border-b border-slate-800 top-0 z-40 mb-6">
+			<div className="py-2 md:py-4 bg-slate-950 flex items-center border-b border-slate-800 top-0 z-40 mb-6">
 				<div className="relative flex-auto mr-2">
 					<label
 						htmlFor="search-input"
 						className="flex items-center justify-center absolute left-2 top-0 bottom-0"
 					>
-						<Icon name="search" className="w-6 h-6 text-gray-400" />
+						<Icon
+							name="search"
+							className="w-6 h-6 text-slate-400"
+						/>
 					</label>
-					<input
-						className="pl-10 w-full h-11 rounded-2xl px-4 bg-slate-800 border border-slate-700 text-white placeholder-shown:text-ellipsis hover:bg-slate-700 transition-all duration-150"
+					<Input
 						type="search"
 						placeholder="Rechercher un titre, un réalisateur..."
 						id="search-input"
 						autoComplete="off"
 						value={query}
 						onChange={handleOnQueryChange}
+						className="pl-10"
 					/>
 				</div>
 				<ul className="gap-2 flex">

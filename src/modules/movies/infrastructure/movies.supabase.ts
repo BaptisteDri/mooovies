@@ -22,6 +22,6 @@ export const MoviesSupabase = (): MoviesRepository => ({
 		await supabase
 			.from("films")
 			.update({ is_seen: movie.is_seen })
-			.eq("id", movie.uuid)
+			.eq("uuid", movie.uuid)
 	},
 })

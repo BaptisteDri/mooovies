@@ -15,8 +15,8 @@ export const MovieItem = ({ movie }: Props) => {
 
 	return (
 		<li
-			onClick={() => push(`movie/${movie.uuid}`)}
-			className="relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-700"
+			onClick={() => push(`/movie/${movie.uuid}`)}
+			className="relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-800"
 			role="button"
 		>
 			<Image

@@ -10,13 +10,13 @@ export const Menu = () => {
 
 	return isLoggedInSession ? (
 		<div
-			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-gray-700 left-1/2 bg-gray-800 pb-4`}
+			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-slate-800 left-1/2 bg-slate-900 pb-7 pt-2`}
 		>
 			<div className="grid h-full max-w-lg grid-cols-3 mx-auto">
 				<NextLink
 					scroll={false}
 					href={"/"}
-					className="inline-flex flex-col items-center justify-center group text-white p-6"
+					className="inline-flex flex-col items-center justify-center group text-white"
 				>
 					<Icon name="home" fill={router.pathname === "/"} />
 				</NextLink>
@@ -33,7 +33,7 @@ export const Menu = () => {
 				</NextLink>
 				<NextLink
 					href={"/settings"}
-					className="inline-flex flex-col items-center justify-center group text-white p-6"
+					className="inline-flex flex-col items-center justify-center group text-white"
 				>
 					<Icon
 						name="manage_accounts"
