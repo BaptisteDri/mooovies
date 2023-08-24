@@ -6,7 +6,6 @@ const SignInPage: NextPage = () => {
 	return (
 		<>
 			<Head />
-
 			<SignIn />
 		</>
 	)

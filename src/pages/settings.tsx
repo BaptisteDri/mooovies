@@ -10,9 +10,7 @@ const SettingsPage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<Layout title="Paramètres">
-					<Settings />
-				</Layout>
+				<Settings />
 			</SessionProvider>
 		</>
 	)

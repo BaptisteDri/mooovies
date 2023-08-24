@@ -15,12 +15,12 @@ const IndexPage: NextPage = () => {
 		<>
 			<Head />
 			<SessionProvider>
-				<Layout
+				{/* <Layout
 					title={"Mes films"}
 					headerContent={<ShareButton url={url} />}
-				>
-					<MoviesListContainer />
-				</Layout>
+				> */}
+				<MoviesListContainer />
+				{/* </Layout> */}
 			</SessionProvider>
 		</>
 	)

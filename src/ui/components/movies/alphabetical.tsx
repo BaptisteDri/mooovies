@@ -58,7 +58,7 @@ export const Alphabetical = ({ movies }: Props) => {
 					movie.title[0] === movies[i - 1]?.title[0] ? (
 						<Fragment key={movie.uuid}>
 							{!isCharLetter(movie.title[0]) && i === 0 && (
-								<h2 className="font-bold text-2xl uppercase col-span-full text-white -mb-2">
+								<h2 className="font-bold text-2xl uppercase col-span-full text-white sm:-mb-2">
 									#
 								</h2>
 							)}
@@ -66,7 +66,7 @@ export const Alphabetical = ({ movies }: Props) => {
 						</Fragment>
 					) : (
 						<Fragment key={movie.uuid}>
-							<h2 className="font-bold text-2xl uppercase col-span-full text-white mt-6 -mb-2">
+							<h2 className="font-bold text-2xl uppercase col-span-full text-white mt-6 sm:-mb-2">
 								{movie.title[0]}
 							</h2>
 							<MovieItem movie={movie} />

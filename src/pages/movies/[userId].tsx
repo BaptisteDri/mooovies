@@ -6,9 +6,7 @@ import type { NextPage } from "next"
 export const ForeignUserMoviesPage: NextPage = () => (
 	<>
 		<Head />
-		<Layout title={"Films partagés"}>
-			<MoviesListContainer />
-		</Layout>
+		<MoviesListContainer />
 	</>
 )
 

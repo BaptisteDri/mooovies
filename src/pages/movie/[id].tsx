@@ -24,9 +24,7 @@ const MoviePage: NextPage = () => {
 	return (
 		<>
 			<Head />
-			<Layout title={movie?.title}>
-				{movie && <MovieRecord movie={movie} />}
-			</Layout>
+			{movie && <MovieRecord movie={movie} />}
 		</>
 	)
 }
