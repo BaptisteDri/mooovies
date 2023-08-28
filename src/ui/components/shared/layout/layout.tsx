@@ -6,11 +6,9 @@ import { selectLoggedInUser } from "@/modules/auth/auth.selectors"
 
 type Props = {
 	children: React.ReactNode
-	title?: string
-	headerContent?: React.ReactNode
 }
 
-export const Layout = ({ title, headerContent, children }: Props) => {
+export const Layout = ({ children }: Props) => {
 	const user = useAppSelector(selectLoggedInUser)
 
 	return (
@@ -21,10 +19,6 @@ export const Layout = ({ title, headerContent, children }: Props) => {
 						<Sidebar />
 					</span>
 					<div className="p-4 sm:p-6 sm:ml-72 mb-24 sm:mb-0">
-						<div className="flex justify-between items-center mb-4">
-							{title && <Title>{title}</Title>}
-							{headerContent}
-						</div>
 						{children}
 					</div>
 					<span className="sm:hidden">

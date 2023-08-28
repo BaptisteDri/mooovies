@@ -11,14 +11,19 @@ const MoviePage: NextPage = () => {
 	const { query } = useRouter()
 
 	const userId = selectLocalSessionData()?.user.id
-	const { data: movies } = useGetUserMovies({
+	const { data } = useGetUserMovies({
 		getUserMoviesDto: { userId: userId ?? "", filter: "title" },
 		enabled: true,
 	})
 
 	const movie = useMemo(
-		() => movies?.find((movie) => movie.uuid === (query.id as string)),
-		[movies]
+		() =>
+			data?.pages.map((group) =>
+				group.movies?.find(
+					(movie) => movie.uuid === (query.id as string)
+				)
+			)[0],
+		[data]
 	)
 
 	return (

@@ -10,8 +10,6 @@ import {
 	searchMovies,
 	searchPersons,
 } from "@/modules/search-movies/domain/search-movies.actions"
-import { useAppSelector } from "@/config/store"
-// import { selectMovies } from "@/modules/movies/domain/movies.selectors"
 
 export const SearchMoviesContainer = () => {
 	const [query, setQuery] = useState<string>("")
@@ -31,8 +29,6 @@ export const SearchMoviesContainer = () => {
 
 		return () => clearTimeout(timer)
 	}, [deferredQuery])
-
-	// const movies: Movie[] | null = useAppSelector(selectMovies)
 
 	const { searchMoviesOutput } = appOutputs
 
@@ -64,7 +60,6 @@ export const SearchMoviesContainer = () => {
 			handleOnQueryChange={handleOnQueryChange}
 			searchResultsMovies={searchResultsMovies}
 			searchResultsPerson={searchResultsPerson}
-			// movies={movies ?? []}
 			movies={[]}
 			isLoading={isLoading}
 		/>
