@@ -34,13 +34,14 @@ export const MoviesList = ({ userId }: Props) => {
 		setQuery(e.target.value)
 	}
 
-	const isNewMovieGroup = (movie: Movie, prevMovie?: Movie) => {
+	const isNewMovieGroup = (movie: Movie, i: number, prevMovie?: Movie) => {
 		if (!prevMovie) return true
 
+		if (!isCharLetter(movie.title[0]) && i !== 0) return false
+
 		return (
-			!isCharLetter(movie.title[0]) ||
-			removeAccents(movie.title[0]).toLowerCase() ===
-				removeAccents(prevMovie?.title[0]).toLowerCase()
+			removeAccents(movie.title[0]).toLowerCase() !==
+			removeAccents(prevMovie?.title[0]).toLowerCase()
 		)
 	}
 
@@ -61,26 +62,25 @@ export const MoviesList = ({ userId }: Props) => {
 				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-4">
 					{data.pages.map((group, i) => (
 						<Fragment key={i}>
-							{group.movies.map((movie, i) =>
-								isNewMovieGroup(movie, group.movies[i - 1]) ? (
-									<Fragment key={movie.uuid}>
-										{!isCharLetter(movie.title[0]) &&
-											i === 0 && (
-												<h2 className="font-bold text-2xl uppercase col-span-full text-white sm:-mb-2">
-													#
-												</h2>
-											)}
-										<MovieItem movie={movie} />
-									</Fragment>
-								) : (
-									<Fragment key={movie.uuid}>
-										<h2 className="font-bold text-2xl uppercase col-span-full text-white mt-6 sm:-mb-2">
-											{movie.title[0]}
-										</h2>
-										<MovieItem movie={movie} />
-									</Fragment>
-								)
-							)}
+							{group.movies.map((movie, i) => (
+								<Fragment key={movie.uuid}>
+									{isNewMovieGroup(
+										movie,
+										i,
+										group.movies[i - 1]
+									) &&
+										(!isCharLetter(movie.title[0]) ? (
+											<h2 className="font-bold text-2xl uppercase col-span-full text-white sm:-mb-2">
+												#
+											</h2>
+										) : (
+											<h2 className="font-bold text-2xl uppercase col-span-full text-white sm:-mb-2">
+												{movie.title[0]}
+											</h2>
+										))}
+									<MovieItem movie={movie} />
+								</Fragment>
+							))}
 						</Fragment>
 					))}
 				</ul>

@@ -1,7 +1,6 @@
 import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { MovieRecord } from "@/ui/components/movies/movie-record"
 import { Head } from "@/ui/components/shared/head"
-import { Layout } from "@/ui/components/shared/layout/layout"
 import { useGetUserMovies } from "@/ui/hooks/movies/use-get-user-movies"
 import { NextPage } from "next"
 import { useRouter } from "next/router"

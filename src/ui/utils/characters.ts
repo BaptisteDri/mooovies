@@ -1,4 +1,4 @@
-export const isCharLetter = (char: string) => /^[a-z]$/i.test(char)
+export const isCharLetter = (char: string) => /^[a-zÀ-ÿ]$/i.test(char)
 
 export const removeAccents = (str: string) =>
 	str

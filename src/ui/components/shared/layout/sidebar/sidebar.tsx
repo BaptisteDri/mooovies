@@ -20,7 +20,10 @@ export const Sidebar = () => {
 					role="link"
 					onClick={() => push("/")}
 				>
-					<img src={"/mooovies_logo.svg"} className="rounded" />
+					<img
+						src={"/mooovies_logo.svg"}
+						className="rounded h-10 w-10"
+					/>
 					Mooovies
 				</div>
 				{isLoggedInSession ? (
