@@ -1,29 +1,26 @@
-import { selectLocalSessionData } from "@/modules/auth/auth.selectors"
 import { MovieRecord } from "@/ui/components/movies/movie-record"
 import { Head } from "@/ui/components/shared/head"
-import { useGetUserMovies } from "@/ui/hooks/movies/use-get-user-movies"
+import { useGetMovie } from "@/ui/hooks/movies/use-get-movie"
 import { NextPage } from "next"
 import { useRouter } from "next/router"
-import { useMemo } from "react"
+import { useEffect } from "react"
 
 const MoviePage: NextPage = () => {
 	const { query } = useRouter()
 
-	const userId = selectLocalSessionData()?.user.id
-	const { data } = useGetUserMovies({
-		getUserMoviesDto: { userId: userId ?? "", filter: "title" },
-		enabled: true,
+	const {
+		data: movie,
+		isFetched,
+		refetch: getMovie,
+	} = useGetMovie({
+		movieId: query.id as string,
 	})
 
-	const movie = useMemo(
-		() =>
-			data?.pages.map((group) =>
-				group.movies?.find(
-					(movie) => movie.uuid === (query.id as string)
-				)
-			)[0],
-		[data]
-	)
+	useEffect(() => {
+		if (!query.id || isFetched) return
+
+		getMovie()
+	}, [query.id, isFetched])
 
 	return (
 		<>

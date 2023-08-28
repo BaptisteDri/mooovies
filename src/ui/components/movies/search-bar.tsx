@@ -1,6 +1,5 @@
-import { useEffect } from "react"
 import { Icon } from "@/ui/components/shared/icon"
-import { Input } from "../shared/form/input"
+import { Input } from "@/ui/components/shared/form/input"
 
 type Props = {
 	query: string
@@ -17,7 +16,7 @@ export const SearchBar = ({
 }: Props) => {
 	return (
 		<div className="sticky top-0 right-0 z-10">
-			<div className="py-2 md:py-4 bg-slate-950 flex items-center border-b border-slate-800 top-0 z-40 mb-6">
+			<div className="py-2 md:py-4 bg-slate-950 flex items-center border-b border-slate-800 top-0 z-40">
 				<div className="relative flex-auto mr-2">
 					<label
 						htmlFor="search-input"

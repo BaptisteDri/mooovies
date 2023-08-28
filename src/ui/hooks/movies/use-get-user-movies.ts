@@ -23,7 +23,7 @@ export const useGetUserMovies = ({
 				pageIndex: pageParam,
 			}),
 		getNextPageParam: (lastPage) =>
-			lastPage.movies.length >= 50 ? lastPage.nextPageIndex : undefined,
+			lastPage.movies.length >= 35 ? lastPage.nextPageIndex : undefined,
 		enabled,
 		staleTime: Infinity,
 		onError: (error: CustomError) => console.error(error),

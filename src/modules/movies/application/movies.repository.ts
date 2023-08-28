@@ -3,8 +3,13 @@ import { Movie as MovieInfra } from "@/modules/movies/infrastructure/movies"
 
 export type GetUserMoviesDto = {
 	userId: string
-	filter: "title" | "year" | "director"
+	order: "title" | "year" | "director"
 	pageIndex?: number
+	filters?: {
+		genreId?: string
+		isSeen?: boolean
+		title?: string
+	}
 }
 
 type getUserMoviesRo = Promise<{
@@ -28,4 +33,5 @@ export type MoviesRepository = {
 	addMovie(addMovieDto: AddMovieDto): Promise<void>
 	deleteMovie(deleteMovieDto: DeleteMovieDto): Promise<void>
 	toggleMovieIsSeen(toggleMovieIsSeenDto: ToggleMovieIsSeenDto): Promise<void>
+	getUserMovie(movieId: string): Promise<Movie | undefined>
 }
