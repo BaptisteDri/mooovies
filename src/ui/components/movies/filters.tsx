@@ -21,6 +21,21 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 					<li>
 						<input
 							type="checkbox"
+							id="all_movies"
+							className="hidden peer"
+							onChange={() => setIsSeen(undefined)}
+							checked={isSeen === undefined}
+						/>
+						<label
+							htmlFor="all_movies"
+							className="select-none flex items-center justify-center h-8 px-2 border rounded-xl cursor-pointer hover:text-slate-300 border-slate-700 peer-checked:border-blue-600 peer-checked:text-slate-300 text-slate-400 bg-slate-800 hover:bg-slate-700"
+						>
+							🎬&nbsp;Tous
+						</label>
+					</li>
+					<li>
+						<input
+							type="checkbox"
 							id="seen_movies"
 							className="hidden peer"
 							onChange={() =>
@@ -61,13 +76,23 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 			<div>
 				<div className="text-slate-400 mb-2">Catégories</div>
 				<div className="flex gap-2 flex-wrap">
+					<button
+						className={mCn(
+							"flex items-center justify-center h-8 px-2  border rounded-xl cursor-pointer hover:text-slate-300 border-slate-700 text-slate-400 bg-slate-800 hover:bg-slate-700",
+							genreId === undefined &&
+								"text-slate-300 border-blue-600"
+						)}
+						onClick={() => setGenreId(undefined)}
+					>
+						🎬&nbsp;Tous
+					</button>
 					{genres.map((genre) => (
 						<button
 							key={genre.id}
 							className={mCn(
 								"flex items-center justify-center h-8 px-2  border rounded-xl cursor-pointer hover:text-slate-300 border-slate-700 text-slate-400 bg-slate-800 hover:bg-slate-700",
 								genreId === (genre.id as unknown as string) &&
-									"text-slate-300 border-blue-600 bg-slate-700"
+									"text-slate-300 border-blue-600"
 							)}
 							onClick={() =>
 								genreId === (genre.id as unknown as string)

@@ -32,7 +32,7 @@ export const SearchBar = ({
 	const mCn = useMergedClassName()
 
 	return (
-		<div className="sticky top-0 right-0 py-2 md:py-4 bg-slate-950 border-b border-slate-800 z-40">
+		<div className="sticky top-0 right-0 py-2 md:py-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
 			<div className="flex">
 				<div className="relative flex flex-auto mr-2">
 					<label
