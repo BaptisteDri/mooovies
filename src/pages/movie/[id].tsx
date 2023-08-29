@@ -1,5 +1,7 @@
 import { MovieRecord } from "@/ui/components/movies/movie-record"
 import { Head } from "@/ui/components/shared/head"
+import { Loader } from "@/ui/components/shared/loader"
+import { Spinner } from "@/ui/components/shared/spinner"
 import { useGetMovie } from "@/ui/hooks/movies/use-get-movie"
 import { NextPage } from "next"
 import { useRouter } from "next/router"
@@ -12,6 +14,8 @@ const MoviePage: NextPage = () => {
 		data: movie,
 		isFetched,
 		refetch: getMovie,
+		isLoading,
+		isError,
 	} = useGetMovie({
 		movieId: query.id as string,
 	})
@@ -25,7 +29,11 @@ const MoviePage: NextPage = () => {
 	return (
 		<>
 			<Head />
-			{movie && <MovieRecord movie={movie} />}
+			{isLoading ? (
+				<Loader />
+			) : (
+				movie && !isError && <MovieRecord movie={movie} />
+			)}
 		</>
 	)
 }

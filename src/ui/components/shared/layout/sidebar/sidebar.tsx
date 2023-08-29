@@ -14,7 +14,7 @@ export const Sidebar = () => {
 			className="fixed top-0 left-0 z-40 w-72 h-screen"
 			aria-label="Sidebar"
 		>
-			<div className="h-full p-6 overflow-y-auto bg-slate-900 border-r border-slate-800">
+			<div className="h-full py-6 px-4 overflow-y-auto bg-slate-900 border-r border-slate-800">
 				<div
 					className="cursor-pointer text-white text-2xl font-bold mb-8 flex items-center gap-3"
 					role="link"

@@ -32,7 +32,7 @@ export const SearchBar = ({
 	const mCn = useMergedClassName()
 
 	return (
-		<div className="fixed px-4 sm:px-6 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
+		<div className="sm:left-72 sm:pt-4 fixed px-4 sm:px-6 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
 			<div className="flex">
 				<div className="relative flex flex-auto mr-2">
 					<label
@@ -45,7 +45,7 @@ export const SearchBar = ({
 						/>
 					</label>
 					<Input
-						type="text"
+						type="search"
 						placeholder="Rechercher un titre, un réalisateur..."
 						id="search-input"
 						autoComplete="off"

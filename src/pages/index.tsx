@@ -10,7 +10,7 @@ const IndexPage: NextPage = () => {
 		<>
 			<Head />
 			<SessionProvider>
-				<div className="flex justify-between items-center mb-4 mt-14">
+				<div className="flex justify-between items-center mb-4 sm:mb-6 mt-14 sm:mt-16">
 					<Title>Mes films</Title>
 				</div>
 				<MoviesList />

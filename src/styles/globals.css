@@ -29,3 +29,8 @@ a {
 *:focus-visible {
 	outline-style: solid;
 }
+
+input[type="search"] {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+}

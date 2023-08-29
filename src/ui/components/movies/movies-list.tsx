@@ -6,6 +6,7 @@ import { selectLoggedInUser } from "@/modules/auth/auth.selectors"
 import { MovieItem } from "./movie-item"
 import { useInView } from "react-intersection-observer"
 import { Spinner } from "../shared/spinner"
+import { Loader } from "../shared/loader"
 
 type Props = {
 	userId?: string
@@ -21,19 +22,24 @@ export const MoviesList = ({ userId }: Props) => {
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()
 
-	const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-		useGetUserMovies({
-			getUserMoviesDto: {
-				userId: userId ?? (user?.id as string),
-				order,
-				filters: {
-					genreId,
-					title: deferredQuery,
-					isSeen,
-				},
+	const {
+		data,
+		fetchNextPage,
+		hasNextPage,
+		isFetchingNextPage,
+		isInitialLoading,
+	} = useGetUserMovies({
+		getUserMoviesDto: {
+			userId: userId ?? (user?.id as string),
+			order,
+			filters: {
+				genreId,
+				title: deferredQuery,
+				isSeen,
 			},
-			enabled: true,
-		})
+		},
+		enabled: true,
+	})
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)
@@ -62,6 +68,8 @@ export const MoviesList = ({ userId }: Props) => {
 				<div>add movies</div>
 			)}
 
+			{isInitialLoading && <Loader />}
+
 			{data && (
 				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
 					{data.pages.map((group, i) => (
@@ -78,9 +86,7 @@ export const MoviesList = ({ userId }: Props) => {
 
 			{isFetchingNextPage && (
 				<div className="grid place-items-center py-8 mt-4 w-full">
-					<div className="w-fit scale-150">
-						<Spinner />
-					</div>
+					<Loader />
 				</div>
 			)}
 		</>

@@ -17,8 +17,9 @@ export const ShortenedText = ({ text, title }: Props) => {
 			{title && (
 				<h3 className="text-white mb-2 font-semibold">{title}</h3>
 			)}
-			<p className="text-gray-400 text-sm">
-				{text.length <= 200 ? (
+			<p className="text-gray-400">
+				{text}
+				{/* {text.length <= 200 ? (
 					text
 				) : isShortened ? (
 					<>
@@ -40,7 +41,7 @@ export const ShortenedText = ({ text, title }: Props) => {
 							Réduire
 						</button>
 					</>
-				)}
+				)} */}
 			</p>
 		</>
 	)
