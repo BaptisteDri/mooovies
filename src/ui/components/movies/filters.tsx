@@ -16,7 +16,9 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 	return (
 		<div className="grid gap-4">
 			<div>
-				<div className="text-slate-400 mb-2">Films vus</div>
+				<div className="text-slate-200 font-semibold mb-2">
+					Films vus
+				</div>
 				<ul className="gap-2 flex">
 					<li>
 						<input
@@ -74,7 +76,9 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 				</ul>
 			</div>
 			<div>
-				<div className="text-slate-400 mb-2">Catégories</div>
+				<div className="text-slate-200 font-semibold mb-2">
+					Catégories
+				</div>
 				<div className="flex gap-2 flex-wrap">
 					<button
 						className={mCn(

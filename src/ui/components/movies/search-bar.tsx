@@ -32,7 +32,7 @@ export const SearchBar = ({
 	const mCn = useMergedClassName()
 
 	return (
-		<div className="sticky top-0 right-0 py-2 md:py-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
+		<div className="fixed px-4 sm:px-6 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
 			<div className="flex">
 				<div className="relative flex flex-auto mr-2">
 					<label
@@ -45,7 +45,7 @@ export const SearchBar = ({
 						/>
 					</label>
 					<Input
-						type="search"
+						type="text"
 						placeholder="Rechercher un titre, un réalisateur..."
 						id="search-input"
 						autoComplete="off"
@@ -71,9 +71,9 @@ export const SearchBar = ({
 
 			<div
 				className={mCn(
-					"grid gap-4",
+					"grid gap-4 will-change-transform",
 					isFiltersSectionVisible
-						? "mt-2 md:mt-4 max-h-[50rem] opacity-100 transition-all duration-300"
+						? "mt-2 md:mt-4 max-h-[50rem] opacity-100 transition-all duration-300 mb-2 touch-none"
 						: "max-h-0 opacity-0 transition-all duration-300"
 				)}
 			>

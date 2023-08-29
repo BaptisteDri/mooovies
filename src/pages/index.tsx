@@ -10,9 +10,8 @@ const IndexPage: NextPage = () => {
 		<>
 			<Head />
 			<SessionProvider>
-				<div className="flex justify-between items-center mb-4">
+				<div className="flex justify-between items-center mb-4 mt-14">
 					<Title>Mes films</Title>
-					{/* <ShareButton url={url} /> */}
 				</div>
 				<MoviesList />
 			</SessionProvider>

@@ -10,7 +10,7 @@ export const Order = ({ order, setOrder }: Props) => {
 
 	return (
 		<div>
-			<div className="text-slate-400 mb-2">Trier par</div>
+			<div className="text-slate-200 font-semibold mb-2">Trier par</div>
 			<div className="flex gap-2 flex-wrap">
 				<button
 					className={mCn(

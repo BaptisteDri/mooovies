@@ -24,7 +24,7 @@ export const MovieItem = ({ movie }: Props) => {
 				alt={movie.title}
 				fill
 				className="object-cover"
-				quality={80}
+				quality={15}
 				loading="lazy"
 				sizes="100%"
 			/>
