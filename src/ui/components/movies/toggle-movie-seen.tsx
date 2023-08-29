@@ -9,7 +9,7 @@ type Props = {
 }
 
 export const ToggleMovieSeen = ({ movie }: Props) => {
-	const [checked, setChecked] = useState(movie.isSeen)
+	const [checked, setChecked] = useState(!!movie.watchedDate)
 	const toggleMovieIsSeen = useToggleMovieIsSeen()
 
 	const onToggleMovieIsSeen = () => {
@@ -19,13 +19,13 @@ export const ToggleMovieSeen = ({ movie }: Props) => {
 		toggleMovieIsSeen.mutate({
 			movie: mapMovieToInfraModel({
 				...movie,
-				isSeen: !movie.isSeen,
+				watchedDate: checked ? null : new Date().toISOString(),
 			}),
 		})
 	}
 
 	useEffect(() => {
-		setChecked(movie.isSeen)
+		setChecked(!!movie.watchedDate)
 	}, [toggleMovieIsSeen.isError])
 
 	return (

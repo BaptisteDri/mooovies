@@ -4,7 +4,7 @@ type Genre = {
 	icon: string
 }
 
-export const genres: Genre[] = [
+const genres: Genre[] = [
 	{
 		id: 28,
 		name: "Action",
@@ -102,7 +102,8 @@ export const genres: Genre[] = [
 	},
 ]
 
-export const useGenre = (genreId: number | string) => ({
+export const useGenre = (genreId?: number | string) => ({
 	name: genres.find((genre) => genre.id == genreId)?.name ?? "",
 	icon: genres.find((genre) => genre.id == genreId)?.icon ?? "",
+	genres: genres,
 })

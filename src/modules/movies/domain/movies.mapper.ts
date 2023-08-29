@@ -3,7 +3,7 @@ import { Movie as InfraMovie } from "../infrastructure/movies"
 
 export const mapMovieToDomainModel = (movie: InfraMovie): Movie => ({
 	userId: movie.user_id,
-	isSeen: movie.is_seen,
+	watchedDate: movie.watched_date,
 	director: movie.director,
 	genreIds: movie.genre_ids.split(", "),
 	poster: movie.poster,

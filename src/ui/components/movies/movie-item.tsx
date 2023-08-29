@@ -24,7 +24,7 @@ export const MovieItem = ({ movie }: Props) => {
 				alt={movie.title}
 				fill
 				className="object-cover"
-				quality={1}
+				quality={80}
 				loading="lazy"
 				sizes="100%"
 			/>
@@ -32,7 +32,7 @@ export const MovieItem = ({ movie }: Props) => {
 			<div
 				className={mCn(
 					"top-0 right-0 absolute bg-blue-600 h-7 w-7 rounded-bl-xl flex items-center justify-center drop-shadow-lg translate-x-full -translate-y-full rotate-90 ease-in-out transition-all duration-150",
-					movie.isSeen && "translate-x-0 rotate-0 translate-y-0"
+					movie.watchedDate && "translate-x-0 rotate-0 translate-y-0"
 				)}
 			>
 				<Icon

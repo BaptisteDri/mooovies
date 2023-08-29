@@ -12,11 +12,13 @@ type Props = {
 }
 
 export const AddMovieForm = ({ movie, children }: Props) => {
+	const [checked, setChecked] = useState(false)
+
 	const [newMovie, setNewMovie] = useState<InfraMovie>({
 		uuid: "",
 		director: "",
 		genre_ids: movie.genreIds.join(", "),
-		is_seen: false,
+		watched_date: null,
 		poster: movie.posterPath,
 		title: movie.title,
 		user_id: selectLocalSessionData()?.user.id ?? "", // to determine
@@ -26,17 +28,20 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 		overview: movie.overview,
 	})
 
+	const toggleMovieIsSeen = () => {
+		setChecked((checked) => !checked)
+		setNewMovie({
+			...newMovie,
+			watched_date: checked ? null : new Date().toISOString(),
+		})
+	}
+
 	return (
 		<>
 			<Toggle
-				isChecked={newMovie.is_seen}
+				isChecked={checked}
 				label="Marquer comme vu"
-				onToggle={() =>
-					setNewMovie({
-						...newMovie,
-						is_seen: !newMovie.is_seen,
-					})
-				}
+				onToggle={toggleMovieIsSeen}
 			/>
 			{children}
 			<AddMovie movie={newMovie} searchedMovieId={movie.id} />

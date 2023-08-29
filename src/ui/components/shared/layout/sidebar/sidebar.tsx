@@ -39,6 +39,11 @@ export const Sidebar = () => {
 								icon={<Icon name="search" />}
 								path={"/add-movie"}
 							/>
+							{/* <Link
+								content="Historique de visionnage"
+								icon={<Icon name="history" />}
+								path={"/history"}
+							/> */}
 						</ul>
 						<div className="h-px my-6 bg-gray-800" />
 						<ul className="space-y-3 font-medium">

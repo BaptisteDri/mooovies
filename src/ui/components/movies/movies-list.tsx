@@ -14,9 +14,10 @@ type Props = {
 export const MoviesList = ({ userId }: Props) => {
 	const [query, setQuery] = useState<string | undefined>(undefined)
 	const deferredQuery = useDeferredValue(query)
-	const [filter, setFilter] = useState<"SEEN" | "NOT_SEEN" | undefined>(
-		undefined
-	)
+	const [isSeen, setIsSeen] = useState<boolean>()
+	const [genreId, setGenreId] = useState<string>()
+	const [order, setOrder] = useState<"title" | "year" | "director">("title")
+
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()
 
@@ -24,10 +25,11 @@ export const MoviesList = ({ userId }: Props) => {
 		useGetUserMovies({
 			getUserMoviesDto: {
 				userId: userId ?? (user?.id as string),
-				order: "title",
+				order,
 				filters: {
-					genreId: "18",
+					genreId,
 					title: deferredQuery,
+					isSeen,
 				},
 			},
 			enabled: true,
@@ -48,8 +50,12 @@ export const MoviesList = ({ userId }: Props) => {
 			<SearchBar
 				query={query ?? ""}
 				handleOnQueryChange={handleOnQueryChange}
-				setFilter={setFilter}
-				filter={filter}
+				setIsSeen={setIsSeen}
+				isSeen={isSeen}
+				genreId={genreId}
+				setGenreId={setGenreId}
+				order={order}
+				setOrder={setOrder}
 			/>
 
 			{data?.pages[0].movies.length === 0 && !hasNextPage && (
@@ -57,7 +63,7 @@ export const MoviesList = ({ userId }: Props) => {
 			)}
 
 			{data && (
-				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-4">
+				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
 					{data.pages.map((group, i) => (
 						<Fragment key={i}>
 							{group.movies.map((movie, i) => (
@@ -71,8 +77,10 @@ export const MoviesList = ({ userId }: Props) => {
 			<div ref={ref} />
 
 			{isFetchingNextPage && (
-				<div className="grid place-items-center py-8 mt-4 scale-150">
-					<Spinner />
+				<div className="grid place-items-center py-8 mt-4 w-full">
+					<div className="w-fit scale-150">
+						<Spinner />
+					</div>
 				</div>
 			)}
 		</>

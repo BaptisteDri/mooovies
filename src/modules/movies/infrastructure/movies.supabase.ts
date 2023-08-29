@@ -16,14 +16,33 @@ export const MoviesSupabase = (): MoviesRepository => ({
 		const from = pageIndex === 0 ? pageIndex * limit : pageIndex * limit + 1
 		const to = pageIndex * limit + limit
 
-		const { data } = await supabase
+		const query = supabase
 			.from("films")
 			.select()
 			.eq("user_id", userId)
-			// .like("genre_ids", filters?.genreId ? filters.genreId : "%")
-			.ilike("title", filters?.title ? `%${filters.title}%` : "%")
-			.order(order)
 			.range(from, to)
+
+		if (order === "year") {
+			query.order(order, { ascending: false })
+		} else {
+			query.order(order)
+		}
+
+		if (filters?.title) {
+			query.ilike("title", `%${filters?.title}%`) // @TODO: replace by searchText within title, original_title, director
+		}
+
+		if (filters?.genreId) {
+			query.ilike("genre_ids", `%${filters.genreId}%`)
+		}
+
+		if (filters?.isSeen === true) {
+			query.not("watched_date", "is", null)
+		} else if (filters?.isSeen === false) {
+			query.is("watched_date", null)
+		}
+
+		const { data } = await query
 
 		return Promise.resolve({
 			movies: mapMoviesToDomainModel(data ?? []),
@@ -39,7 +58,7 @@ export const MoviesSupabase = (): MoviesRepository => ({
 	toggleMovieIsSeen: async ({ movie }) => {
 		await supabase
 			.from("films")
-			.update({ is_seen: movie.is_seen })
+			.update({ watched_date: movie.watched_date })
 			.eq("uuid", movie.uuid)
 	},
 

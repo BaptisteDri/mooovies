@@ -5,7 +5,7 @@ export type Movie = {
 	year: string
 	genreIds: string[]
 	poster: string
-	isSeen: boolean
+	watchedDate: string | null
 	userId: string
 	originalTitle: string
 	originalLanguage: string
