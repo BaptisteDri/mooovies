@@ -12,7 +12,7 @@ const IndexPage: NextPage = () => {
 			<SessionProvider>
 				<div className="p-4 sm:p-6">
 					<div className="mb-4 sm:mb-6 mt-14 sm:mt-16">
-						<Title>Mes films</Title>
+						<Title>Ma liste</Title>
 					</div>
 					<MoviesList />
 				</div>
