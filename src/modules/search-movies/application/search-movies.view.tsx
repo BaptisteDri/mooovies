@@ -44,7 +44,7 @@ export const SearchMoviesView = ({
 	}
 
 	return (
-		<>
+		<div className="p-4 sm:p-6">
 			<SearchInput
 				query={query}
 				handleOnQueryChange={handleOnQueryChange}
@@ -78,6 +78,6 @@ export const SearchMoviesView = ({
 			>
 				{selectedMovie && <DrawerContent movie={selectedMovie} />}
 			</Drawer>
-		</>
+		</div>
 	)
 }

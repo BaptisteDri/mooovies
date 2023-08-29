@@ -13,8 +13,8 @@ export const MoviesSupabase = (): MoviesRepository => ({
 		filters,
 	}) => {
 		const limit = 35
-		const from = pageIndex === 0 ? pageIndex * limit : pageIndex * limit + 1
-		const to = pageIndex * limit + limit
+		const from = pageIndex * limit
+		const to = pageIndex * limit + limit - 1
 
 		const query = supabase
 			.from("films")

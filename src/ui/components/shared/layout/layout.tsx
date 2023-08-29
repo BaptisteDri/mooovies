@@ -12,15 +12,13 @@ export const Layout = ({ children }: Props) => {
 	const user = useAppSelector(selectLoggedInUser)
 
 	return (
-		<main>
+		<>
 			{user ? (
 				<>
 					<span className="hidden sm:block">
 						<Sidebar />
 					</span>
-					<div className="p-4 sm:p-6 sm:ml-72 mb-24 sm:mb-0">
-						{children}
-					</div>
+					<main className="sm:ml-72 mb-24 sm:mb-0">{children}</main>
 					<span className="sm:hidden">
 						<Menu />
 					</span>
@@ -28,6 +26,6 @@ export const Layout = ({ children }: Props) => {
 			) : (
 				children
 			)}
-		</main>
+		</>
 	)
 }

@@ -10,10 +10,12 @@ const IndexPage: NextPage = () => {
 		<>
 			<Head />
 			<SessionProvider>
-				<div className="flex justify-between items-center mb-4 sm:mb-6 mt-14 sm:mt-16">
-					<Title>Mes films</Title>
+				<div className="p-4 sm:p-6">
+					<div className="mb-4 sm:mb-6 mt-14 sm:mt-16">
+						<Title>Mes films</Title>
+					</div>
+					<MoviesList />
 				</div>
-				<MoviesList />
 			</SessionProvider>
 		</>
 	)

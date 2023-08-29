@@ -7,9 +7,16 @@ type Props = {
 	setIsSeen: (isSeen?: boolean) => void
 	genreId?: string
 	setGenreId: (genreId?: string) => void
+	closeFiltersSection: () => void
 }
 
-export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
+export const Filters = ({
+	isSeen,
+	setIsSeen,
+	genreId,
+	setGenreId,
+	closeFiltersSection,
+}: Props) => {
 	const { genres } = useGenre()
 	const mCn = useMergedClassName()
 
@@ -25,7 +32,10 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 							type="checkbox"
 							id="all_movies"
 							className="hidden peer"
-							onChange={() => setIsSeen(undefined)}
+							onChange={() => {
+								setIsSeen(undefined)
+								closeFiltersSection()
+							}}
 							checked={isSeen === undefined}
 						/>
 						<label
@@ -40,11 +50,12 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 							type="checkbox"
 							id="seen_movies"
 							className="hidden peer"
-							onChange={() =>
+							onChange={() => {
 								isSeen === true
 									? setIsSeen(undefined)
 									: setIsSeen(true)
-							}
+								closeFiltersSection()
+							}}
 							checked={isSeen === true}
 						/>
 						<label
@@ -59,11 +70,12 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 							type="checkbox"
 							id="not_seen_movies"
 							className="hidden peer"
-							onChange={() =>
+							onChange={() => {
 								isSeen === false
 									? setIsSeen(undefined)
 									: setIsSeen(false)
-							}
+								closeFiltersSection()
+							}}
 							checked={isSeen === false}
 						/>
 						<label
@@ -86,7 +98,10 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 							genreId === undefined &&
 								"text-slate-300 border-blue-600"
 						)}
-						onClick={() => setGenreId(undefined)}
+						onClick={() => {
+							setGenreId(undefined)
+							closeFiltersSection()
+						}}
 					>
 						🎬&nbsp;Tous
 					</button>
@@ -98,11 +113,12 @@ export const Filters = ({ isSeen, setIsSeen, genreId, setGenreId }: Props) => {
 								genreId === (genre.id as unknown as string) &&
 									"text-slate-300 border-blue-600"
 							)}
-							onClick={() =>
+							onClick={() => {
 								genreId === (genre.id as unknown as string)
 									? setGenreId(undefined)
 									: setGenreId(genre.id as unknown as string)
-							}
+								closeFiltersSection()
+							}}
 						>
 							{genre.icon}&nbsp;{genre.name}
 						</button>

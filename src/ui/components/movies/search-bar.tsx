@@ -77,8 +77,17 @@ export const SearchBar = ({
 						: "max-h-0 opacity-0 transition-all duration-300"
 				)}
 			>
-				<Order order={order} setOrder={setOrder} />
+				<Order
+					order={order}
+					setOrder={setOrder}
+					closeFiltersSection={() =>
+						setFiltersSectionVisibility(false)
+					}
+				/>
 				<Filters
+					closeFiltersSection={() =>
+						setFiltersSectionVisibility(false)
+					}
 					isSeen={isSeen}
 					setIsSeen={setIsSeen}
 					genreId={genreId}
