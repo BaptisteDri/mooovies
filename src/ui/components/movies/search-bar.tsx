@@ -45,7 +45,7 @@ export const SearchBar = ({
 		;(document.activeElement as HTMLElement).blur()
 	}
 
-	window.addEventListener("touchmove", handleTouchMove)
+	window?.addEventListener("touchmove", handleTouchMove)
 
 	return (
 		<div className="px-4 sm:px-6 py-2 md:py-4 bg-slate-950 overflow-hidden">
