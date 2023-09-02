@@ -9,7 +9,6 @@ export const ForeignUserMoviesPage: NextPage = () => {
 	return (
 		<>
 			<Head />
-			<MoviesList userId={router.query.userId?.toString()} />
 		</>
 	)
 }
