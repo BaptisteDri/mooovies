@@ -32,7 +32,9 @@ const MoviePage: NextPage = () => {
 			{isLoading ? (
 				<Loader />
 			) : (
-				movie && !isError && <MovieRecord movie={movie} />
+				<div className="h-full max-sm:h-[calc(100%-77px)] overflow-y-auto overflow-x-hidden scroll-smooth">
+					{movie && !isError && <MovieRecord movie={movie} />}
+				</div>
 			)}
 		</>
 	)

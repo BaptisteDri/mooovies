@@ -13,4 +13,5 @@ export const mapMovieToInfraModel = (movie: Movie): InfraMovie => ({
 	original_language: movie.originalLanguage,
 	original_title: movie.originalTitle,
 	overview: movie.overview,
+	tmdb_id: movie.tmdbId,
 })

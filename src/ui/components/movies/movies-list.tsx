@@ -5,8 +5,9 @@ import { useAppSelector } from "@/config/store"
 import { selectLoggedInUser } from "@/modules/auth/auth.selectors"
 import { MovieItem } from "./movie-item"
 import { useInView } from "react-intersection-observer"
-import { Spinner } from "../shared/spinner"
 import { Loader } from "../shared/loader"
+import { MoviesListPlaceholder } from "./movies-list-placeholder"
+import { Title } from "../shared/title"
 
 type Props = {
 	userId?: string
@@ -52,7 +53,7 @@ export const MoviesList = ({ userId }: Props) => {
 	}, [inView])
 
 	return (
-		<>
+		<div className="min-h-fit h-full overflow-hidden">
 			<SearchBar
 				query={query ?? ""}
 				handleOnQueryChange={handleOnQueryChange}
@@ -64,31 +65,35 @@ export const MoviesList = ({ userId }: Props) => {
 				setOrder={setOrder}
 			/>
 
-			{data?.pages[0].movies.length === 0 && !hasNextPage && (
-				<div>add movies</div>
-			)}
+			<div className="flex flex-col p-4 sm:p-6 h-[calc(100%-138px)] sm:h-[calc(100%-77px)] overflow-y-auto overflow-x-hidden scroll-smooth">
+				<Title>Ma liste</Title>
 
-			{isInitialLoading && <Loader />}
+				{data?.pages[0].movies.length === 0 && !hasNextPage && (
+					<MoviesListPlaceholder />
+				)}
 
-			{data && (
-				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
-					{data.pages.map((group, i) => (
-						<Fragment key={i}>
-							{group.movies.map((movie, i) => (
-								<MovieItem movie={movie} key={movie.uuid} />
-							))}
-						</Fragment>
-					))}
-				</ul>
-			)}
+				{isInitialLoading && <Loader />}
 
-			<div ref={ref} />
+				{data && (
+					<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
+						{data.pages.map((group, i) => (
+							<Fragment key={i}>
+								{group.movies.map((movie) => (
+									<MovieItem movie={movie} key={movie.uuid} />
+								))}
+							</Fragment>
+						))}
+					</ul>
+				)}
 
-			{isFetchingNextPage && (
-				<div className="grid place-items-center py-8 mt-4 w-full">
-					<Loader />
-				</div>
-			)}
-		</>
+				<div ref={ref} />
+
+				{isFetchingNextPage && (
+					<div className="grid place-items-center py-8 mt-4 w-full">
+						<Loader />
+					</div>
+				)}
+			</div>
+		</div>
 	)
 }

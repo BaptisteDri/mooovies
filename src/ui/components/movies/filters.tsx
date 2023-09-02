@@ -103,7 +103,7 @@ export const Filters = ({
 							closeFiltersSection()
 						}}
 					>
-						🎬&nbsp;Tous
+						🎬&nbsp;Toutes
 					</button>
 					{genres.map((genre) => (
 						<button

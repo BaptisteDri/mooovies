@@ -10,4 +10,5 @@ export type Movie = {
 	original_title: string
 	original_language: string
 	overview: string
+	tmdb_id: number
 }

@@ -26,6 +26,7 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 		original_language: movie.originalLanguage,
 		original_title: movie.originalTitle,
 		overview: movie.overview,
+		tmdb_id: movie.tmdbId,
 	})
 
 	const toggleMovieIsSeen = () => {
@@ -44,7 +45,7 @@ export const AddMovieForm = ({ movie, children }: Props) => {
 				onToggle={toggleMovieIsSeen}
 			/>
 			{children}
-			<AddMovie movie={newMovie} searchedMovieId={movie.id} />
+			<AddMovie movie={newMovie} searchedMovieId={movie.tmdbId} />
 		</>
 	)
 }

@@ -9,7 +9,7 @@ const mapSearchedMovieToDomainModel = (
 	searchedMovie: InfraSearchedMovie
 ): SearchedMovie => ({
 	genreIds: searchedMovie.genre_ids,
-	id: searchedMovie.id,
+	tmdbId: searchedMovie.id,
 	originalLanguage: searchedMovie.original_language,
 	originalTitle: searchedMovie.original_title,
 	overview: searchedMovie.overview,

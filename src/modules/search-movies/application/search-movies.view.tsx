@@ -57,13 +57,13 @@ export const SearchMoviesView = ({
 					{searchResultsMovies.map((movie: SearchedMovie) =>
 						movie.posterPath ? (
 							<SearchMovieItem
-								key={movie.id}
+								key={movie.tmdbId}
 								movie={movie}
 								setSelectedMovie={setSelectedMovie}
 								alreadyAdded={checkIfAlreadyAdded(movie)}
 							/>
 						) : (
-							<span key={movie.id}></span>
+							<span key={movie.tmdbId}></span>
 						)
 					)}
 				</ul>

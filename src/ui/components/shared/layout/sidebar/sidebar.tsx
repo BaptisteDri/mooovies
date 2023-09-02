@@ -11,7 +11,7 @@ export const Sidebar = () => {
 	return (
 		<aside
 			id="default-sidebar"
-			className="fixed top-0 left-0 z-40 w-72 h-screen"
+			className="fixed top-0 left-0 z-40 w-72 h-full"
 			aria-label="Sidebar"
 		>
 			<div className="h-full py-6 px-4 overflow-y-auto bg-slate-900 border-r border-slate-800">
@@ -30,7 +30,7 @@ export const Sidebar = () => {
 					<>
 						<ul className="space-y-3 font-medium">
 							<Link
-								content="Accueil"
+								content="Ma liste"
 								icon={<Icon name="home" />}
 								path={"/"}
 							/>
