@@ -32,15 +32,14 @@ export const MovieRecord = ({ movie }: Props) => {
 						sizes="100%"
 					/>
 					<div className="bg-gradient-to-b from-transparent via-transparent to-slate-950 absolute w-full h-full flex flex-col justify-between pt-4 px-4">
-						<div className="flex justify-end">
-							<div
-								role="link"
-								onClick={() => back()}
-								className="select-none flex items-center justify-center h-11 w-11  border rounded-2xl cursor-pointer hover:text-slate-300 border-slate-700 text-slate-400 bg-slate-800 hover:bg-slate-700"
-							>
-								<Icon name="close" />
-							</div>
+						<div
+							role="link"
+							onClick={() => back()}
+							className="select-none flex items-center justify-center h-11 w-11  border rounded-2xl cursor-pointer hover:text-slate-300 border-slate-700 text-slate-400 bg-slate-800 hover:bg-slate-700"
+						>
+							<Icon name="arrow_left_alt" />
 						</div>
+
 						<div>
 							<Title className="mb-2 text-2xl">
 								{movie.title}

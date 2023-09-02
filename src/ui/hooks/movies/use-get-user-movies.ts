@@ -3,6 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import { useActions } from "@/ui/hooks/use-actions"
 import { dependencies } from "@/config/dependencies"
 import { CustomError } from "@/modules/shared/types/error"
+import { LIMIT } from "@/modules/movies/infrastructure/movies.supabase"
 
 export const GET_USER_MOVIES_QUERY_KEY = "get-user-movies"
 
@@ -23,7 +24,9 @@ export const useGetUserMovies = ({
 				pageIndex: pageParam,
 			}),
 		getNextPageParam: (lastPage) =>
-			lastPage.movies.length >= 35 ? lastPage.nextPageIndex : undefined,
+			lastPage.movies.length >= LIMIT
+				? lastPage.nextPageIndex
+				: undefined,
 		enabled,
 		staleTime: Infinity,
 		onError: (error: CustomError) => console.error(error),

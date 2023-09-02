@@ -48,7 +48,7 @@ export const SearchBar = ({
 	window?.addEventListener("touchmove", handleTouchMove)
 
 	return (
-		<div className="px-4 sm:px-6 py-2 md:py-4 bg-slate-950 overflow-hidden">
+		<div className="sm:left-72 sm:pt-4 fixed px-4 sm:px-6 left-0 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
 			<div className="flex">
 				<div className="relative flex flex-auto mr-2">
 					<label
@@ -89,37 +89,28 @@ export const SearchBar = ({
 
 			<div
 				className={mCn(
-					"absolute left-0 top-[60px] sm:top-[77px] overflow-hidden bg-slate-950 border-b border-slate-800 z-40",
+					"grid gap-4 will-change-transform",
 					isFiltersSectionVisible
-						? "max-h-[50rem] transition-all duration-300 touch-none"
-						: "max-h-[1px] transition-all duration-300"
+						? "mt-2 md:mt-4 max-h-[50rem] opacity-100 transition-all duration-300 mb-2 touch-none"
+						: "max-h-0 opacity-0 transition-all duration-300"
 				)}
 			>
-				<div
-					className={mCn(
-						"p-4 max-sm:pt-2 grid gap-4",
-						isFiltersSectionVisible
-							? "opacity-100 transition-all duration-300"
-							: "opacity-0 transition-all duration-300"
-					)}
-				>
-					<Order
-						order={order}
-						setOrder={setOrder}
-						closeFiltersSection={() =>
-							setFiltersSectionVisibility(false)
-						}
-					/>
-					<Filters
-						closeFiltersSection={() =>
-							setFiltersSectionVisibility(false)
-						}
-						isSeen={isSeen}
-						setIsSeen={setIsSeen}
-						genreId={genreId}
-						setGenreId={setGenreId}
-					/>
-				</div>
+				<Order
+					order={order}
+					setOrder={setOrder}
+					closeFiltersSection={() =>
+						setFiltersSectionVisibility(false)
+					}
+				/>
+				<Filters
+					closeFiltersSection={() =>
+						setFiltersSectionVisibility(false)
+					}
+					isSeen={isSeen}
+					setIsSeen={setIsSeen}
+					genreId={genreId}
+					setGenreId={setGenreId}
+				/>
 			</div>
 		</div>
 	)

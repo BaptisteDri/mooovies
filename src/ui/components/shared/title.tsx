@@ -11,7 +11,7 @@ export const Title = ({ children, className }: Props) => {
 	return (
 		<h1
 			className={mCn(
-				"text-white text-3xl sm:text-4xl font-bold",
+				"text-white text-3xl sm:text-4xl font-semibold",
 				className
 			)}
 		>

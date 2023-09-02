@@ -53,7 +53,7 @@ export const MoviesList = ({ userId }: Props) => {
 	}, [inView])
 
 	return (
-		<div className="min-h-fit h-full overflow-hidden">
+		<>
 			<SearchBar
 				query={query ?? ""}
 				handleOnQueryChange={handleOnQueryChange}
@@ -65,8 +65,8 @@ export const MoviesList = ({ userId }: Props) => {
 				setOrder={setOrder}
 			/>
 
-			<div className="flex flex-col p-4 sm:p-6 h-[calc(100%-138px)] sm:h-[calc(100%-77px)] overflow-y-auto overflow-x-hidden scroll-smooth">
-				<Title>Ma liste</Title>
+			<div className="flex flex-col p-4 sm:p-6 mt-[3.75rem]">
+				<Title className="mb-2">Ma liste</Title>
 
 				{data?.pages[0].movies.length === 0 && !hasNextPage && (
 					<MoviesListPlaceholder />
@@ -94,6 +94,6 @@ export const MoviesList = ({ userId }: Props) => {
 					</div>
 				)}
 			</div>
-		</div>
+		</>
 	)
 }

@@ -11,7 +11,7 @@ const AddMoviePage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<div className="p-4 sm:p-6 h-full max-sm:h-[calc(100%-77px)] overflow-y-auto overflow-x-hidden scroll-smooth">
+				<div className="p-4 sm:p-6">
 					{/* <div className="mb-4 sm:mb-6 mt-14 sm:mt-16"> */}
 					<Title>Rechercher</Title>
 					<SearchMoviesContainer />

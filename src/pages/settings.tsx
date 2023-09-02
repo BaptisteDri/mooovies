@@ -10,10 +10,8 @@ const SettingsPage: NextPage = () => {
 			<Head />
 
 			<SessionProvider>
-				<div className="p-4 sm:p-6 h-full max-sm:h-[calc(100%-77px)] overflow-y-auto overflow-x-hidden scroll-smooth">
-					<div className="mb-4 sm:mb-6">
-						<Title>Paramètres</Title>
-					</div>
+				<div className="p-4 sm:p-6">
+					<Title className="mb-4 sm:mb-6">Paramètres</Title>
 					<Settings />
 				</div>
 			</SessionProvider>

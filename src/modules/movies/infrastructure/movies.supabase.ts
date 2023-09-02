@@ -5,6 +5,8 @@ import {
 } from "@/modules/movies/domain/movies.mapper"
 import { MoviesRepository } from "@/modules/movies/application/movies.repository"
 
+export const LIMIT = 33
+
 export const MoviesSupabase = (): MoviesRepository => ({
 	getUserMovies: async ({
 		userId,
@@ -12,9 +14,8 @@ export const MoviesSupabase = (): MoviesRepository => ({
 		pageIndex = 0,
 		filters,
 	}) => {
-		const limit = 35
-		const from = pageIndex * limit
-		const to = pageIndex * limit + limit - 1
+		const from = pageIndex * LIMIT
+		const to = pageIndex * LIMIT + LIMIT - 1
 
 		const query = supabase
 			.from("films")
