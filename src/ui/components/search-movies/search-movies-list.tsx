@@ -3,9 +3,9 @@ import { SearchBar } from "./search-bar"
 import { Title } from "../shared/title"
 import { Loader } from "../shared/loader"
 import { useSearchMovie } from "@/ui/hooks/search-movies/use-search-movie"
-import { useGetPopularMovies } from "@/ui/hooks/search-movies/use-get-popular-movies"
 import { MovieItem } from "../movies/movie-item"
 import { useRouter } from "next/router"
+import { PopularMoviesList } from "./popular-movies-list"
 
 export const SearchMoviesList = () => {
 	const [query, setQuery] = useState<string>("")
@@ -25,11 +25,6 @@ export const SearchMoviesList = () => {
 	} = useSearchMovie({
 		query: deferredQuery,
 	})
-
-	const { data: popularMovies, isFetching: isGetPopularMoviesFetching } =
-		useGetPopularMovies({
-			enabled: true,
-		})
 
 	useEffect(() => {
 		if (deferredQuery) searchMovie()
@@ -86,29 +81,7 @@ export const SearchMoviesList = () => {
 							)}
 					</>
 				) : (
-					<>
-						{isGetPopularMoviesFetching && <Loader />}
-
-						{!isGetPopularMoviesFetching &&
-							popularMovies &&
-							popularMovies.length > 0 && (
-								<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
-									{popularMovies?.map((searchedMovie) => (
-										<MovieItem
-											key={searchedMovie.tmdbId}
-											poster={searchedMovie.posterPath}
-											title={searchedMovie.title}
-											watchedDate={null}
-											onClick={() =>
-												push(
-													`/movie/${searchedMovie.tmdbId}`
-												)
-											}
-										/>
-									))}
-								</ul>
-							)}
-					</>
+					<PopularMoviesList />
 				)}
 			</div>
 		</>

@@ -12,9 +12,9 @@ export const getPopularMovies =
 	}: {
 		searchMoviesRepository: SearchMoviesRepository
 	}) =>
-	async () => {
+	async (pageIndex?: number) => {
 		try {
-			return await searchMoviesRepository.getPopularMovies()
+			return await searchMoviesRepository.getPopularMovies(pageIndex)
 		} catch (error) {
 			throw GET_POPULAR_MOVIES_ERROR
 		}

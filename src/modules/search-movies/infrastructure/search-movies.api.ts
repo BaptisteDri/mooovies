@@ -13,15 +13,22 @@ export const SearchMoviesApi = (): SearchMoviesRepository => ({
 			})
 			.then(({ data }) => mapSearchMoviesToDomainModel(data)),
 
-	getPopularMovies: async () =>
+	getPopularMovies: async (pageIndex = 1) =>
 		api
 			.get("/movie/popular", {
-				params: { language: "fr-FR", include_adult: false },
+				params: {
+					language: "fr-FR",
+					include_adult: false,
+					page: pageIndex,
+				},
 				headers: {
 					Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
 				},
 			})
-			.then(({ data }) => mapSearchMoviesToDomainModel(data)),
+			.then(({ data }) => ({
+				movies: mapSearchMoviesToDomainModel(data),
+				nextPageIndex: pageIndex + 1,
+			})),
 
 	getMovieDetails: async (tmdbId) =>
 		api
