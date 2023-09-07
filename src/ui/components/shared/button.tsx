@@ -1,23 +1,49 @@
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
+import { Spinner } from "@/ui/components/shared/spinner"
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>
+type Props = {
+	variant?: "primary" | "secondary" | "danger"
+	isLoading?: boolean
+} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button = ({ children, className, ...props }: Props) => {
+export const Button = ({
+	variant = "primary",
+	isLoading = false,
+	children,
+	className,
+	disabled,
+	...props
+}: Props) => {
 	const mCn = useMergedClassName()
 
 	return (
-		<div className="relative inline-flex group">
-			<div className="animate-tilt group-hover:animate-none absolute transition-all duration-500 opacity-90 -inset-1 bg-gradient-to-r from-green-800 via-sky-800 to-pink-800 rounded-xl blur-xl group-hover:opacity-100 group-hover:-inset-2 group-hover:duration-200" />
+		<button
+			{...props}
+			className={mCn(
+				"overflow-hidden relative flex items-center justify-center px-4 py-2 text-sm font-medium text-center border rounded-xl focus:outline-none focus:z-10 focus:ring-4",
+				variant === "primary" &&
+					"bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-700 text-white border-blue-800 hover:bg-blue-700",
+				variant === "secondary" &&
+					"focus:ring-slate-700 bg-none text-slate-400 border-slate-700",
+				variant === "danger" &&
+					"bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 text-white border-red-800",
+				className
+			)}
+			disabled={isLoading ? true : disabled}
+		>
+			{children}
 
-			<button
+			<div
 				className={mCn(
-					"relative inline-flex items-center justify-center px-4 h-11 text-lg text-white transition-all duration-200 bg-slate-950 rounded-xl",
-					className
+					"grid place-items-center absolute inset-0 opacity-0 transition-all duration-150",
+					variant === "primary" && "bg-blue-600/50",
+					variant === "secondary" && "bg-slate-950/50",
+					variant === "danger" && "bg-red-500/50",
+					isLoading && "opacity-100"
 				)}
-				{...props}
 			>
-				{children}
-			</button>
-		</div>
+				<Spinner />
+			</div>
+		</button>
 	)
 }

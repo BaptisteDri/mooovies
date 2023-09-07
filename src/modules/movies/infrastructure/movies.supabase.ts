@@ -50,12 +50,15 @@ export const MoviesSupabase = (): MoviesRepository => ({
 			nextPageIndex: pageIndex + 1,
 		})
 	},
+
 	addMovie: async ({ movie }) => {
 		await supabase.from("films").insert({ ...movie, uuid: undefined })
 	},
+
 	deleteMovie: async ({ movie }) => {
 		await supabase.from("films").delete().eq("uuid", movie.uuid)
 	},
+
 	toggleMovieIsSeen: async ({ movie }) => {
 		await supabase
 			.from("films")
@@ -63,14 +66,15 @@ export const MoviesSupabase = (): MoviesRepository => ({
 			.eq("uuid", movie.uuid)
 	},
 
-	getUserMovie: async (movieId) => {
+	getUserMovie: async ({ tmdbId, userId }) => {
 		const { data } = await supabase
 			.from("films")
 			.select()
-			.eq("uuid", movieId)
+			.eq("tmdb_id", tmdbId)
+			.eq("user_id", userId)
 
-		if (data?.length === 0 || !data) return
+		if (data?.length === 0 || !data) return null
 
-		return mapMovieToDomainModel(data[0])
+		return mapMovieToDomainModel(data[0]) ?? null
 	},
 })

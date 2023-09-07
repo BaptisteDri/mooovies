@@ -4,6 +4,10 @@ import { getUserMovie } from "@/modules/movies/application/actions/get-user-movi
 import { toggleMovieIsSeen } from "@/modules/movies/application/actions/toggle-movie-is-seen"
 import { addMovie } from "@/modules/movies/application/actions/add-movie"
 import { deleteMovie } from "@/modules/movies/application/actions/delete-movie"
+import { getPopularMovies } from "@/modules/search-movies/application/actions/get-popular-movies"
+import { searchMovie } from "@/modules/search-movies/application/actions/search-movie"
+import { getMovieDetails } from "@/modules/search-movies/application/actions/get-movie-details"
+import { getMovieCredits } from "@/modules/search-movies/application/actions/get-movie-credits"
 
 export const actions = {
 	withDependencies: (dependencies: Dependencies) => ({
@@ -13,6 +17,12 @@ export const actions = {
 			addMovie,
 			deleteMovie,
 			getUserMovie,
+		},
+		searchMovies: {
+			searchMovie,
+			getPopularMovies,
+			getMovieDetails,
+			getMovieCredits,
 		},
 	}),
 }

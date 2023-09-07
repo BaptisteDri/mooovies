@@ -20,35 +20,35 @@ export const SearchMoviesContainer = () => {
 	>([])
 	const [searchResultsPerson, setSearchResultsPerson] =
 		useState<SearchedPerson>()
-	useEffect(() => {
-		if (!deferredQuery) return setSearchResultsMovies([])
+	// useEffect(() => {
+	// 	if (!deferredQuery) return setSearchResultsMovies([])
 
-		const timer = setTimeout(() => {
-			_searchMovies()
-		}, 300)
+	// 	const timer = setTimeout(() => {
+	// 		_searchMovies()
+	// 	}, 300)
 
-		return () => clearTimeout(timer)
-	}, [deferredQuery])
+	// 	return () => clearTimeout(timer)
+	// }, [deferredQuery])
 
-	const { searchMoviesOutput } = appOutputs
+	// const { searchMoviesOutput } = appOutputs
 
-	const _searchMovies = async () => {
-		setIsLoading(true)
+	// const _searchMovies = async () => {
+	// 	setIsLoading(true)
 
-		try {
-			const moviesData = await searchMovies({ searchMoviesOutput, query })
-			const personsData = await searchPersons({
-				searchMoviesOutput,
-				query,
-			})
-			setSearchResultsPerson(personsData[0])
-			setSearchResultsMovies(moviesData)
-			setIsLoading(false)
-		} catch (error: any) {
-			setIsLoading(false)
-			console.error(error)
-		}
-	}
+	// 	try {
+	// 		const moviesData = await searchMovies({ searchMoviesOutput, query })
+	// 		const personsData = await searchPersons({
+	// 			searchMoviesOutput,
+	// 			query,
+	// 		})
+	// 		setSearchResultsPerson(personsData[0])
+	// 		setSearchResultsMovies(moviesData)
+	// 		setIsLoading(false)
+	// 	} catch (error: any) {
+	// 		setIsLoading(false)
+	// 		console.error(error)
+	// 	}
+	// }
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)

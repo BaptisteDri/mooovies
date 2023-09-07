@@ -1,27 +1,27 @@
-import { Movie } from "@/modules/shared/types/movie"
 import { Icon } from "@/ui/components/shared/icon"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
 import Image from "next/image"
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
-import { useRouter } from "next/router"
 
 type Props = {
-	movie: Movie
+	title: string
+	poster: string
+	watchedDate: string | null
+	onClick?: () => void
 }
 
-export const MovieItem = ({ movie }: Props) => {
+export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
 	const mCn = useMergedClassName()
-	const { push } = useRouter()
 
 	return (
 		<li
-			onClick={() => push(`/movie/${movie.uuid}`)}
-			className="relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-800"
-			role="button"
+			onClick={onClick}
+			className="cursor-pointer relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-800"
+			role="link"
 		>
 			<Image
-				src={usePosterFullPath(movie.poster)}
-				alt={movie.title}
+				src={usePosterFullPath(poster)}
+				alt={title}
 				fill
 				className="object-cover"
 				quality={15}
@@ -32,7 +32,7 @@ export const MovieItem = ({ movie }: Props) => {
 			<div
 				className={mCn(
 					"top-0 right-0 absolute bg-blue-600 h-7 w-7 rounded-bl-xl flex items-center justify-center drop-shadow-lg translate-x-full -translate-y-full rotate-90 ease-in-out transition-all duration-150",
-					movie.watchedDate && "translate-x-0 rotate-0 translate-y-0"
+					watchedDate && "translate-x-0 rotate-0 translate-y-0"
 				)}
 			>
 				<Icon

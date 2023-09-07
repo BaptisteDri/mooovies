@@ -19,9 +19,9 @@ const searchedPerson: SearchedPerson = {
 	profile_path: "",
 }
 
-export const searchResultsFakes: SearchResults = {
-	results: [searchedMovie],
-}
+// export const searchResultsFakes: SearchResults = {
+// 	results: [searchedMovie],
+// }
 
 export const searchPersonsResultsFakes = {
 	results: [searchedPerson],

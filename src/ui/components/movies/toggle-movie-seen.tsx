@@ -1,38 +1,46 @@
 import { Movie } from "@/modules/shared/types/movie"
-import { Toggle } from "@/ui/components/shared/form/toggle"
 import { mapMovieToInfraModel } from "@/modules/movies/infrastructure/movies.mapper"
 import { useToggleMovieIsSeen } from "@/ui/hooks/movies/use-toggle-movie-is-seen"
 import { useEffect, useState } from "react"
+import { useQueryClient } from "@tanstack/react-query"
+import { GET_USER_MOVIES_QUERY_KEY } from "@/ui/hooks/movies/use-get-user-movies"
+import { Button } from "@/ui/components/shared/button"
+import { GET_USER_MOVIE_QUERY_KEY } from "@/ui/hooks/movies/use-get-user-movie"
 
 type Props = {
 	movie: Movie
 }
 
 export const ToggleMovieSeen = ({ movie }: Props) => {
-	const [checked, setChecked] = useState(!!movie.watchedDate)
-	const toggleMovieIsSeen = useToggleMovieIsSeen()
+	const queryClient = useQueryClient()
+
+	const toggleMovieIsSeen = useToggleMovieIsSeen(async () => {
+		await queryClient.invalidateQueries([GET_USER_MOVIES_QUERY_KEY])
+		await queryClient.invalidateQueries([GET_USER_MOVIE_QUERY_KEY])
+	})
 
 	const onToggleMovieIsSeen = () => {
 		if (toggleMovieIsSeen.isLoading) return
 
-		setChecked((checked) => !checked)
 		toggleMovieIsSeen.mutate({
 			movie: mapMovieToInfraModel({
 				...movie,
-				watchedDate: checked ? null : new Date().toISOString(),
+				watchedDate: movie.watchedDate
+					? null
+					: new Date().toISOString(),
 			}),
 		})
 	}
 
-	useEffect(() => {
-		setChecked(!!movie.watchedDate)
-	}, [toggleMovieIsSeen.isError])
-
 	return (
-		<Toggle
-			isChecked={checked}
-			onToggle={onToggleMovieIsSeen}
-			label="Marquer comme vu"
-		/>
+		<Button
+			type="button"
+			onClick={() => onToggleMovieIsSeen()}
+			disabled={toggleMovieIsSeen.isLoading}
+			variant={movie.watchedDate ? "secondary" : "primary"}
+			isLoading={toggleMovieIsSeen.isLoading}
+		>
+			{movie.watchedDate ? "Retirer des films vus" : "Marquer comme vu"}
+		</Button>
 	)
 }

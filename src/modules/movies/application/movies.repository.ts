@@ -18,7 +18,7 @@ type getUserMoviesRo = Promise<{
 }>
 
 export type AddMovieDto = {
-	movie: MovieInfra
+	movie: Omit<MovieInfra, "uuid">
 }
 
 export type DeleteMovieDto = {
@@ -28,10 +28,15 @@ export type ToggleMovieIsSeenDto = {
 	movie: MovieInfra
 }
 
+export type GetUserMovieDto = {
+	userId: string
+	tmdbId: string
+}
+
 export type MoviesRepository = {
 	getUserMovies(getUserMoviesDto: GetUserMoviesDto): getUserMoviesRo
 	addMovie(addMovieDto: AddMovieDto): Promise<void>
 	deleteMovie(deleteMovieDto: DeleteMovieDto): Promise<void>
 	toggleMovieIsSeen(toggleMovieIsSeenDto: ToggleMovieIsSeenDto): Promise<void>
-	getUserMovie(movieId: string): Promise<Movie | undefined>
+	getUserMovie(getUserMovieDto: GetUserMovieDto): Promise<Movie | null>
 }

@@ -18,7 +18,6 @@ export const useToggleMovieIsSeen = (onSuccess?: () => void) => {
 				toggleMovieIsSeenDto
 			),
 		onError: (error: CustomError) => console.error(error),
-		onSuccess: async () =>
-			await queryClient.invalidateQueries([GET_USER_MOVIES_QUERY_KEY]),
+		onSuccess,
 	})
 }

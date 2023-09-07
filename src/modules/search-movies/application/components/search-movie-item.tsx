@@ -1,7 +1,7 @@
 import { useYearFromDate } from "@/ui/hooks/use-year-from-date"
 import { SearchedMovie } from "@/modules/shared/types/movie"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
-import { ShortenedText } from "@/ui/components/shared/shortened-text"
+// import { ShortenedText } from "@/ui/components/shared/shortened-text"
 import { Icon } from "@/ui/components/shared/icon"
 import Image from "next/image"
 
@@ -36,7 +36,7 @@ export const SearchMovieItem = ({
 						{useYearFromDate(movie.releaseDate)}
 					</div>
 					<span className="hidden sm:inline">
-						<ShortenedText text={movie.overview} />
+						{/* <ShortenedText text={movie.overview} /> */}
 					</span>
 				</div>
 			</div>

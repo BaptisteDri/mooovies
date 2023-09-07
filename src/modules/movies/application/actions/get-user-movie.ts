@@ -1,4 +1,7 @@
-import { MoviesRepository } from "@/modules/movies/application/movies.repository"
+import {
+	GetUserMovieDto,
+	MoviesRepository,
+} from "@/modules/movies/application/movies.repository"
 import { CustomError } from "@/modules/shared/types/error"
 
 const GET_USER_MOVIE_ERROR: CustomError = {
@@ -8,9 +11,9 @@ const GET_USER_MOVIE_ERROR: CustomError = {
 
 export const getUserMovie =
 	({ moviesRepository }: { moviesRepository: MoviesRepository }) =>
-	async (movieId: string) => {
+	async (getUserMovieDto: GetUserMovieDto) => {
 		try {
-			return await moviesRepository.getUserMovie(movieId)
+			return await moviesRepository.getUserMovie(getUserMovieDto)
 		} catch (error) {
 			throw GET_USER_MOVIE_ERROR
 		}

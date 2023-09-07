@@ -1,10 +1,9 @@
 import { GenresList } from "@/ui/components/shared/genres-list"
 import { useLanguageFullName } from "@/ui/hooks/use-language-fullname"
-import { ShortenedText } from "./shortened-text"
 
 type Props = {
 	year: string
-	genreIds: string[] | number[]
+	genreIds?: string[] | number[]
 	originalLanguage: string
 	overview: string
 	director?: string
@@ -19,8 +18,10 @@ export const MovieDetails = ({
 }: Props) => {
 	return (
 		<div className="mb-8">
-			<h3 className="text-white mb-2 font-semibold mt-8">Détails</h3>
-			<ul role="list" className="divide-y divide-slate-900 mb-8 text-sm">
+			<h3 className="text-white mb-2 font-semibold mt-8 text-lg">
+				Détails
+			</h3>
+			<ul role="list" className="divide-y divide-slate-900 mb-8">
 				{director && (
 					<li className="h-12 flex justify-between items-center">
 						<p className="truncate text-slate-400">
@@ -37,10 +38,12 @@ export const MovieDetails = ({
 						{year}
 					</div>
 				</li>
-				<li className="h-12 flex justify-between items-center">
-					<p className="truncate text-slate-400">Genre(s)</p>
-					<GenresList genreIds={genreIds} />
-				</li>
+				{genreIds && (
+					<li className="h-12 flex justify-between items-center">
+						<p className="truncate text-slate-400">Genre(s)</p>
+						<GenresList genreIds={genreIds} />
+					</li>
+				)}
 				<li className="h-12 flex justify-between items-center">
 					<p className="truncate text-slate-400">Langue</p>
 					<div className="inline-flex items-center text-white capitalize">
@@ -48,7 +51,9 @@ export const MovieDetails = ({
 					</div>
 				</li>
 			</ul>
-			<ShortenedText text={overview} title="Résumé" />
+			<h3 className="text-white mb-2 font-semibold text-lg">Résumé</h3>
+
+			<p className="text-slate-400">{overview}</p>
 		</div>
 	)
 }

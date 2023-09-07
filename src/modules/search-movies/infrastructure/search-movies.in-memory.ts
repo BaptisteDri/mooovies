@@ -10,13 +10,13 @@ import {
 	mapSearchPersonsToDomainModel,
 } from "@/modules/search-movies/domain/search-movies.mapper"
 import {
-	searchResultsFakes,
+	// searchResultsFakes,
 	directorFakes,
 	searchPersonsResultsFakes,
 } from "@/modules/search-movies/infrastructure/search-movies.fakes"
 
 export class SearchMoviesInMemory implements SearchMoviesOutput {
-	private searchResults: SearchResults | undefined = searchResultsFakes
+	private searchResults: SearchResults | undefined = undefined
 	private searchPersonsResults: SearchPersonsResults | undefined =
 		searchPersonsResultsFakes
 	private director: string[] | undefined = directorFakes

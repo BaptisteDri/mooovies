@@ -1,20 +1,20 @@
-import { MovieDetails } from "../shared/movie-details"
+import { MovieDetails } from "./movie-details"
 import Image from "next/image"
-import { DeleteMovie } from "./delete-movie"
-import { ToggleMovieSeen } from "./toggle-movie-seen"
 import { Movie } from "@/modules/shared/types/movie"
 import { selectIsLoggedInSession } from "@/modules/auth/auth.selectors"
 import { useAppSelector } from "@/config/store"
-import { Title } from "../shared/title"
+import { Title } from "./title"
 import { usePosterFullPath } from "@/ui/hooks/use-poster-full-path"
-import { Icon } from "../shared/icon"
+import { Icon } from "./icon"
 import { useRouter } from "next/router"
+import { MovieRecordActions } from "./movie-record-actions"
 
 type Props = {
-	movie: Movie
+	isInMainList: boolean
+	movie: Omit<Movie, "uuid"> & { uuid?: string }
 }
 
-export const MovieRecord = ({ movie }: Props) => {
+export const MovieRecord = ({ isInMainList, movie }: Props) => {
 	const isLoggedInSession = useAppSelector(selectIsLoggedInSession)
 	const { back } = useRouter()
 
@@ -23,7 +23,7 @@ export const MovieRecord = ({ movie }: Props) => {
 			<header>
 				<div className="relative w-full aspect-[5/3] max-h-96 bg-slate-800">
 					<Image
-						src={usePosterFullPath(movie.poster)}
+						src={usePosterFullPath(movie?.poster)}
 						alt={movie.title}
 						fill
 						className="object-cover object-top"
@@ -53,8 +53,13 @@ export const MovieRecord = ({ movie }: Props) => {
 				</div>
 			</header>
 
-			<div className="p-4 sm:p-6 max-w-2xl">
-				{isLoggedInSession && <ToggleMovieSeen movie={movie} />}
+			<div className="p-4 sm:p-6">
+				{isLoggedInSession && (
+					<MovieRecordActions
+						isInMainList={isInMainList}
+						movie={movie}
+					/>
+				)}
 
 				<MovieDetails
 					year={movie.year}
@@ -63,8 +68,6 @@ export const MovieRecord = ({ movie }: Props) => {
 					overview={movie.overview}
 					director={movie.director}
 				/>
-
-				{isLoggedInSession && <DeleteMovie movie={movie} />}
 			</div>
 		</div>
 	)

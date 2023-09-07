@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer"
 import { Loader } from "../shared/loader"
 import { MoviesListPlaceholder } from "./movies-list-placeholder"
 import { Title } from "../shared/title"
+import { useRouter } from "next/router"
 
 type Props = {
 	userId?: string
@@ -22,6 +23,7 @@ export const MoviesList = ({ userId }: Props) => {
 
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()
+	const { push } = useRouter()
 
 	const {
 		data,
@@ -79,7 +81,15 @@ export const MoviesList = ({ userId }: Props) => {
 						{data.pages.map((group, i) => (
 							<Fragment key={i}>
 								{group.movies.map((movie) => (
-									<MovieItem movie={movie} key={movie.uuid} />
+									<MovieItem
+										title={movie.title}
+										poster={movie.poster}
+										watchedDate={movie.watchedDate}
+										key={movie.uuid}
+										onClick={() =>
+											push(`/movie/${movie.tmdbId}`)
+										}
+									/>
 								))}
 							</Fragment>
 						))}
