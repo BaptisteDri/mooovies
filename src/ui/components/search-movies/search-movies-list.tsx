@@ -26,21 +26,14 @@ export const SearchMoviesList = () => {
 		query: deferredQuery,
 	})
 
-	const {
-		refetch,
-		data: popularMovies,
-		isFetching: isGetPopularMoviesFetching,
-	} = useGetPopularMovies({
-		enabled: true,
-	})
+	const { data: popularMovies, isFetching: isGetPopularMoviesFetching } =
+		useGetPopularMovies({
+			enabled: true,
+		})
 
 	useEffect(() => {
 		if (deferredQuery) searchMovie()
 	}, [deferredQuery])
-
-	useEffect(() => {
-		refetch()
-	}, [])
 
 	return (
 		<>

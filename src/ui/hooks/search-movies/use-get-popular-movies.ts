@@ -18,8 +18,7 @@ export const useGetPopularMovies = ({
 		{
 			enabled,
 			onError: (error: CustomError) => console.error(error),
-			staleTime: 0,
-			cacheTime: 0,
+			staleTime: Infinity,
 		}
 	)
 }
