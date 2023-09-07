@@ -3,7 +3,7 @@ import { Movie as MovieInfra } from "@/modules/movies/infrastructure/movies"
 
 export type GetUserMoviesDto = {
 	userId: string
-	order: "title" | "year" | "director"
+	order: "title" | "year" | "added_date"
 	pageIndex?: number
 	filters?: {
 		genreId?: string

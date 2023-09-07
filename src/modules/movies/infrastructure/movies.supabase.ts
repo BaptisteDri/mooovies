@@ -23,7 +23,7 @@ export const MoviesSupabase = (): MoviesRepository => ({
 			.eq("user_id", userId)
 			.range(from, to)
 
-		if (order === "year") {
+		if (order === "year" || order === "added_date") {
 			query.order(order, { ascending: false })
 		} else {
 			query.order(order)

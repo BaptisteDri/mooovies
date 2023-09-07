@@ -12,8 +12,8 @@ type Props = {
 	setIsSeen: (isSeen?: boolean) => void
 	genreId?: string
 	setGenreId: (genreId?: string) => void
-	order: "title" | "year" | "director"
-	setOrder: (order: "title" | "year" | "director") => void
+	order: "title" | "year" | "added_date"
+	setOrder: (order: "title" | "year" | "added_date") => void
 }
 
 export const SearchBar = ({

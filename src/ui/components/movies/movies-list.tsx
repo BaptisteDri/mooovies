@@ -19,7 +19,7 @@ export const MoviesList = ({ userId }: Props) => {
 	const deferredQuery = useDeferredValue(query)
 	const [isSeen, setIsSeen] = useState<boolean>()
 	const [genreId, setGenreId] = useState<string>()
-	const [order, setOrder] = useState<"title" | "year" | "director">("title")
+	const [order, setOrder] = useState<"title" | "year" | "added_date">("title")
 
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()
@@ -103,6 +103,14 @@ export const MoviesList = ({ userId }: Props) => {
 						<Loader />
 					</div>
 				)}
+
+				{data?.pages[0].movies &&
+					data?.pages[0].movies.length !== 0 &&
+					!hasNextPage && (
+						<div className="grid place-items-center pb-8 pt-8 w-full text-white">
+							Fin de ma liste 🙌
+						</div>
+					)}
 			</div>
 		</>
 	)
