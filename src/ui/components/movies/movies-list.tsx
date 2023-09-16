@@ -19,7 +19,9 @@ export const MoviesList = ({ userId }: Props) => {
 	const deferredQuery = useDeferredValue(query)
 	const [isSeen, setIsSeen] = useState<boolean>()
 	const [genreId, setGenreId] = useState<string>()
-	const [order, setOrder] = useState<"title" | "year" | "added_date">("title")
+	const [order, setOrder] = useState<"title" | "year" | "added_date">(
+		"added_date"
+	)
 
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()

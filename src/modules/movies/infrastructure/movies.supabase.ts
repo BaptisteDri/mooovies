@@ -10,7 +10,7 @@ export const LIMIT = 33
 export const MoviesSupabase = (): MoviesRepository => ({
 	getUserMovies: async ({
 		userId,
-		order = "title",
+		order = "added_date",
 		pageIndex = 0,
 		filters,
 	}) => {
