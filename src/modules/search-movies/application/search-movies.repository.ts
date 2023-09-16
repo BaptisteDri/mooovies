@@ -1,8 +1,8 @@
-import { SearchedMovie } from "@/modules/shared/types/movie"
+import { SearchedMovie, SearchedPerson } from "@/modules/shared/types/movie"
 import {
 	DetailedSearchedMovie,
 	SearchedMovieCredits,
-} from "../infrastructure/search-movies"
+} from "@/modules/search-movies/infrastructure/search-movies"
 
 type getPopularMoviesRo = Promise<{
 	movies: SearchedMovie[]
@@ -14,4 +14,5 @@ export type SearchMoviesRepository = {
 	getPopularMovies(pageIndex?: number): getPopularMoviesRo
 	getMovieDetails(id: number): Promise<DetailedSearchedMovie>
 	getMovieCredits(id: number): Promise<SearchedMovieCredits>
+	searchPerson(query: string): Promise<SearchedPerson[]>
 }

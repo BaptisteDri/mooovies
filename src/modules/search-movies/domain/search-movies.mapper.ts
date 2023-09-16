@@ -39,5 +39,6 @@ export const mapSearchPersonsToDomainModel = (
 			name: searchedPerson.name,
 			originalName: searchedPerson.original_name,
 			profilePath: searchedPerson.profile_path,
+			id: searchedPerson.id,
 		}
 	})

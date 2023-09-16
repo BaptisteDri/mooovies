@@ -30,6 +30,7 @@ export type SearchedPerson = {
 	name: string
 	originalName: string
 	profilePath: string
+	id: number
 }
 
 // Details from movie tmdb id

@@ -20,7 +20,7 @@ export const Button = ({
 		<button
 			{...props}
 			className={mCn(
-				"overflow-hidden relative flex items-center justify-center px-4 py-2 text-sm font-medium text-center border rounded-xl focus:outline-none focus:z-10 focus:ring-4",
+				"overflow-hidden relative flex items-center justify-center px-4 py-2.5 text-sm font-medium text-center border rounded-xl focus:outline-none focus:z-10 focus:ring-4",
 				variant === "primary" &&
 					"bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-700 text-white border-blue-800 hover:bg-blue-700",
 				variant === "secondary" &&

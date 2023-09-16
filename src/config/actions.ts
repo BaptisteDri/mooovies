@@ -8,6 +8,7 @@ import { getPopularMovies } from "@/modules/search-movies/application/actions/ge
 import { searchMovie } from "@/modules/search-movies/application/actions/search-movie"
 import { getMovieDetails } from "@/modules/search-movies/application/actions/get-movie-details"
 import { getMovieCredits } from "@/modules/search-movies/application/actions/get-movie-credits"
+import { searchPerson } from "@/modules/search-movies/application/actions/search-person"
 
 export const actions = {
 	withDependencies: (dependencies: Dependencies) => ({
@@ -23,6 +24,7 @@ export const actions = {
 			getPopularMovies,
 			getMovieDetails,
 			getMovieCredits,
+			searchPerson,
 		},
 	}),
 }

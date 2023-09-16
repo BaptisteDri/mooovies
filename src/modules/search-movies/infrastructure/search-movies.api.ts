@@ -1,5 +1,8 @@
 import { api } from "@/config/axios-instance"
-import { mapSearchMoviesToDomainModel } from "../domain/search-movies.mapper"
+import {
+	mapSearchMoviesToDomainModel,
+	mapSearchPersonsToDomainModel,
+} from "../domain/search-movies.mapper"
 import { SearchMoviesRepository } from "../application/search-movies.repository"
 
 export const SearchMoviesApi = (): SearchMoviesRepository => ({
@@ -54,4 +57,14 @@ export const SearchMoviesApi = (): SearchMoviesRepository => ({
 				},
 			})
 			.then(({ data }) => data),
+
+	searchPerson: async (query) =>
+		api
+			.get("/search/person", {
+				params: { language: "fr-FR", include_adult: false, query },
+				headers: {
+					Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+				},
+			})
+			.then(({ data }) => mapSearchPersonsToDomainModel(data)),
 })

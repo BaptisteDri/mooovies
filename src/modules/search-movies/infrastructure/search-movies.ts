@@ -38,6 +38,7 @@ export type SearchedPerson = {
 	name: string
 	original_name: string
 	profile_path: string
+	id: number
 }
 
 export type SearchPersonsResults = {
