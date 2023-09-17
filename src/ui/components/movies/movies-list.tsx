@@ -70,7 +70,7 @@ export const MoviesList = ({ userId }: Props) => {
 			/>
 
 			<div className="flex flex-col p-4 sm:p-6 mt-[3.75rem]">
-				<Title className="mb-2">Ma liste</Title>
+				<Title className="my-2">Ma liste</Title>
 
 				{data?.pages[0].movies.length === 0 && !hasNextPage && (
 					<MoviesListPlaceholder />

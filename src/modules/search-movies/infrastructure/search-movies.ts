@@ -7,6 +7,7 @@ export type SearchedMovie = {
 	poster_path: string
 	release_date: string
 	title: string
+	media_type?: "movie" | "tv"
 }
 
 type ProductionCompany = {
@@ -34,7 +35,7 @@ export type SearchResults = {
 
 export type SearchedPerson = {
 	known_for: SearchedMovie[]
-	known_for_department: string
+	known_for_department: "Directing" | "Acting"
 	name: string
 	original_name: string
 	profile_path: string

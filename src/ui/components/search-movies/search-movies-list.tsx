@@ -4,6 +4,7 @@ import { Title } from "../shared/title"
 import { MoviesList } from "./movies-list"
 import { PopularMoviesList } from "./popular-movies-list"
 import { PersonsList } from "./persons-list"
+import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 
 export const SearchMoviesList = () => {
 	const [query, setQuery] = useState<string>("")
@@ -11,6 +12,7 @@ export const SearchMoviesList = () => {
 		"movies"
 	)
 	const deferredQuery = useDeferredValue(query)
+	const mCn = useMergedClassName()
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value)
@@ -21,19 +23,29 @@ export const SearchMoviesList = () => {
 			<SearchBar
 				query={query ?? ""}
 				handleOnQueryChange={handleOnQueryChange}
-				isSearchingMode={!!deferredQuery}
-				resultsType={resultsType}
-				setResultsType={setResultsType}
 			/>
-			<div className="flex flex-col p-4 sm:p-6 mt-[3.75rem]">
+			<div
+				className={mCn(
+					"flex flex-col p-4 sm:p-6 mt-[3.75rem]",
+					deferredQuery && "pt-1"
+				)}
+			>
 				{!deferredQuery && (
-					<Title className="mb-2">Films populaires</Title>
+					<Title className="my-2">Films populaires</Title>
 				)}
 				{deferredQuery ? (
 					resultsType === "movies" ? (
-						<MoviesList deferredQuery={deferredQuery} />
+						<MoviesList
+							deferredQuery={deferredQuery}
+							resultsType={resultsType}
+							setResultsType={setResultsType}
+						/>
 					) : (
-						<PersonsList deferredQuery={deferredQuery} />
+						<PersonsList
+							deferredQuery={deferredQuery}
+							resultsType={resultsType}
+							setResultsType={setResultsType}
+						/>
 					)
 				) : (
 					<PopularMoviesList />

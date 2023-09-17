@@ -22,11 +22,12 @@ export type SearchedMovie = {
 	releaseDate: string
 	title: string
 	tmdbId: number
+	mediaType?: "movie" | "tv"
 }
 
 export type SearchedPerson = {
 	knownFor: SearchedMovie[]
-	knownForDepartment: string
+	knownForDepartment: "Directing" | "Acting"
 	name: string
 	originalName: string
 	profilePath: string

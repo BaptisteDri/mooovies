@@ -3,12 +3,19 @@ import { useSearchMovie } from "@/ui/hooks/search-movies/use-search-movie"
 import { MovieItem } from "../movies/movie-item"
 import { Fragment } from "react"
 import { useRouter } from "next/router"
+import { SearchBarFilters } from "./search-bar-filters"
 
 type Props = {
 	deferredQuery: string
+	resultsType: "movies" | "persons"
+	setResultsType: (resultsType: "movies" | "persons") => void
 }
 
-export const MoviesList = ({ deferredQuery }: Props) => {
+export const MoviesList = ({
+	deferredQuery,
+	resultsType,
+	setResultsType,
+}: Props) => {
 	const { push } = useRouter()
 
 	const {
@@ -23,6 +30,12 @@ export const MoviesList = ({ deferredQuery }: Props) => {
 
 	return (
 		<>
+			<div className="mb-2">
+				<SearchBarFilters
+					resultsType={resultsType}
+					setResultsType={setResultsType}
+				/>
+			</div>
 			{isFetched && isSuccess && searchedMovies.length === 0 && (
 				<div className="text-white text-center">Aucun résultat</div>
 			)}

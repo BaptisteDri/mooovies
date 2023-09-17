@@ -16,6 +16,7 @@ const mapSearchedMovieToDomainModel = (
 	posterPath: searchedMovie.poster_path,
 	releaseDate: searchedMovie.release_date,
 	title: searchedMovie.title,
+	mediaType: searchedMovie.media_type,
 })
 
 export const mapSearchMoviesToDomainModel = (
