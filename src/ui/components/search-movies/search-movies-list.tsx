@@ -5,18 +5,23 @@ import { MoviesList } from "./movies-list"
 import { PopularMoviesList } from "./popular-movies-list"
 import { PersonsList } from "./persons-list"
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
+import { useSearchMoviesFilters } from "@/ui/hooks/contexts/use-search-movies-filters"
 
 export const SearchMoviesList = () => {
-	const [query, setQuery] = useState<string>("")
-	const [resultsType, setResultsType] = useState<"movies" | "persons">(
-		"movies"
-	)
-	const deferredQuery = useDeferredValue(query)
+	const {
+		searchMoviesFilters: { query, resultsType },
+		setSearchMoviesFilters,
+	} = useSearchMoviesFilters()
 	const mCn = useMergedClassName()
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setQuery(e.target.value)
+		setSearchMoviesFilters({
+			resultsType,
+			query: e.target.value,
+		})
 	}
+
+	const deferredQuery = useDeferredValue(query)
 
 	return (
 		<>
@@ -35,17 +40,9 @@ export const SearchMoviesList = () => {
 				)}
 				{deferredQuery ? (
 					resultsType === "movies" ? (
-						<MoviesList
-							deferredQuery={deferredQuery}
-							resultsType={resultsType}
-							setResultsType={setResultsType}
-						/>
+						<MoviesList deferredQuery={deferredQuery} />
 					) : (
-						<PersonsList
-							deferredQuery={deferredQuery}
-							resultsType={resultsType}
-							setResultsType={setResultsType}
-						/>
+						<PersonsList deferredQuery={deferredQuery} />
 					)
 				) : (
 					<PopularMoviesList />

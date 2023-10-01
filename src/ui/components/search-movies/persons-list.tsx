@@ -8,15 +8,9 @@ import { PersonItem } from "./person-item"
 
 type Props = {
 	deferredQuery: string
-	resultsType: "movies" | "persons"
-	setResultsType: (resultsType: "movies" | "persons") => void
 }
 
-export const PersonsList = ({
-	deferredQuery,
-	resultsType,
-	setResultsType,
-}: Props) => {
+export const PersonsList = ({ deferredQuery }: Props) => {
 	const {
 		data: searchedPersons,
 		isFetching,
@@ -30,10 +24,7 @@ export const PersonsList = ({
 	return (
 		<>
 			<div className="mb-2">
-				<SearchBarFilters
-					resultsType={resultsType}
-					setResultsType={setResultsType}
-				/>
+				<SearchBarFilters />
 			</div>
 			{isFetched && isSuccess && searchedPersons.length === 0 && (
 				<div className="text-white text-center">Aucun résultat</div>

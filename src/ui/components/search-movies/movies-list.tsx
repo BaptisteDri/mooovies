@@ -7,15 +7,9 @@ import { SearchBarFilters } from "./search-bar-filters"
 
 type Props = {
 	deferredQuery: string
-	resultsType: "movies" | "persons"
-	setResultsType: (resultsType: "movies" | "persons") => void
 }
 
-export const MoviesList = ({
-	deferredQuery,
-	resultsType,
-	setResultsType,
-}: Props) => {
+export const MoviesList = ({ deferredQuery }: Props) => {
 	const { push } = useRouter()
 
 	const {
@@ -31,10 +25,7 @@ export const MoviesList = ({
 	return (
 		<>
 			<div className="mb-2">
-				<SearchBarFilters
-					resultsType={resultsType}
-					setResultsType={setResultsType}
-				/>
+				<SearchBarFilters />
 			</div>
 			{isFetched && isSuccess && searchedMovies.length === 0 && (
 				<div className="text-white text-center">Aucun résultat</div>

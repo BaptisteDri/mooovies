@@ -20,9 +20,11 @@ export const MoviesList = ({ userId }: Props) => {
 	const { ref, inView } = useInView()
 	const { push } = useRouter()
 
-	const { moviesFilters } = useMoviesFilters()
+	const {
+		moviesFilters: { order, filters },
+	} = useMoviesFilters()
 
-	console.log(moviesFilters)
+	const deferredTitle = useDeferredValue(filters?.title)
 
 	const {
 		data,
@@ -33,8 +35,12 @@ export const MoviesList = ({ userId }: Props) => {
 	} = useGetUserMovies({
 		getUserMoviesDto: {
 			userId: userId ?? (user?.id as string),
-			order: moviesFilters.order,
-			filters: moviesFilters.filters,
+			order,
+			filters: {
+				genreId: filters?.genreId,
+				isSeen: filters?.isSeen,
+				title: deferredTitle,
+			},
 		},
 		enabled: true,
 	})

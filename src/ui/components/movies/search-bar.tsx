@@ -10,7 +10,10 @@ export const SearchBar = () => {
 	const [isFiltersSectionVisible, setFiltersSectionVisibility] =
 		useState(false)
 	const [isInputFocused, setIsInputFocused] = useState(false)
-	const { moviesFilters, setMoviesFilters } = useMoviesFilters()
+	const {
+		moviesFilters: { order, filters },
+		setMoviesFilters,
+	} = useMoviesFilters()
 
 	const mCn = useMergedClassName()
 
@@ -31,10 +34,10 @@ export const SearchBar = () => {
 
 	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setMoviesFilters({
-			order: moviesFilters.order,
+			order,
 			filters: {
-				genreId: moviesFilters.filters?.genreId,
-				isSeen: moviesFilters.filters?.isSeen,
+				genreId: filters?.genreId,
+				isSeen: filters?.isSeen,
 				title: e.target.value,
 			},
 		})
@@ -58,7 +61,7 @@ export const SearchBar = () => {
 						placeholder="Rechercher dans ma liste..."
 						id="search-input"
 						autoComplete="off"
-						value={moviesFilters.filters?.title}
+						value={filters?.title}
 						onChange={handleOnQueryChange}
 						className="pl-10"
 						onBlur={handleInputBlur}
