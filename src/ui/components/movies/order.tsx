@@ -1,17 +1,21 @@
-import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 import { FilterButton } from "../shared/filter-button"
+import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
 
 type Props = {
-	order: "title" | "year" | "added_date"
-	setOrder: (order: "title" | "year" | "added_date") => void
 	closeFiltersSection: () => void
 }
 
-export const Order = ({ order, setOrder, closeFiltersSection }: Props) => {
-	const mCn = useMergedClassName()
+export const Order = ({ closeFiltersSection }: Props) => {
+	const {
+		moviesFilters: { order, filters },
+		setMoviesFilters,
+	} = useMoviesFilters()
 
 	const toggleOrder = (order: "title" | "year" | "added_date") => {
-		setOrder(order)
+		setMoviesFilters({
+			order,
+			filters,
+		})
 		closeFiltersSection()
 	}
 

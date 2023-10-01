@@ -2,32 +2,40 @@ import { Icon } from "@/ui/components/shared/icon"
 import { useGenre } from "@/ui/hooks/use-genre"
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
 import { FilterButton } from "../shared/filter-button"
+import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
 
 type Props = {
-	isSeen?: boolean
-	setIsSeen: (isSeen?: boolean) => void
-	genreId?: string
-	setGenreId: (genreId?: string) => void
 	closeFiltersSection: () => void
 }
 
-export const Filters = ({
-	isSeen,
-	setIsSeen,
-	genreId,
-	setGenreId,
-	closeFiltersSection,
-}: Props) => {
+export const Filters = ({ closeFiltersSection }: Props) => {
 	const { genres } = useGenre()
-	const mCn = useMergedClassName()
+	const {
+		moviesFilters: { order, filters },
+		setMoviesFilters,
+	} = useMoviesFilters()
 
 	const toggleIsSeenFilter = (isSeen?: boolean) => {
-		setIsSeen(isSeen)
+		setMoviesFilters({
+			order,
+			filters: {
+				genreId: filters?.genreId,
+				title: filters?.title,
+				isSeen,
+			},
+		})
 		closeFiltersSection()
 	}
 
 	const toggleGenreId = (genreId?: string) => {
-		setGenreId(genreId)
+		setMoviesFilters({
+			order,
+			filters: {
+				title: filters?.title,
+				isSeen: filters?.isSeen,
+				genreId,
+			},
+		})
 		closeFiltersSection()
 	}
 
@@ -39,17 +47,17 @@ export const Filters = ({
 				</div>
 				<div className="flex gap-2 flex-wrap">
 					<FilterButton
-						isActive={isSeen === undefined}
+						isActive={filters?.isSeen === undefined}
 						title={"🎬 Tous"}
 						onClick={() => toggleIsSeenFilter(undefined)}
 					/>
 					<FilterButton
-						isActive={isSeen === true}
+						isActive={filters?.isSeen === true}
 						title={"✅ Films vus"}
 						onClick={() => toggleIsSeenFilter(true)}
 					/>
 					<FilterButton
-						isActive={isSeen === false}
+						isActive={filters?.isSeen === false}
 						title={"👀 Films à voir"}
 						onClick={() => toggleIsSeenFilter(false)}
 					/>
@@ -61,7 +69,7 @@ export const Filters = ({
 				</div>
 				<div className="flex gap-2 flex-wrap">
 					<FilterButton
-						isActive={genreId === undefined}
+						isActive={filters?.genreId === undefined}
 						title="🎬 Toutes"
 						onClick={() => toggleGenreId()}
 					/>
@@ -69,7 +77,8 @@ export const Filters = ({
 						<FilterButton
 							key={genre.id}
 							isActive={
-								genreId === (genre.id as unknown as string)
+								filters?.genreId ===
+								(genre.id as unknown as string)
 							}
 							title={`${genre.icon} ${genre.name}`}
 							onClick={() =>

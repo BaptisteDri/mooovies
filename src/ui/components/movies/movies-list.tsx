@@ -9,23 +9,20 @@ import { Loader } from "../shared/loader"
 import { MoviesListPlaceholder } from "./movies-list-placeholder"
 import { Title } from "../shared/title"
 import { useRouter } from "next/router"
+import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
 
 type Props = {
 	userId?: string
 }
 
 export const MoviesList = ({ userId }: Props) => {
-	const [query, setQuery] = useState<string | undefined>(undefined)
-	const deferredQuery = useDeferredValue(query)
-	const [isSeen, setIsSeen] = useState<boolean>()
-	const [genreId, setGenreId] = useState<string>()
-	const [order, setOrder] = useState<"title" | "year" | "added_date">(
-		"added_date"
-	)
-
 	const user = useAppSelector(selectLoggedInUser)
 	const { ref, inView } = useInView()
 	const { push } = useRouter()
+
+	const { moviesFilters } = useMoviesFilters()
+
+	console.log(moviesFilters)
 
 	const {
 		data,
@@ -36,19 +33,11 @@ export const MoviesList = ({ userId }: Props) => {
 	} = useGetUserMovies({
 		getUserMoviesDto: {
 			userId: userId ?? (user?.id as string),
-			order,
-			filters: {
-				genreId,
-				title: deferredQuery,
-				isSeen,
-			},
+			order: moviesFilters.order,
+			filters: moviesFilters.filters,
 		},
 		enabled: true,
 	})
-
-	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setQuery(e.target.value)
-	}
 
 	useEffect(() => {
 		if (!inView || !hasNextPage) return
@@ -58,16 +47,7 @@ export const MoviesList = ({ userId }: Props) => {
 
 	return (
 		<>
-			<SearchBar
-				query={query ?? ""}
-				handleOnQueryChange={handleOnQueryChange}
-				setIsSeen={setIsSeen}
-				isSeen={isSeen}
-				genreId={genreId}
-				setGenreId={setGenreId}
-				order={order}
-				setOrder={setOrder}
-			/>
+			<SearchBar />
 
 			<div className="flex flex-col p-4 sm:p-6 mt-[3.75rem]">
 				<Title className="my-2">Ma liste</Title>

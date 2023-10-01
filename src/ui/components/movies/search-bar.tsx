@@ -4,31 +4,13 @@ import { Filters } from "./filters"
 import { Order } from "./order"
 import { useState } from "react"
 import { useMergedClassName } from "@/ui/hooks/use-merged-classname"
+import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
 
-type Props = {
-	query: string
-	handleOnQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	isSeen?: boolean
-	setIsSeen: (isSeen?: boolean) => void
-	genreId?: string
-	setGenreId: (genreId?: string) => void
-	order: "title" | "year" | "added_date"
-	setOrder: (order: "title" | "year" | "added_date") => void
-}
-
-export const SearchBar = ({
-	query,
-	handleOnQueryChange,
-	isSeen,
-	setIsSeen,
-	genreId,
-	setGenreId,
-	order,
-	setOrder,
-}: Props) => {
+export const SearchBar = () => {
 	const [isFiltersSectionVisible, setFiltersSectionVisibility] =
 		useState(false)
 	const [isInputFocused, setIsInputFocused] = useState(false)
+	const { moviesFilters, setMoviesFilters } = useMoviesFilters()
 
 	const mCn = useMergedClassName()
 
@@ -42,10 +24,21 @@ export const SearchBar = ({
 
 	const handleTouchMove = () => {
 		if (!isInputFocused) return
-		;(document.activeElement as HTMLElement).blur()
+		return (document.activeElement as HTMLElement).blur()
 	}
 
 	window?.addEventListener("touchmove", handleTouchMove)
+
+	const handleOnQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setMoviesFilters({
+			order: moviesFilters.order,
+			filters: {
+				genreId: moviesFilters.filters?.genreId,
+				isSeen: moviesFilters.filters?.isSeen,
+				title: e.target.value,
+			},
+		})
+	}
 
 	return (
 		<div className="sm:left-72 sm:pt-4 fixed px-4 sm:px-6 left-0 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
@@ -65,7 +58,7 @@ export const SearchBar = ({
 						placeholder="Rechercher dans ma liste..."
 						id="search-input"
 						autoComplete="off"
-						value={query}
+						value={moviesFilters.filters?.title}
 						onChange={handleOnQueryChange}
 						className="pl-10"
 						onBlur={handleInputBlur}
@@ -96,8 +89,6 @@ export const SearchBar = ({
 				)}
 			>
 				<Order
-					order={order}
-					setOrder={setOrder}
 					closeFiltersSection={() =>
 						setFiltersSectionVisibility(false)
 					}
@@ -106,10 +97,6 @@ export const SearchBar = ({
 					closeFiltersSection={() =>
 						setFiltersSectionVisibility(false)
 					}
-					isSeen={isSeen}
-					setIsSeen={setIsSeen}
-					genreId={genreId}
-					setGenreId={setGenreId}
 				/>
 			</div>
 		</div>
