@@ -1,8 +1,25 @@
 import { useRouter } from "next/router"
 import { Icon } from "../shared/icon"
+import { useSearchMoviesFilters } from "@/ui/hooks/contexts/use-search-movies-filters"
+import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
 
 export const MoviesListPlaceholder = () => {
 	const { push } = useRouter()
+	const { moviesFilters } = useMoviesFilters()
+	const {
+		searchMoviesFilters: { resultsType },
+		setSearchMoviesFilters,
+	} = useSearchMoviesFilters()
+
+	const onAddMovie = async () => {
+		if (moviesFilters?.filters?.title) {
+			await setSearchMoviesFilters({
+				resultsType,
+				query: moviesFilters.filters.title,
+			})
+		}
+		push("/add-movie")
+	}
 
 	return (
 		<div className="text-white justify-center flex-1 mt-4 grid place-items-center">
@@ -15,7 +32,7 @@ export const MoviesListPlaceholder = () => {
 					<div className="animate-tilt md:group-hover:animate-none absolute transition-all duration-500 opacity-90 -inset-2 bg-gradient-to-r from-green-800 via-sky-800 to-pink-800 rounded-xl blur-xl md:group-hover:opacity-100 md:group-hover:-inset-4 md:group-hover:duration-200" />
 					<button
 						className="relative inline-flex items-center justify-center px-4 h-11 text-lg text-white transition-all duration-200 bg-slate-950 rounded-xl pr-2.5 focus:outline-blue-600 border-0 focus:border-0 cursor-pointer"
-						onClick={() => push("/add-movie")}
+						onClick={onAddMovie}
 						role="link"
 					>
 						Ajouter des films
