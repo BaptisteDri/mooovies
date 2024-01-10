@@ -67,7 +67,7 @@ const genres: Genre[] = [
 	},
 	{
 		id: 9648,
-		name: "Mistère",
+		name: "Mystère",
 		icon: "🕵🏼",
 	},
 	{
