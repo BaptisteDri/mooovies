@@ -63,10 +63,29 @@ export const SearchBar = () => {
 						autoComplete="off"
 						value={filters?.title}
 						onChange={handleOnQueryChange}
-						className="pl-10"
+						className={mCn("pl-10", filters?.title && "pr-10")}
 						onBlur={handleInputBlur}
 						onFocus={handleInputFocus}
 					/>
+					{filters?.title && (
+						<button
+							className={mCn(
+								"absolute right-2 top-0 bottom-0 m-auto rounded-xl flex items-center justify-center h-8 w-8 cursor-pointer hover:text-slate-300 border-slate-700 text-slate-400 bg-slate-800 hover:bg-slate-700"
+							)}
+							onClick={() =>
+								setMoviesFilters({
+									order,
+									filters: {
+										genreId: filters?.genreId,
+										isSeen: filters?.isSeen,
+										title: "",
+									},
+								})
+							}
+						>
+							<Icon name="close" />
+						</button>
+					)}
 				</div>
 
 				<button
