@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import { Icon } from "../shared/icon"
 import { useSearchMoviesFilters } from "@/ui/hooks/contexts/use-search-movies-filters"
 import { useMoviesFilters } from "@/ui/hooks/contexts/use-movies-filters"
+import { Button } from "../shared/button"
 
 export const MoviesListPlaceholder = () => {
 	const { push } = useRouter()
@@ -28,17 +29,10 @@ export const MoviesListPlaceholder = () => {
 				<div className="text-lg px-6 text-center mb-10">
 					Nous n'avons trouvé aucun film dans votre liste
 				</div>
-				<div className="relative inline-flex group">
-					<div className="animate-tilt md:group-hover:animate-none absolute transition-all duration-500 opacity-90 -inset-2 bg-gradient-to-r from-green-800 via-sky-800 to-pink-800 rounded-xl blur-xl md:group-hover:opacity-100 md:group-hover:-inset-4 md:group-hover:duration-200" />
-					<button
-						className="relative inline-flex items-center justify-center px-4 h-11 text-lg text-white transition-all duration-200 bg-slate-950 rounded-xl pr-2.5 focus:outline-blue-600 border-0 focus:border-0 cursor-pointer"
-						onClick={onAddMovie}
-						role="link"
-					>
-						Ajouter des films
-						<Icon name="arrow_right_alt" className="ml-2" />
-					</button>
-				</div>
+				<Button onClick={onAddMovie} role="link">
+					Ajouter un film
+					<Icon name="library_add" className="ml-2" />
+				</Button>
 			</div>
 		</div>
 	)

@@ -26,7 +26,7 @@ export const Menu = () => {
 					className="inline-flex flex-col items-center justify-center group text-white"
 				>
 					<Icon
-						name="add_circle"
+						name="library_add"
 						className="text-4xl"
 						fill={router.pathname === "/add-movie"}
 					/>

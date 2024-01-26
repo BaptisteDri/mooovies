@@ -31,19 +31,20 @@ export const Button = ({
 			)}
 			disabled={isLoading ? true : disabled}
 		>
-			{children}
-
-			<div
-				className={mCn(
-					"grid place-items-center absolute inset-0 opacity-0 transition-all duration-150",
-					variant === "primary" && "bg-blue-600/50",
-					variant === "secondary" && "bg-slate-950/50",
-					variant === "danger" && "bg-red-500/50",
-					isLoading && "opacity-100"
-				)}
-			>
-				<Spinner />
-			</div>
+			{isLoading ? (
+				<div
+					className={mCn(
+						"grid place-items-center",
+						variant === "primary" && "bg-blue-600/50",
+						variant === "secondary" && "bg-slate-950/50",
+						variant === "danger" && "bg-red-500/50"
+					)}
+				>
+					<Spinner />
+				</div>
+			) : (
+				children
+			)}
 		</button>
 	)
 }
