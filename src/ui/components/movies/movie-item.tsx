@@ -31,13 +31,17 @@ export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
 
 			<div
 				className={mCn(
-					"top-0 right-0 absolute bg-blue-600 h-7 w-7 rounded-bl-xl flex items-center justify-center drop-shadow-lg translate-x-full -translate-y-full rotate-90 ease-in-out transition-all duration-150",
+					"top-0 right-0 absolute",
+					"flex justify-end",
+					"p-0.5 sm:p-1",
+					"drop-shadow-lg",
+					"translate-x-full -translate-y-full rotate-90 ease-in-out transition-all duration-150",
 					watchedDate && "translate-x-0 rotate-0 translate-y-0"
 				)}
 			>
 				<Icon
 					name="check_circle"
-					className="text-gray-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.4)] text-[20px]"
+					className="text-slate-200 drop-shadow-[0px_0px_5px_rgba(255,255,255,0.4)] text-[14px] sm:text-[20px]"
 					fill
 				/>
 			</div>
