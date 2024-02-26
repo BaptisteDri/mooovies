@@ -12,7 +12,7 @@ export const SearchBar = ({ query, handleOnQueryChange }: Props) => {
 	const mCn = useMergedClassName()
 
 	return (
-		<div className="sm:left-72 sm:pt-4 fixed left-0 px-4 sm:px-6 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-900 bg-opacity-70 backdrop-blur-lg border-b border-slate-800 z-40 overflow-hidden">
+		<div className="sm:left-72 sm:pt-4 fixed left-0 px-4 sm:px-6 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
 			<div className="relative flex flex-auto">
 				<label
 					htmlFor="search-input"
