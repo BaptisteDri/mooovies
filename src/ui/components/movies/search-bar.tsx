@@ -44,7 +44,7 @@ export const SearchBar = () => {
 	}
 
 	return (
-		<div className="sm:left-72 sm:pt-4 fixed px-4 sm:px-6 left-0 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-950 border-b border-slate-800 z-40 overflow-hidden">
+		<div className="sm:left-72 sm:pt-4 fixed px-4 sm:px-6 left-0 top-0 right-0 pt-2 pb-2 md:pb-4 bg-slate-900 bg-opacity-70 backdrop-blur-lg border-b border-slate-800 z-40 overflow-hidden">
 			<div className="flex">
 				<div className="relative flex flex-auto mr-2">
 					<label
