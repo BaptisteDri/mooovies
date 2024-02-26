@@ -35,7 +35,8 @@ export const PersonsList = ({ deferredQuery }: Props) => {
 			{!isFetching && searchedPersons && searchedPersons.length > 0 && (
 				<ul className="grid gap-2 mt-2 md:mt-4">
 					{searchedPersons?.map((searchedPerson) =>
-						searchedPerson.profilePath ? (
+						searchedPerson.profilePath &&
+						searchedPerson.knownFor.length > 0 ? (
 							<PersonItem
 								key={searchedPerson.id}
 								searchedPerson={searchedPerson}
