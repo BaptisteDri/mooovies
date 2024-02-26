@@ -30,7 +30,7 @@ export const PopularMoviesList = () => {
 			{isInitialLoading && <Loader />}
 
 			{data && (
-				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
+				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-3 sm:gap-6 mt-2 md:mt-4">
 					{data.pages.map((group, i) => (
 						<Fragment key={i}>
 							{group.movies?.map((movie) => (

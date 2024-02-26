@@ -34,7 +34,7 @@ export const MoviesList = ({ deferredQuery }: Props) => {
 			{isFetching && <Loader />}
 
 			{!isFetching && searchedMovies && searchedMovies.length > 0 && (
-				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-2 sm:gap-6 mt-2 md:mt-4">
+				<ul className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-3 sm:gap-6 mt-2 md:mt-4">
 					{searchedMovies?.map((searchedMovie) =>
 						searchedMovie.posterPath ? (
 							<MovieItem

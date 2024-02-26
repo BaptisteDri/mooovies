@@ -16,7 +16,7 @@ export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
 	return (
 		<li
 			onClick={onClick}
-			className="cursor-pointer relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-800"
+			className="cursor-pointer relative rounded-lg overflow-hidden w-full aspect-[27/40] table sm:block min-w-min bg-slate-800 border border-slate-800"
 			role="link"
 		>
 			<Image
