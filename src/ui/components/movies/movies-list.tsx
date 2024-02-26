@@ -91,14 +91,6 @@ export const MoviesList = ({ userId }: Props) => {
 						<Loader />
 					</div>
 				)}
-
-				{data?.pages[0].movies &&
-					data?.pages[0].movies.length !== 0 &&
-					!hasNextPage && (
-						<div className="grid place-items-center pb-8 pt-8 w-full text-white">
-							Fin de ma liste 🙌
-						</div>
-					)}
 			</div>
 		</>
 	)
