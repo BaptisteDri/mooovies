@@ -10,7 +10,7 @@ export const Menu = () => {
 
 	return isLoggedInSession ? (
 		<div
-			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-slate-800 left-1/2 bg-slate-900 bg-opacity-70 backdrop-blur-lg pb-3 pt-2`}
+			className={`fixed bottom-0 z-30 w-full -translate-x-1/2 border-t border-slate-800 left-1/2 bg-slate-900 bg-opacity-70 backdrop-blur-lg pb-7 pt-2`}
 		>
 			<div className="grid h-full max-w-lg grid-cols-3 mx-auto">
 				<NextLink
