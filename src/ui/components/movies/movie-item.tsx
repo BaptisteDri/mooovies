@@ -23,7 +23,7 @@ export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
 				src={usePosterFullPath(poster)}
 				alt={title}
 				fill
-				className="object-cover"
+				className="object-cover animate-fadeIn"
 				quality={15}
 				loading="lazy"
 				sizes="100%"
