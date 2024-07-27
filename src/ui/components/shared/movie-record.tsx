@@ -17,19 +17,19 @@ type Props = {
 export const MovieRecord = ({ isInMainList, movie }: Props) => {
 	const isLoggedInSession = useAppSelector(selectIsLoggedInSession)
 	const { back } = useRouter()
+	const { w780Path } = usePosterFullPath(movie?.poster)
 
 	return (
 		<div>
 			<header>
 				<div className="relative w-full aspect-[5/3] max-h-96 bg-slate-800">
 					<Image
-						src={usePosterFullPath(movie?.poster)}
+						src={w780Path}
 						alt={movie.title}
 						fill
 						className="object-cover object-top"
-						quality={15}
-						loading="lazy"
-						sizes="100%"
+						sizes="100vw"
+						priority
 					/>
 					<div className="bg-gradient-to-b from-transparent via-transparent to-slate-950 absolute w-full h-full flex flex-col justify-between pt-4 px-4">
 						<div className="flex justify-end">

@@ -8,10 +8,18 @@ type Props = {
 	poster: string
 	watchedDate: string | null
 	onClick?: () => void
+	isFirst?: boolean
 }
 
-export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
+export const MovieItem = ({
+	title,
+	poster,
+	watchedDate,
+	onClick,
+	isFirst,
+}: Props) => {
 	const mCn = useMergedClassName()
+	const { w342Path } = usePosterFullPath(poster)
 
 	return (
 		<li
@@ -20,13 +28,12 @@ export const MovieItem = ({ title, poster, watchedDate, onClick }: Props) => {
 			role="link"
 		>
 			<Image
-				src={usePosterFullPath(poster)}
+				src={w342Path}
 				alt={title}
 				fill
 				className="object-cover animate-fadeIn"
-				quality={15}
-				loading="lazy"
-				sizes="100%"
+				sizes="(max-width: 768px) 100vw, 300px"
+				priority={isFirst}
 			/>
 
 			<div

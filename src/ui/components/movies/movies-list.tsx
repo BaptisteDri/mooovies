@@ -70,6 +70,7 @@ export const MoviesList = ({ userId }: Props) => {
 							<Fragment key={i}>
 								{group.movies.map((movie) => (
 									<MovieItem
+										isFirst={i === 0}
 										title={movie.title}
 										poster={movie.poster}
 										watchedDate={movie.watchedDate}

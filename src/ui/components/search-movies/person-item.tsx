@@ -9,6 +9,7 @@ type Props = { searchedPerson: SearchedPerson }
 
 export const PersonItem = ({ searchedPerson }: Props) => {
 	const { push } = useRouter()
+	const { w92Path } = usePosterFullPath(searchedPerson.profilePath)
 
 	return (
 		<div
@@ -18,13 +19,12 @@ export const PersonItem = ({ searchedPerson }: Props) => {
 			<div className="flex items-center gap-2">
 				<div className="h-14 w-14 overflow-hidden relative rounded-2xl">
 					<Image
-						src={usePosterFullPath(searchedPerson.profilePath)}
+						src={w92Path}
 						alt={searchedPerson.name}
 						fill
 						className="object-cover"
-						quality={15}
 						loading="lazy"
-						sizes="100%"
+						sizes="56px"
 					/>
 				</div>
 				<div className="grid gap-0.5">
